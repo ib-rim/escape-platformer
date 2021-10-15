@@ -11,6 +11,7 @@
 /[Mm]emoryCaptures/
 
 /[Aa]ssets/Scenes/Development.unity
+/[Aa]ssets/Scenes/Development.unity.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
