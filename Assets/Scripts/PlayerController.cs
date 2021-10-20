@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    private int livesRemaining = 3;
+    public Text livesText;
     private float moveSpeed = 5f;
     private float jumpSpeed = 5f;
 
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() {
         rb.velocity = new Vector2(moveValue.x*moveSpeed, rb.velocity.y);
+        livesText.text = "Lives: " + livesRemaining.ToString();
     } 
 
 
