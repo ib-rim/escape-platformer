@@ -51,6 +51,13 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
+    void OnTriggerEnter(Collider other) {
+        // if(other.gameObject.tag == "Obstacle")
+        // {
+        //     livesRemaining -= 1;
+        // }
+    }
+
     void FixedUpdate() {
         rb.velocity = new Vector2(moveValue.x*moveSpeed, rb.velocity.y);
         livesText.text = "Lives: " + livesRemaining.ToString();
