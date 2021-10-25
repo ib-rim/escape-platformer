@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour {
 
-    private bool hasEntered;
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.CompareTag("FallThreshold") && !hasEntered)
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "FallThreshold")
         {
-            hasEntered = true;
             Destroy(gameObject);
             LevelManager.instance.Respawn();
         }
