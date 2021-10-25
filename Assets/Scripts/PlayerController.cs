@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
+
     //Uncomment for non-grounded jump
     //public float numJumps = 1;
     // private void IsGrounded() {
@@ -51,17 +52,15 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    void OnTriggerEnter(Collider other) {
-        // if(other.gameObject.tag == "Obstacle")
-        // {
-        //     livesRemaining -= 1;
-        // }
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Obstacle") {
+            livesRemaining -= 1;
+            livesText.text = "Lives: " + livesRemaining.ToString();
+        }
     }
 
     void FixedUpdate() {
         rb.velocity = new Vector2(moveValue.x*moveSpeed, rb.velocity.y);
-        livesText.text = "Lives: " + livesRemaining.ToString();
     } 
-
 
 }
