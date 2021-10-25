@@ -13,6 +13,6 @@ public class LevelManager : MonoBehaviour {
    }
 
    public void Respawn() {
-       Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+       playerPrefab.GetComponent<Rigidbody2D>().position = respawnPoint.position;
    }
 }

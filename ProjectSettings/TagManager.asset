@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Death1
   - FallThreshold
   layers:
   - Default
