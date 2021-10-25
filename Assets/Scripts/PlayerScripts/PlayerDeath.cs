@@ -16,9 +16,13 @@ public class PlayerDeath : MonoBehaviour {
         if (other.gameObject.tag == "FallThreshold")
         {
             LevelManager.instance.Respawn();
+            livesRemaining -= 1;
+            livesText.text = "Lives: " + livesRemaining.ToString();
         }
-        else if (other.gameObject.tag == "Spikes")
-        {
+        
+        if (other.gameObject.tag == "Spikes")
+        {   
+            LevelManager.instance.Respawn();
             livesRemaining -= 1;
             livesText.text = "Lives: " + livesRemaining.ToString();
         }
