@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spikes
   - Pitfall
+  - FallThreshold
   layers:
   - Default
   - TransparentFX
