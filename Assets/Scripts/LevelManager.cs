@@ -6,13 +6,15 @@ public class LevelManager : MonoBehaviour {
    public static LevelManager instance;
 
    public Transform respawnPoint;
-   public GameObject playerPrefab;
+   //public GameObject playerPrefab;
 
    private void Awake() {
        instance = this;
    }
 
-   public void Respawn() {
-       playerPrefab.GetComponent<Rigidbody2D>().position = respawnPoint.position;
+   public void Respawn(GameObject gameObject) {
+       gameObject.GetComponent<Rigidbody2D>().position = respawnPoint.position;
+       //Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+        
    }
 }
