@@ -17,7 +17,7 @@ public class PlayerDeath : MonoBehaviour {
         {
             LevelManager.instance.Respawn();
         }
-        if (other.gameObject.tag == "Spikes")
+        else if (other.gameObject.tag == "Spikes")
         {
             livesRemaining -= 1;
             livesText.text = "Lives: " + livesRemaining.ToString();
