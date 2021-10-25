@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Obstacle
+  - Spikes
+  - Pitfall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacles
   - Water
   - UI
   - Ground
