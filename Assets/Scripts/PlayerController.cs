@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -9,16 +8,10 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    private int livesRemaining = 3;
-    public Text livesText;
     private float moveSpeed = 5f;
     private float jumpSpeed = 5f;
 
     public Vector2 moveValue;
-
-    private void Start() {
-        livesText.text = "Lives: " + livesRemaining.ToString();
-    }
 
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();
@@ -47,7 +40,6 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-
     //Uncomment for non-grounded jump
     //public float numJumps = 1;
     // private void IsGrounded() {
@@ -55,13 +47,6 @@ public class PlayerController : MonoBehaviour
     //         numJumps = 1;
     //     }
     // }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Spikes") {
-            livesRemaining -= 1;
-            livesText.text = "Lives: " + livesRemaining.ToString();
-        }
-    }
 
     private void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.tag == "Pitfall")
