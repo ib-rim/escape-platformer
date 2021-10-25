@@ -48,13 +48,6 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    private void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Pitfall")
-        {
-            collision.gameObject.SetActive(false);
-        }
-    }
-
     void FixedUpdate() {
         rb.velocity = new Vector2(moveValue.x*moveSpeed, rb.velocity.y);
     } 

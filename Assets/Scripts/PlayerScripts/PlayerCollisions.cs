@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Code for all of the Player's non-fatal collisions 
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.tag == "Pitfall")
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
 }
