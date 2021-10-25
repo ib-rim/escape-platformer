@@ -4,15 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Spikes
+  - Pitfall
   - FallThreshold
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - Ground
+  - 
   - 
   - 
   - 
