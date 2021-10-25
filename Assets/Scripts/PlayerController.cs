@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 moveValue;
 
+    private void Start() {
+        livesText.text = "Lives: " + livesRemaining.ToString();
+    }
+
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();
     }
