@@ -7,6 +7,7 @@ TagManager:
   - Spikes
   - Pitfall
   - FallThreshold
+  - Collectible
   layers:
   - Default
   - TransparentFX
