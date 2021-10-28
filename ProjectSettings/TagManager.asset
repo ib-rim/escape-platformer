@@ -6,11 +6,12 @@ TagManager:
   tags:
   - JumpBoost
   - SpeedBoost
-  - SlowFall
   - Spikes
   - Pitfall
   - FallThreshold
   - Collectible
+  - Slow
+  - Invincibility
   layers:
   - Default
   - TransparentFX
