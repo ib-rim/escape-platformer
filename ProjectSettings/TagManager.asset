@@ -8,6 +8,7 @@ TagManager:
   - Pitfall
   - FallThreshold
   - Collectible
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
