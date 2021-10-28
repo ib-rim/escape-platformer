@@ -7,14 +7,18 @@ TagManager:
   - JumpBoost
   - SpeedBoost
   - SlowFall
+  - Spikes
+  - Pitfall
+  - FallThreshold
+  - Collectible
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - Ground
+  - 
   - 
   - 
   - 
