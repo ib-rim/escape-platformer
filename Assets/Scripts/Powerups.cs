@@ -6,10 +6,12 @@ public class Powerups : MonoBehaviour
 {   
     PlayerController player; 
     SpriteRenderer rend;
-    Color playerColor = new Color(255, 255, 255);
-    Color jumpColor = new Color(0, 174, 236);
-    Color speedColor = new Color(236, 225, 0);
-    Color slowFallColor = new Color(144, 226, 201);
+    Color playerColor = new Color32(255, 255, 255, 255);
+    Color jumpColor = new Color32(125, 212, 144, 255); 
+    Color speedColor = new Color32(236, 108, 0, 255); 
+    Color slowColor = new Color32(215, 190, 137, 255);
+    Color invincibilityColor = new Color32(236, 225, 0, 255);
+
     public float powerupTime = 3;
 
     void Start() {
@@ -29,9 +31,14 @@ public class Powerups : MonoBehaviour
             StartCoroutine(boostSpeed());
         } 
 
-        if(other.gameObject.tag == "SlowFall") {
+        if(other.gameObject.tag == "Slow") {
             other.gameObject.SetActive(false);
-            StartCoroutine(slowFall());
+            StartCoroutine(slow());
+        } 
+
+        if(other.gameObject.tag == "Invincibility") {
+            other.gameObject.SetActive(false);
+            StartCoroutine(setInvincible());
         } 
     }
 
@@ -51,11 +58,21 @@ public class Powerups : MonoBehaviour
         rend.material.color = playerColor;
     }
 
-    IEnumerator slowFall() {
-        player.moveSpeed = 1f;
-        rend.material.color = slowFallColor;
+    IEnumerator slow() {
+        player.moveSpeed = 2f;
+        player.jumpSpeed = 2f;
+        rend.material.color = slowColor;
         yield return new WaitForSeconds(powerupTime);
         player.moveSpeed = PlayerController.defaultMoveSpeed;
+        player.jumpSpeed = PlayerController.defaultJumpSpeed;
+        rend.material.color = playerColor;
+    }
+
+    IEnumerator setInvincible() {
+        rend.material.color = invincibilityColor;
+        GetComponent<PlayerDeath>().invincible = true;
+        yield return new WaitForSeconds(powerupTime);
+        GetComponent<PlayerDeath>().invincible = false;
         rend.material.color = playerColor;
     }
 }
