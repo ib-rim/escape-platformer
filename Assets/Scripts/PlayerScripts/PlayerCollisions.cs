@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollisions : MonoBehaviour
 {
     // Code for all of the Player's non-fatal collisions 
-
+    
     public int pitfallLag = 3; 
 
     IEnumerator PitfallLag() {
@@ -18,6 +18,16 @@ public class PlayerCollisions : MonoBehaviour
         {
             StartCoroutine("PitfallLag");
             collision.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Checkpoint") 
+        {   
+            LevelManager.instance.setRespawnPoint(other.gameObject.transform);
+
+            other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
         }
     }
 }

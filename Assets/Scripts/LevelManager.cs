@@ -14,6 +14,9 @@ public class LevelManager : MonoBehaviour {
 
    public void Respawn() {
        playerPrefab.GetComponent<Rigidbody2D>().position = respawnPoint.position;
-        
+   }
+
+   public void setRespawnPoint(Transform newRespawnPoint) {
+       respawnPoint = newRespawnPoint;
    }
 }
