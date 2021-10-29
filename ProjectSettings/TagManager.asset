@@ -7,6 +7,8 @@ TagManager:
   - Spikes
   - Pitfall
   - FallThreshold
+  - Platform
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
