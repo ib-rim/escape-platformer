@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerDeath : MonoBehaviour {
     
-    private int livesRemaining = 3;
-    public Text livesText;
+    private int deathsCounter = 0;
+    public Text deathsText;
     public bool invincible;
 
     private void Start() {
-        livesText.text = "Lives: " + livesRemaining.ToString();
+        deathsText.text = "Deaths: " + deathsCounter.ToString();
     }
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -20,15 +20,15 @@ public class PlayerDeath : MonoBehaviour {
             if (other.gameObject.tag == "FallThreshold")
             {
                 LevelManager.instance.Respawn();
-                livesRemaining -= 1;
-                livesText.text = "Lives: " + livesRemaining.ToString();
+                deathsCounter += 1;
+                deathsText.text = "Deaths: " + deathsCounter.ToString();
             }
             
             if (other.gameObject.tag == "Spikes")
             {   
                 LevelManager.instance.Respawn();
-                livesRemaining -= 1;
-                livesText.text = "Lives: " + livesRemaining.ToString();
+                deathsCounter += 1;
+                deathsText.text = "Deaths: " + deathsCounter.ToString();
             }
         }
     }
