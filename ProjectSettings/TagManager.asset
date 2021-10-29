@@ -12,6 +12,7 @@ TagManager:
   - Collectible
   - Slow
   - Invincibility
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
