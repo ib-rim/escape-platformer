@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {   
+    public static float defaultMoveSpeed = 5f;
+    public static float defaultJumpSpeed = 5f;
+    
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    private float moveSpeed = 5f;
-    private float jumpSpeed = 5f;
-
     public Vector2 moveValue;
+    public float moveSpeed = 5f;
+    public float jumpSpeed = 5f;
 
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();

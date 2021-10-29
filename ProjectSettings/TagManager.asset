@@ -4,10 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - JumpBoost
+  - SpeedBoost
   - Spikes
   - Pitfall
   - FallThreshold
   - Collectible
+  - Slow
+  - Invincibility
   - Checkpoint
   layers:
   - Default
