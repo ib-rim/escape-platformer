@@ -18,6 +18,9 @@
 /[Aa]ssets/Scenes/Timothy.unity
 /[Aa]ssets/Scenes/Timothy.unity.meta
 
+# User Settings
+/[Uu]serSettings/EditorUserSettings.asset
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 
