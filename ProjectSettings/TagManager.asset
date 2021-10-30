@@ -13,6 +13,7 @@ TagManager:
   - Slow
   - Invincibility
   - Checkpoint
+  - SlowFall
   layers:
   - Default
   - TransparentFX
