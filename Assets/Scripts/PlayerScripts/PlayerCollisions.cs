@@ -6,7 +6,7 @@ public class PlayerCollisions : MonoBehaviour
 {
     // Code for all of the Player's non-fatal collisions 
     
-    public int pitfallLag = 3; 
+    public float pitfallDelayTime = 1.5f; 
 
         yield return new WaitForSecondsRealtime(pitfallLag);
     IEnumerator PitfallDelay(GameObject pitfall) {
