@@ -1884,6 +1884,10 @@ PrefabInstance:
       propertyPath: deathsText
       value: 
       objectReference: {fileID: 1327062393}
+    - target: {fileID: 7930724988268041977, guid: 786b28ae449047d49b5b544f9ac4bda1, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 7930724988268041978, guid: 786b28ae449047d49b5b544f9ac4bda1, type: 3}
       propertyPath: m_Name
       value: Player
