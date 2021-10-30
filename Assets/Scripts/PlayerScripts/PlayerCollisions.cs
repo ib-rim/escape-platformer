@@ -8,8 +8,8 @@ public class PlayerCollisions : MonoBehaviour
     
     public float pitfallDelayTime = 1.5f; 
 
-        yield return new WaitForSecondsRealtime(pitfallLag);
     IEnumerator PitfallDelay(GameObject pitfall) {
+        yield return new WaitForSeconds(pitfallDelayTime);
         pitfall.SetActive(false);
     }
 
