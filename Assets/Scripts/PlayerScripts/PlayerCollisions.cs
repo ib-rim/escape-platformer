@@ -8,16 +8,16 @@ public class PlayerCollisions : MonoBehaviour
     
     public int pitfallLag = 3; 
 
-    IEnumerator PitfallLag() {
         yield return new WaitForSecondsRealtime(pitfallLag);
+    IEnumerator PitfallDelay(GameObject pitfall) {
+        pitfall.SetActive(false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pitfall")
         {
-            StartCoroutine("PitfallLag");
-            collision.gameObject.SetActive(false);
+            StartCoroutine(PitfallDelay(collision.gameObject));
         }
     }
 
