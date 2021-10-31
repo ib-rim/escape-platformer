@@ -15,7 +15,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pitfall")
+        if (collision.gameObject.CompareTag("Pitfall"))
         {
             StartCoroutine(PitfallDelay(collision.gameObject));
         }
