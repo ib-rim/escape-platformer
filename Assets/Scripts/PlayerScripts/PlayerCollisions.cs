@@ -21,6 +21,7 @@ public class PlayerCollisions : MonoBehaviour
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
    
 
@@ -42,6 +43,8 @@ public class PlayerCollisions : MonoBehaviour
          target.transform.position = transform.position+offset;
      }
     }*/
+=======
+>>>>>>> parent of 7ab57d2 (static platforms)
 =======
 >>>>>>> parent of 7ab57d2 (static platforms)
 }

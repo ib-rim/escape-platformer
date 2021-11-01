@@ -13,10 +13,20 @@ GameObject:
   - component: {fileID: 3671438998620577144}
   m_Layer: 6
 <<<<<<< HEAD:Assets/Prefabs/Platform 10x1.prefab
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:Assets/Prefabs/Platform 10x1.prefab
+>>>>>>> parent of 7ab57d2 (static platforms)
   m_Name: Platform 10x1
 =======
   m_Name: Platform
 >>>>>>> parent of 7ab57d2 (static platforms):Assets/Prefabs/Platform.prefab
+<<<<<<< HEAD
+=======
+=======
+  m_Name: Platform
+>>>>>>> parent of 7ab57d2 (static platforms):Assets/Prefabs/Platform.prefab
+>>>>>>> parent of 7ab57d2 (static platforms)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
