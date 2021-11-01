@@ -339,3 +339,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblesText: {fileID: 4700825594749594449, guid: 71057d208be6c0445a237dfcb43c412b, type: 3}
   pitfallLag: 3
+  rb: {fileID: 7930724988268041982}
+  bounceSpeed: 5
+--- !u!114 &2059554923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930724988268041978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b166d02d1121716408ab32bbf9935a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectiblesText: {fileID: 0}

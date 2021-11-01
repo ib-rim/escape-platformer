@@ -6,16 +6,20 @@ using UnityEngine.UI;
 public class PlayerCollisions : MonoBehaviour
 {
     // Code for all of the Player's non-fatal collisions 
-
+    
     private static int collectiblesCounter = 0;
     public Text collectiblesText;
+    
+    public Rigidbody2D rb;
+    private static float bounceSpeed = 12.0f;
+    
+    public float pitfallDelayTime = 1.5f; 
 
     private void Start()
     {
         collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
     }
-    
-    public float pitfallDelayTime = 1.5f; 
+
 
     IEnumerator PitfallDelay(GameObject pitfall) {
         yield return new WaitForSeconds(pitfallDelayTime);
@@ -33,7 +37,11 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Checkpoint")) 
+        if (other.gameObject.CompareTag("BouncyPlatform"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
+        }
+        if (other.gameObject.tag == "Checkpoint") 
         {   
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
 
@@ -47,4 +55,5 @@ public class PlayerCollisions : MonoBehaviour
             collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
         }
     }
+
 }
