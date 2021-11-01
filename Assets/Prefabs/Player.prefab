@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 137866425783899621}
   - component: {fileID: 4226284380691887958}
   - component: {fileID: 9148726372160953904}
-  - component: {fileID: 2059554923}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -311,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b22f5b85d7538b45be1674acb290ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathsText: {fileID: 0}
+  deathsText: {fileID: 2714528913533591525, guid: f7e87a0f871cf2244886f92b6e624e09, type: 3}
   invincible: 0
 --- !u!114 &4226284380691887958
 MonoBehaviour:
@@ -338,17 +337,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ecbcc2d9654b43b051c060c7ce218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectiblesText: {fileID: 4700825594749594449, guid: 71057d208be6c0445a237dfcb43c412b, type: 3}
   pitfallLag: 3
---- !u!114 &2059554923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7930724988268041978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b166d02d1121716408ab32bbf9935a2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectiblesText: {fileID: 0}
