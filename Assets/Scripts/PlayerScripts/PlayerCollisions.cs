@@ -29,6 +29,8 @@ public class PlayerCollisions : MonoBehaviour
         }
     }
 
+   
+
 /*
     void onTriggerStay2D(Collider2D other) 
     {

@@ -11,6 +11,11 @@ public class PlatformMovement : MonoBehaviour
 
     Vector3 nextPos;
 
+    [SerializeField]
+    public Vector3 velocity;
+    private bool moving;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,4 +41,27 @@ public class PlatformMovement : MonoBehaviour
     {
         Gizmos.DrawLine(pos1.position, pos2.position);
     }
+    
+   
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag== "Player") 
+        {
+            collision.collider.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) 
+    {
+        collision.collider.transform.SetParent(null);
+    }
+
+    private void FixedUpdate() 
+    {
+        if (moving)
+        {
+            transform.position += (velocity * Time.deltaTime);
+        }
+    }
+
 }
