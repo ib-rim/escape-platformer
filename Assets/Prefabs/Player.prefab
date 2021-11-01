@@ -339,6 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitfallLag: 3
+  rb: {fileID: 7930724988268041982}
+  bounceSpeed: 5
 --- !u!114 &2059554923
 MonoBehaviour:
   m_ObjectHideFlags: 0
