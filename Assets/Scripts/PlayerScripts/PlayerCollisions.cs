@@ -6,26 +6,28 @@ using UnityEngine.UI;
 public class PlayerCollisions : MonoBehaviour
 {
     // Code for all of the Player's non-fatal collisions 
+
     private static int collectiblesCounter = 0;
     public Text collectiblesText;
-
-    public int pitfallLag = 3; 
 
     private void Start()
     {
         collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
     }
+    
+    public float pitfallDelayTime = 1.5f; 
 
-    IEnumerator PitfallLag() {
-        yield return new WaitForSecondsRealtime(pitfallLag);
+    IEnumerator PitfallDelay(GameObject pitfall) {
+        yield return new WaitForSeconds(pitfallDelayTime);
+        pitfall.SetActive(false);
+        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pitfall"))
         {
-            StartCoroutine("PitfallLag");
-            collision.gameObject.SetActive(false);
+            StartCoroutine(PitfallDelay(collision.gameObject));
         }
     }
 
