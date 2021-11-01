@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerDeath : MonoBehaviour {
     
-    private int deathsCounter = 0;
+    private static int deathsCounter = 0;
     public Text deathsText;
     public bool invincible;
 
@@ -17,19 +17,21 @@ public class PlayerDeath : MonoBehaviour {
 
         if(!invincible) {
 
-            if (other.gameObject.tag == "FallThreshold")
+            if (other.gameObject.CompareTag("FallThreshold"))
             {
-                LevelManager.instance.Respawn();
-                deathsCounter += 1;
-                deathsText.text = "Deaths: " + deathsCounter.ToString();
+                death();
             }
             
-            if (other.gameObject.tag == "Spikes")
+            if (other.gameObject.CompareTag("Spikes"))
             {   
-                LevelManager.instance.Respawn();
-                deathsCounter += 1;
-                deathsText.text = "Deaths: " + deathsCounter.ToString();
+                death();
             }
         }
+    }
+
+    private void death() {
+        deathsCounter += 1;
+        deathsText.text = "Deaths: " + deathsCounter.ToString();
+        LevelManager.instance.Respawn();
     }
 }
