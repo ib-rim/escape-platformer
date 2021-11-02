@@ -101,8 +101,6 @@ MonoBehaviour:
   distance: 5
   duration: 3
   moveRightFirst: 0
-  isCurrentlyRight: 0
-  distancePerFrame: 0
 --- !u!61 &6706326878021167246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112,7 +110,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1703539174800912032}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74e005bd7a4de80418c3d80a92fbc7ae, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
