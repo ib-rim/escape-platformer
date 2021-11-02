@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    private Vector3 toPos; // used to position as platform moves
+    private Vector3 toPos; // used to track position as platform moves
     private Vector3 fromPos;
     private Vector3 rightBound; // bounds are fixed values calculated on Start
     private Vector3 leftBound;
@@ -31,18 +31,17 @@ public class PlatformMovement : MonoBehaviour
             leftBound = new Vector3(transform.position.x - distance, transform.position.y, 0);
             toPos = leftBound;
         }
- 
     }
 
     void Update() // update platform's position using linear interpolation
     {
-        float frac = elapsed / duration;
+        float frac = elapsed / duration; // track progress of current lap
         transform.position = Vector3.Lerp(fromPos, toPos, frac);
         elapsed += Time.deltaTime; // ensure the movement is smooth
 
-        if (frac >= 1.0f) // once 1 lap movement is complete...
+        if (frac >= 1.0f) // once current lap is complete...
         {
-            elapsed = 0.0f; // ...reset progress
+            elapsed = 0.0f; // ...reset progress tracking
             if (toPos == rightBound) // ...and switch directions
             {
                 toPos = leftBound;
