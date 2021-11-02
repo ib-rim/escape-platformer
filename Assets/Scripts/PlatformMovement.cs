@@ -12,6 +12,7 @@ public class PlatformMovement : MonoBehaviour
     public float duration = 3.0f;
     private float elapsed = 0.0f; // used to track the progress of our movement
     public bool moveRightFirst = false; // can choose initial direction in Inspector
+    PlayerController player;
 
     private void Start()
     {
@@ -53,6 +54,18 @@ public class PlatformMovement : MonoBehaviour
                 fromPos = leftBound;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+            collision.gameObject.transform.parent = transform;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+            collision.gameObject.transform.parent = null;
     }
 
 }
