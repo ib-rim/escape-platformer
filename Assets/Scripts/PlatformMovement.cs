@@ -4,64 +4,48 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
+    private Vector3 startPos;
+    private Vector3 toPos;
+    private Vector3 fromPos;
+    private Vector3 rightBound;
+    private Vector3 leftBound;
+    private float distance = 5.0f; // distance
+    private float duration = 3.0f; // how long we want the movement to take
+    private float elapsed = 0.0f; // used to track the progress of our movement
+    //public bool moveRightFirst = false;
 
-    public Transform pos1, pos2;
-    public float speed;
-    public Transform startPos;
-
-    Vector3 nextPos;
-
-    [SerializeField]
-    public Vector3 velocity;
-    private bool moving;
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        nextPos = startPos.position;
+        rightBound = transform.position;
+        fromPos = rightBound;
+
+        leftBound = new Vector3(transform.position.x - distance, transform.position.y, 0);
+        toPos = leftBound;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (transform.position == pos1.position)
+        float frac = elapsed / duration; // track progress of movement
+        transform.position = Vector3.Lerp(fromPos, toPos, frac);
+        elapsed += Time.deltaTime; // progress should be smooth
+        print(frac);
+
+        if (frac >= 1.0f)
         {
-            nextPos = pos2.position;
-        }
-        if (transform.position == pos2.position)
-        {
-            nextPos = pos1.position;
-        }
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
-
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(pos1.position, pos2.position);
-    }
-
-
-    //player move with platform
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.collider.transform.SetParent(transform);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        collision.collider.transform.SetParent(null);
-    }
-
-    private void FixedUpdate()
-    {
-        if (moving)
-        {
-            transform.position += (velocity * Time.deltaTime);
+            if (toPos == rightBound) // once right bound is reached
+            {
+                print("switch to the right");
+                elapsed = 0.0f; // reset progress
+                toPos = leftBound; // switch directions
+                fromPos = rightBound;
+            }
+            else if (toPos == leftBound) // once left bound is reached
+            {
+                print("switch to the left");
+                elapsed = 0.0f; // reset progress
+                toPos = rightBound; // switch directions
+                fromPos = leftBound;
+            }
         }
     }
 
