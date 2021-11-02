@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class PlatformMovement : MonoBehaviour
 {
-    private Vector3 toPos;
+    private Vector3 toPos; // used to position as platform moves
     private Vector3 fromPos;
-    private Vector3 rightBound;
+    private Vector3 rightBound; // bounds are fixed values calculated on Start
     private Vector3 leftBound;
     public float distance = 5.0f;
     public float duration = 3.0f;
     private float elapsed = 0.0f; // used to track the progress of our movement
-    public bool moveRightFirst = false; // choose initial direction in Inspector
+    public bool moveRightFirst = false; // can choose initial direction in Inspector
 
     private void Start()
     {
-        print("moveRightFirst " + moveRightFirst);
-        if (moveRightFirst)
+        if (moveRightFirst) // set the inital direction
         {
             leftBound = transform.position;
             fromPos = leftBound;
@@ -35,24 +34,23 @@ public class PlatformMovement : MonoBehaviour
  
     }
 
-    void Update()
+    void Update() // update platform's position using linear interpolation
     {
-        float frac = elapsed / duration; // track progress of movement
+        float frac = elapsed / duration;
         transform.position = Vector3.Lerp(fromPos, toPos, frac);
-        elapsed += Time.deltaTime; // progress should be smooth
+        elapsed += Time.deltaTime; // ensure the movement is smooth
 
-        if (frac >= 1.0f)
+        if (frac >= 1.0f) // once 1 lap movement is complete...
         {
-            if (toPos == rightBound) // once right bound is reached
+            elapsed = 0.0f; // ...reset progress
+            if (toPos == rightBound) // ...and switch directions
             {
-                elapsed = 0.0f; // reset progress
-                toPos = leftBound; // switch directions
+                toPos = leftBound;
                 fromPos = rightBound;
             }
-            else if (toPos == leftBound) // once left bound is reached
+            else if (toPos == leftBound)
             {
-                elapsed = 0.0f; // reset progress
-                toPos = rightBound; // switch directions
+                toPos = rightBound;
                 fromPos = leftBound;
             }
         }
