@@ -26,6 +26,11 @@ public class PlayerDeath : MonoBehaviour {
             {   
                 death();
             }
+
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                death();
+            }
         }
     }
 
