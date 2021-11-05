@@ -11,7 +11,7 @@ public class PlayerCollisions : MonoBehaviour
     public Text collectiblesText;
     
     public Rigidbody2D rb;
-    private static float bounceSpeed = 12.0f;
+    private static float bounceSpeed = 15.0f;
     
     public float pitfallDelayTime = 1.5f; 
 
