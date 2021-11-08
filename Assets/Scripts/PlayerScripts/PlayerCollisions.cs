@@ -15,9 +15,12 @@ public class PlayerCollisions : MonoBehaviour
     
     public float pitfallDelayTime = 1.5f; 
 
+    public Text winText;
+
     private void Start()
     {
         collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
+        winText.text = "";
     }
 
 
@@ -46,6 +49,11 @@ public class PlayerCollisions : MonoBehaviour
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
 
             other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
+        }
+
+        if (other.gameObject.tag == "VictoryPoint")
+        {
+            winText.text = "Level Complete!";
         }
 
         if (other.gameObject.CompareTag("Collectible"))

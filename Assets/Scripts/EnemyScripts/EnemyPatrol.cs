@@ -4,37 +4,22 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-/*
-    Rigidbody2D rb;
-    float moveSpeed = 5;
 
-    void Start() 
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-    }
-*/
     
     public float movementSpeed;
 
    [HideInInspector]
    public bool patrolling;
    private bool turning;
+   private bool turningWall;
 
    public Rigidbody2D rb;
    public Transform groundCheckPosition;
+   public Transform wallCheckPosition;
    
 
    public LayerMask groundLayer;
+   public LayerMask wallLayer;
 
    void Start() 
    {
@@ -54,6 +39,7 @@ public class EnemyPatrol : MonoBehaviour
        if (patrolling)
        {
            turning = !Physics2D.OverlapCircle(groundCheckPosition.position, 0.1f , groundLayer);
+           turningWall = Physics2D.OverlapCircle(wallCheckPosition.position, 0.1f, wallLayer);
        }
    }
 
@@ -61,6 +47,11 @@ public class EnemyPatrol : MonoBehaviour
    {
 
        if (turning)
+       {
+           Flip();
+       }
+       
+       if (turningWall)
        {
            Flip();
        }
