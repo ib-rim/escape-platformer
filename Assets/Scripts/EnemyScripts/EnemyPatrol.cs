@@ -5,13 +5,10 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     public float movementSpeed;
-
-    [HideInInspector]
-    public bool patrolling;
+    private bool patrolling;
 
     public Rigidbody2D rb;
     public Transform groundCheck;
-
     public LayerMask groundLayer;
 
     void Start() 
@@ -30,7 +27,6 @@ public class EnemyPatrol : MonoBehaviour
             
             rb.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
         }
-
     }
 
     //Move enemy in opposite direction
