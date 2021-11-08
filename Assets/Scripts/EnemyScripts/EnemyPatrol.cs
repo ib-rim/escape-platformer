@@ -6,53 +6,39 @@ public class EnemyPatrol : MonoBehaviour
 {
     public float movementSpeed;
 
-   [HideInInspector]
-   public bool patrolling;
-   private bool turning;
+    [HideInInspector]
+    public bool patrolling;
 
-   public Rigidbody2D rb;
-   public Transform groundCheckPosition;
-   
+    public Rigidbody2D rb;
+    public Transform groundCheck;
 
-   public LayerMask groundLayer;
+    public LayerMask groundLayer;
 
-   void Start() 
-   {
-       patrolling = true;
-   }
+    void Start() 
+    {
+        patrolling = true;
+    }
 
-   void Update()
-   {
-       if (patrolling)
-       {
-           Patrol();
-       }
-   }
+    private void FixedUpdate()
+    {
+        if (patrolling)
+        {   
+            //Check if at edge of platform and flip enemy if so
+            if(!Physics2D.OverlapCircle(groundCheck.position, 0.1f , groundLayer)) {
+                Flip();
+            }
+            
+            rb.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
+        }
 
-   private void FixedUpdate()
-   {
-       if (patrolling)
-       {
-           turning = !Physics2D.OverlapCircle(groundCheckPosition.position, 0.1f , groundLayer);
-       }
-   }
+    }
 
-   void Patrol()
-   {
-
-       if (turning)
-       {
-           Flip();
-       }
-
-       rb.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
-   }
-
-   void Flip()
-   {
-       patrolling = false;
-       transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-       movementSpeed *= -1;
-       patrolling = true;
-   }
+    //Move enemy in opposite direction
+    void Flip()
+    {
+        patrolling = false;
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        movementSpeed *= -1;
+        patrolling = true;
+    }
 }
