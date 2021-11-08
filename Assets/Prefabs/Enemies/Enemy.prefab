@@ -152,7 +152,7 @@ MonoBehaviour:
   movementSpeed: 200
   patrolling: 0
   rb: {fileID: 6239739648169874394}
-  groundCheckPosition: {fileID: 7065240166085918550}
+  groundCheckPosition: {fileID: 1953298387003897833}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
