@@ -8,6 +8,7 @@ public class PlayerCollisions : MonoBehaviour
     // Code for all of the Player's non-fatal collisions 
     
     private static int collectiblesCounter = 0;
+    private static int collectiblesTotal;
     public Text collectiblesText;
     
     public Rigidbody2D rb;
@@ -17,7 +18,8 @@ public class PlayerCollisions : MonoBehaviour
 
     private void Start()
     {
-        collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
+        collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
+        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
     }
 
 
@@ -41,6 +43,7 @@ public class PlayerCollisions : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
         }
+        
         if (other.gameObject.tag == "Checkpoint") 
         {   
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
@@ -52,7 +55,8 @@ public class PlayerCollisions : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             collectiblesCounter += 1;
-            collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
+            collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+
         }
     }
 

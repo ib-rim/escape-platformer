@@ -10,7 +10,7 @@ public class PlayerDeath : MonoBehaviour {
     public bool invincible;
 
     private void Start() {
-        deathsText.text = "Deaths: " + deathsCounter.ToString();
+        deathsText.text = $"Deaths: {deathsCounter.ToString()}";
     }
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -36,7 +36,7 @@ public class PlayerDeath : MonoBehaviour {
 
     private void death() {
         deathsCounter += 1;
-        deathsText.text = "Deaths: " + deathsCounter.ToString();
+        deathsText.text = $"Deaths: {deathsCounter.ToString()}";
         LevelManager.instance.Respawn();
     }
 }
