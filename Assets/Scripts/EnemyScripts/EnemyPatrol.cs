@@ -4,26 +4,6 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-/*
-    Rigidbody2D rb;
-    float moveSpeed = 5;
-
-    void Start() 
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-    }
-*/
-    
     public float movementSpeed;
 
    [HideInInspector]
