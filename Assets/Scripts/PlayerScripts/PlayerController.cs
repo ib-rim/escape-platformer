@@ -5,15 +5,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {   
-    public static float defaultMoveSpeed = 5f;
-    public static float defaultJumpSpeed = 5f;
+    public const float defaultMoveSpeed = 6f;
+    public const float defaultJumpSpeed = 10f;
+    public const float defaultGravity = 2f;
     
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public Vector2 moveValue;
-    public float moveSpeed = 5f;
-    public float jumpSpeed = 5f;
+    public float moveSpeed;
+    public float jumpSpeed;
+
+    void Start()
+    {
+        moveSpeed = defaultMoveSpeed;
+        jumpSpeed = defaultJumpSpeed;
+        rb.gravityScale = defaultGravity;
+    }
 
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();

@@ -61,7 +61,7 @@ public class Powerups : MonoBehaviour
     }
 
     IEnumerator JumpBoost() {
-        player.jumpSpeed = 8f;
+        player.jumpSpeed = PlayerController.defaultJumpSpeed*1.5f;
         rend.material.color = jumpColor;
         colorQueue.Enqueue(jumpColor);
         yield return new WaitForSeconds(powerupTime);
@@ -70,7 +70,7 @@ public class Powerups : MonoBehaviour
     }
 
     IEnumerator SpeedBoost() {
-        player.moveSpeed = 8f;
+        player.moveSpeed = PlayerController.defaultMoveSpeed*2;
         rend.material.color = speedColor;
         colorQueue.Enqueue(speedColor);
         yield return new WaitForSeconds(powerupTime);
@@ -84,11 +84,11 @@ public class Powerups : MonoBehaviour
         for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
             if (GetComponent<Rigidbody2D>().velocity.y < -0.1)
             {
-                GetComponent<Rigidbody2D>().gravityScale = 0.1f;
+                GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity/5;
             }
             yield return null;
         }
-        GetComponent<Rigidbody2D>().gravityScale = 1f;
+        GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
         resetPlayer();
     }
 
@@ -102,8 +102,8 @@ public class Powerups : MonoBehaviour
     }
 
     IEnumerator Slow() {
-        player.moveSpeed = 2f;
-        player.jumpSpeed = 2f;
+        player.moveSpeed = PlayerController.defaultMoveSpeed / 2;
+        player.jumpSpeed = PlayerController.defaultJumpSpeed / 2;
         rend.material.color = slowColor;
         colorQueue.Enqueue(slowColor);
         yield return new WaitForSeconds(powerupTime);
