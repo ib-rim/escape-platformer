@@ -4,19 +4,39 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
+/*
+    Rigidbody2D rb;
+    float moveSpeed = 5;
+
+    void Start() 
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+    }
+*/
+    
     public float movementSpeed;
 
    [HideInInspector]
    public bool patrolling;
    private bool turning;
 
-   public Rigidbody2D rb1;
+   public Rigidbody2D rb;
    public Transform groundCheckPosition;
    
 
    public LayerMask groundLayer;
 
-   void start() 
+   void Start() 
    {
        patrolling = true;
    }
@@ -45,7 +65,7 @@ public class EnemyPatrol : MonoBehaviour
            Flip();
        }
 
-       rb1.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rb1.velocity.y);
+       rb.velocity = new Vector2(movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
    }
 
    void Flip()

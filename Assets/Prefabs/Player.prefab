@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b22f5b85d7538b45be1674acb290ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathsText: {fileID: 2714528913533591525, guid: f7e87a0f871cf2244886f92b6e624e09, type: 3}
+  deathsText: {fileID: 0}
   invincible: 0
 --- !u!114 &4226284380691887958
 MonoBehaviour:
@@ -337,6 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ecbcc2d9654b43b051c060c7ce218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectiblesText: {fileID: 4700825594749594449, guid: 71057d208be6c0445a237dfcb43c412b, type: 3}
+  collectiblesText: {fileID: 0}
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5

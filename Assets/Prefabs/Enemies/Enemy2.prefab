@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 157750087178073890}
   - component: {fileID: 157750087178073891}
-  - component: {fileID: 157750087178073892}
   - component: {fileID: 157750087178073893}
   - component: {fileID: 157750087178073894}
-  - component: {fileID: 157750087178073895}
-  m_Layer: 3
+  - component: {fileID: 1884585333418500095}
+  - component: {fileID: 157750087026756313}
+  m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -88,25 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &157750087178073892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157750087178073912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c4882611b4363499341dcf743e666f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2
-  patrolling: 0
-  rb1: {fileID: 157750087178073894}
-  groundCheckPosition: {fileID: 157750087517865324}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &157750087178073893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,11 +118,11 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &157750087178073895
-BoxCollider2D:
+--- !u!58 &1884585333418500095
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,18 +135,27 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.49999997
+--- !u!114 &157750087026756313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157750087178073912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c4882611b4363499341dcf743e666f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 200
+  patrolling: 0
+  rb: {fileID: 157750087178073894}
+  groundCheckPosition: {fileID: 157750087517865324}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &157750087517865325
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,10 +165,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157750087517865324}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCheckPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -190,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157750087517865325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.95, y: 0, z: 0}
+  m_LocalPosition: {x: 1.05, y: -0.54, z: 0}
   m_LocalScale: {x: 0.56957334, y: 0.56957334, z: 0.56957334}
   m_Children: []
   m_Father: {fileID: 157750087178073890}
