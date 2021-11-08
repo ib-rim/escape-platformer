@@ -340,3 +340,4 @@ MonoBehaviour:
   collectiblesText: {fileID: 0}
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5
+  winText: {fileID: 0}

@@ -43,17 +43,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: VIctoryPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 4154991027950995570, guid: a454f603ceb309040b7ac4e7ee7cdc8a, type: 3}
+      propertyPath: m_TagString
+      value: VictoryPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 4154991027950995571, guid: a454f603ceb309040b7ac4e7ee7cdc8a, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4154991027950995571, guid: a454f603ceb309040b7ac4e7ee7cdc8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 99.017044
+      value: 99.41842
       objectReference: {fileID: 0}
     - target: {fileID: 4154991027950995571, guid: a454f603ceb309040b7ac4e7ee7cdc8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4231877
+      value: 5.04822
       objectReference: {fileID: 0}
     - target: {fileID: 4154991027950995571, guid: a454f603ceb309040b7ac4e7ee7cdc8a, type: 3}
       propertyPath: m_LocalPosition.z

@@ -20,7 +20,7 @@ public class PlayerCollisions : MonoBehaviour
     private void Start()
     {
         collectiblesText.text = "Collectibles: " + collectiblesCounter.ToString();
-        winText.text = "";
+        //winText.text = "";
     }
 
 

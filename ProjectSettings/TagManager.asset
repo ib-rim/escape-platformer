@@ -15,6 +15,9 @@ TagManager:
   - Checkpoint
   - SlowFall
   - BouncyPlatform
+  - Enemy
+  - MovingPlatform
+  - VictoryPoint
   layers:
   - Default
   - TransparentFX
