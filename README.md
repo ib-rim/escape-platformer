@@ -14,8 +14,11 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 Power-ups (Squares):
 
 ​		Yellow - Invulnerability
+
 ​		Green - Jump Boost
+
 ​		Orange - Speed Boost
+
 ​		Taupe - Slow Fall
 
 Debuffs (Squares):
@@ -29,14 +32,19 @@ Enemies (Capsules):
 Platforms (Horizontal Rectangle):
 
 ​		Black - Static Platform
+
 ​		Bright Pink - Bouncy Platform
+
 ​		Dark Pink - Pitfall
+
 ​		Dark Purple - One-way Platform
+
 ​		Blue - Moving Platform
 
 Obstacles (Horizontal Rectangle):
 
 ​		Red - Spikes
+
 ​		Orange - Lava
 
 Collectibles (Circles):
@@ -46,5 +54,5 @@ Collectibles (Circles):
 Other (Vertical Rectangles):
 
 ​		White - Player
-​		Dark Blue - Checkpoint
 
+​		Dark Blue - Checkpoint
