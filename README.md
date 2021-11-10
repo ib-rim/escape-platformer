@@ -1,14 +1,16 @@
 # Escape
 
-A 2D platformer game by Ibrahim, Timothy, and Atikah for the Multi-platform Game Development module.
+A 2D platformer game by Ibrahim, Timothy, and Atikah for the Multi-platform Game Development module. Made using Unity.
 
 ### Player Controls:
 
-Use the left and right arrow keys, or A and D keys, to move. Use the spacebar to jump. 
+Move - A and D keys, Left and Right arrow keys
+
+Jump - W key, Up arrow key, Spacebar
 
 ### Information:
 
-Jump across platforms until you reach the end of the level, avoiding the lava beneath you, and the enemies. Collect coins along the way. Use your jumps, power-ups, and special platforms to overcome traps and obstacles. 
+Jump across platforms until you reach the end of the level, avoiding the lava beneath you, and the enemies. Collect coins along the way. Use your power-ups and special platforms to overcome traps and obstacles. 
 
 Power-ups (Squares):
 
