@@ -23,7 +23,6 @@ public class Timer : MonoBehaviour
         timerText.text = "Time: 00:00.00";
         elapsedTime = 0f;
         isTimerActive = false;
-        print(isTimerActive);
         BeginTimer(); // can be moved to LevelManager.cs later
     }
 
