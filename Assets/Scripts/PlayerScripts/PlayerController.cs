@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public void jump(InputAction.CallbackContext context) {
         //Grounded jump
+        moveValue.y = 1;
         if(context.performed && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
