@@ -11,7 +11,7 @@ Jump - W key, Up arrow key, Spacebar
 
 Jump across platforms until you reach the end of the level, avoiding the lava beneath you, and the enemies. Collect coins along the way. Use your power-ups and special platforms to overcome traps and obstacles. 
 
-Power-ups (Squares):
+**Power-ups** (Squares):
 
 ​		Yellow - Invulnerability
 
@@ -21,15 +21,15 @@ Power-ups (Squares):
 
 ​		Taupe - Slow Fall
 
-Debuffs (Squares):
+**Debuffs** (Squares):
 
 ​		Beige - Slow Movement
 
-Enemies (Capsules):
+**Enemies** (Capsules):
 
 ​		Red - Patrolling Enemy
 
-Platforms (Horizontal Rectangle):
+**Platforms** (Horizontal Rectangle):
 
 ​		Black - Static Platform
 
@@ -41,17 +41,17 @@ Platforms (Horizontal Rectangle):
 
 ​		Blue - Moving Platform
 
-Obstacles (Horizontal Rectangle):
+**Obstacles** (Horizontal Rectangle):
 
 ​		Red - Spikes
 
 ​		Orange - Lava
 
-Collectibles (Circles):
+**Collectibles** (Circles):
 
 ​		Yellow - Coin
 
-Other (Vertical Rectangles):
+**Other** (Vertical Rectangles):
 
 ​		White - Player
 
