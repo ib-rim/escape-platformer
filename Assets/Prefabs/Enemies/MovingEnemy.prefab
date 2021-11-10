@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6239739648169874394}
   - component: {fileID: 1593799308}
   - component: {fileID: 2979392604761830140}
-  m_Layer: 0
-  m_Name: Enemy
+  m_Layer: 3
+  m_Name: MovingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
-  patrolling: 0
   rb: {fileID: 6239739648169874394}
   groundCheck: {fileID: 1953298387003897833}
   groundLayer:
