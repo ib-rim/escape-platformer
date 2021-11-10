@@ -5,6 +5,7 @@ A 2D platformer game by Ibrahim, Timothy, and Atikah for the Multi-platform Game
 ### Player Controls:
 
 Move - A and D keys, Left and Right arrow keys
+
 Jump - W key, Up arrow key, Spacebar
 
 ### Information:
@@ -13,46 +14,46 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 
 **Power-ups** (Squares):
 
-​		Yellow - Invulnerability
+-	Yellow - Invulnerability
 
-​		Green - Jump Boost
+-	Green - Jump Boost
 
-​		Orange - Speed Boost
+-	Orange - Speed Boost
 
-​		Taupe - Slow Fall
+-	Taupe - Slow Fall
 
 **Debuffs** (Squares):
 
-​		Beige - Slow Movement
+-	Beige - Slow Movement
 
 **Enemies** (Capsules):
 
-​		Red - Patrolling Enemy
+-	Red - Patrolling Enemy
 
 **Platforms** (Horizontal Rectangle):
 
-​		Black - Static Platform
+-	Black - Static Platform
 
-​		Bright Pink - Bouncy Platform
+-	Bright Pink - Bouncy Platform
 
-​		Dark Pink - Pitfall
+-	Dark Pink - Pitfall
 
-​		Dark Purple - One-way Platform
+-	Dark Purple - One-way Platform
 
-​		Blue - Moving Platform
+-	Blue - Moving Platform
 
 **Obstacles** (Horizontal Rectangle):
 
-​		Red - Spikes
+-	Red - Spikes
 
-​		Orange - Lava
+-	Orange - Lava
 
 **Collectibles** (Circles):
 
-​		Yellow - Coin
+-	Yellow - Coin
 
 **Other** (Vertical Rectangles):
 
-​		White - Player
+-	White - Player
 
-​		Dark Blue - Checkpoint
+-	Dark Blue - Checkpoint
