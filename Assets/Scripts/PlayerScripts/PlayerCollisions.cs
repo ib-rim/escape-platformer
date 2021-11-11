@@ -14,7 +14,9 @@ public class PlayerCollisions : MonoBehaviour
     public Rigidbody2D rb;
     private static float bounceSpeed = 15.0f;
     
-    public float pitfallDelayTime = 1.5f; 
+    public float pitfallDelayTime = 1.5f;
+
+    public static bool isTouchingPushPull;
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class PlayerCollisions : MonoBehaviour
         {
             StartCoroutine(PitfallDelay(collision.gameObject));
         }
+
+        isTouchingPushPull = collision.gameObject.CompareTag("PushPull") ? true : false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
