@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public Vector2 moveValue;
+    public static Vector2 moveValue;
+    public static bool isGrounded;
     public float moveSpeed;
     public float jumpSpeed;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public void jump(InputAction.CallbackContext context) {
         //Grounded jump
+        moveValue.y = 1;
         if(context.performed && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
@@ -47,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
     //Grounded jump
     private bool IsGrounded() {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return isGrounded;
     }
 
     //Uncomment for non-grounded jump

@@ -60,4 +60,17 @@ public class PlayerCollisions : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("TwoWayPlatform"))
+        {   
+            if(PlayerController.moveValue.y < 0) {
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
+
+            if(PlayerController.moveValue.y > 0) {
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+    }
 }
