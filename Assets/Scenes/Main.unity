@@ -566,6 +566,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1428782017048354102, guid: 420a7f81b3298a5469539b639462ba78, type: 3}
+      propertyPath: useIntToLoad
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1428782017048354102, guid: 420a7f81b3298a5469539b639462ba78, type: 3}
+      propertyPath: levelToLoadInt
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1428782017048354102, guid: 420a7f81b3298a5469539b639462ba78, type: 3}
       propertyPath: levelToLoadStr
       value: Level2
       objectReference: {fileID: 0}
@@ -2593,7 +2601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef149e27e9274947a2f8f56f9d38b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1119000535}
 --- !u!4 &1335290680
 Transform:
   m_ObjectHideFlags: 0

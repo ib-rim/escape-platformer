@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour {
         Debug.Log(levelStart);
         if(levelStart) {
             respawnPoint = playerPrefab.transform.position;
-            Debug.Log(respawnPoint);
         }
         playerPrefab.GetComponent<Rigidbody2D>().position = respawnPoint;
         
