@@ -18,7 +18,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (patrolling)
+        if (patrolling) //if enemy is moving
         {   
             //Check if at edge of platform and flip enemy if so
             if(!Physics2D.OverlapCircle(groundCheck.position, 0.1f , groundLayer)) {
@@ -30,9 +30,9 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     //Move enemy in opposite direction
-    void Flip()
+    void Flip() 
     {
-        patrolling = false;
+        patrolling = false; 
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         movementSpeed *= -1;
         patrolling = true;

@@ -6,14 +6,14 @@ public class EnemyDeath : MonoBehaviour
 {
      private void OnCollisionStay2D(Collision2D other) 
      {
-          if (other.gameObject.CompareTag("FallThreshold"))
+          if (other.gameObject.CompareTag("FallThreshold")) //if enemy touches lava
             {
-                Destroy(gameObject);
+                Destroy(gameObject); //kill enemy
             }
             
-            if (other.gameObject.CompareTag("Spikes"))
+            if (other.gameObject.CompareTag("Spikes")) //if enemy touches spikes
             {   
-                Destroy(gameObject);
+                Destroy(gameObject); //kill enemy
             }
      }
 }

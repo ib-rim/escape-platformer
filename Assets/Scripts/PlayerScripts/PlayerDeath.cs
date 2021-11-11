@@ -15,19 +15,19 @@ public class PlayerDeath : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D other) {
 
-        if(!invincible) {
+        if(!invincible) { //if player does not have invincibility. 
 
-            if (other.gameObject.CompareTag("FallThreshold"))
+            if (other.gameObject.CompareTag("FallThreshold")) //if player falls on lava
             {
-                death();
+                death(); //player dies.
             }
             
-            if (other.gameObject.CompareTag("Spikes"))
+            if (other.gameObject.CompareTag("Spikes")) //if player touches spikes
             {   
                 death();
             }
 
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy")) //if player touches enemy
             {
                 death();
             }
@@ -35,8 +35,8 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void death() {
-        deathsCounter += 1;
+        deathsCounter += 1; //increment death counter
         deathsText.text = $"Deaths: {deathsCounter.ToString()}";
-        LevelManager.instance.Respawn();
+        LevelManager.instance.Respawn(); //respawn player 
     }
 }

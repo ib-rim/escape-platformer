@@ -57,6 +57,7 @@ public class Powerups : MonoBehaviour
         return powerupText;
     }
 
+    //change colour of player when they use powerup
     public void changeColor() {
         powerupsCount -= 1;
         //Move all children of PowerupsText up by 40

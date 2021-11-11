@@ -42,46 +42,48 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("BouncyPlatform"))
+        if (other.gameObject.CompareTag("BouncyPlatform")) //if player is on bouncy platform
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
         }
         
-        if (other.gameObject.tag == "Checkpoint") 
+        if (other.gameObject.tag == "Checkpoint")  //if player collides with checkpoint
         {   
-            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
+            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position); //set position of respawn to position of checkpoint.
 
-            other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
+            other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan; //change colour of checkpoint to show that player has gone through
         }
 
-        if (other.gameObject.CompareTag("Collectible"))
+        if (other.gameObject.CompareTag("Collectible")) //if player collides with collectible.
         {
-            other.gameObject.SetActive(false);
-            collectiblesCounter += 1;
+            other.gameObject.SetActive(false); //hide collectible.
+            collectiblesCounter += 1; //increment number of collectibles by 1.
             collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
 
         }
 
-        if (other.gameObject.CompareTag("TargetPoint"))
+        if (other.gameObject.CompareTag("TargetPoint")) //if player reaches the target point
         {
-            winText.text = "LEVEL COMPLETE";
+            winText.text = "LEVEL COMPLETE"; //display text Level Complete 
 
-            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
+            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position); //set respawn position to target point
 
-            other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
+            other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan; //change colour of target point to show player has passed through
 
         }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("TwoWayPlatform"))
+        if (other.gameObject.CompareTag("TwoWayPlatform")) //if player collides with two way platform
         {   
-            if(PlayerController.moveValue.y < 0) {
-                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            if(PlayerController.moveValue.y < 0) { //if player is below two way platform
+                //player can move through platform to get on top of it.
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false; 
             }
 
-            if(PlayerController.moveValue.y > 0) {
+            if(PlayerController.moveValue.y > 0) { //if player is above moving platform
+                //player will stand on platform
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
         }

@@ -56,12 +56,15 @@ public class PlatformMovement : MonoBehaviour
         }
     }
 
+
+    //code to make player move with platform
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
             collision.gameObject.transform.parent = transform;
     }
 
+    //code to stop making player move with platform
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

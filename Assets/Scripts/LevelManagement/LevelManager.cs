@@ -20,12 +20,12 @@ public class LevelManager : MonoBehaviour {
             instance = this;
         }
         else {
-            Destroy(gameObject);
+            Destroy(gameObject); //prevent multiple players from spawning.
         }
 
         Debug.Log(levelStart);
-        if(levelStart) {
-            respawnPoint = playerPrefab.transform.position;
+        if(levelStart) { //if new level
+            respawnPoint = playerPrefab.transform.position; //move player to respawn point
         }
         playerPrefab.GetComponent<Rigidbody2D>().position = respawnPoint;
         
