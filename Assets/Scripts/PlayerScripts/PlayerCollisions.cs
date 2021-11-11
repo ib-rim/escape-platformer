@@ -66,6 +66,10 @@ public class PlayerCollisions : MonoBehaviour
         {
             winText.text = "LEVEL COMPLETE";
 
+            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
+
+            other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
+
         }
     }
 
