@@ -2,6 +2,10 @@
 
 A 2D platformer game by Ibrahim, Timothy, and Atikah for the Multi-platform Game Development module. 
 
+WebGL Build: https://ib-rim.github.io/escape-platformer/build/index.html
+
+Prototype Video: https://youtu.be/cBpEBhhDaus
+
 Made using Unity (2021.1.25f1). If running in Unity editor, please run the scene 'Main' first for the best experience.
 
 ### Player Controls:
