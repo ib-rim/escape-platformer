@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public GameObject playerObject;
     public static Vector2 moveValue;
     public static bool isGrounded;
     public float moveSpeed;

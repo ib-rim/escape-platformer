@@ -295,7 +295,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  moveValue: {x: 0, y: 0}
+  playerObject: {fileID: 7930724988268041978}
   moveSpeed: 5
   jumpSpeed: 5
 --- !u!114 &137866425783899621
@@ -340,3 +340,4 @@ MonoBehaviour:
   collectiblesText: {fileID: 4700825594749594449, guid: 71057d208be6c0445a237dfcb43c412b, type: 3}
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5
+  winText: {fileID: 0}
