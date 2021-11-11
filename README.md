@@ -40,6 +40,8 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 
 -	Dark Purple - One-way Platform
 
+- Lilac - Two-way platform
+
 -	Blue - Moving Platform
 
 **Obstacles** (Horizontal Rectangle):
