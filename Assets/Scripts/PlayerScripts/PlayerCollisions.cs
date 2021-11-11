@@ -16,10 +16,13 @@ public class PlayerCollisions : MonoBehaviour
     
     public float pitfallDelayTime = 1.5f; 
 
+    public Text winText;
+
     private void Start()
     {
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
         collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+        winText.text = "";
     }
 
 
@@ -56,6 +59,12 @@ public class PlayerCollisions : MonoBehaviour
             other.gameObject.SetActive(false);
             collectiblesCounter += 1;
             collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+
+        }
+
+        if (other.gameObject.CompareTag("TargetPoint"))
+        {
+            winText.text = "LEVEL COMPLETE";
 
         }
     }
