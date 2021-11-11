@@ -23,7 +23,6 @@ public class LevelManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        Debug.Log(levelStart);
         if(levelStart) {
             respawnPoint = playerPrefab.transform.position;
         }
