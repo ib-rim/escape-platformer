@@ -273,6 +273,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a969361b-e070-4894-ad53-0ee196b30d4f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7930724988268041977}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: pull
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 96c1bf84-5561-4189-be25-e7fdfc5965ce
+    m_ActionName: Player/Pull[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -295,7 +311,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  moveValue: {x: 0, y: 0}
   moveSpeed: 5
   jumpSpeed: 5
 --- !u!114 &137866425783899621
