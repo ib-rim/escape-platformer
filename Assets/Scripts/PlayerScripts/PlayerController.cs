@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(playerObject);
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
