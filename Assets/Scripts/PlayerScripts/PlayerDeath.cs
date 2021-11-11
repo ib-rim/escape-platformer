@@ -9,8 +9,8 @@ public class PlayerDeath : MonoBehaviour {
     public Text deathsText;
     public bool invincible;
 
-    private void Start() {
-        deathsText.text = $"Deaths: {deathsCounter.ToString()}";
+    private void Awake() {
+        setDeathsText();
     }
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -35,8 +35,18 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void death() {
-        deathsCounter += 1;
-        deathsText.text = $"Deaths: {deathsCounter.ToString()}";
+        //deathsCounter += 1;
+        setDeathsCounter(deathsCounter+1);
+        //deathsText.text = $"Deaths: {deathsCounter.ToString()}";
+        setDeathsText();
         LevelManager.instance.Respawn();
+    }
+
+    public void setDeathsCounter(int deaths) {
+        deathsCounter = deaths;
+    }
+
+    public void setDeathsText() {
+        deathsText.text = $"Deaths: {deathsCounter.ToString()}";
     }
 }

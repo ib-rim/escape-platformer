@@ -18,10 +18,11 @@ public class PlayerCollisions : MonoBehaviour
 
     public Text winText;
 
-    private void Start()
+    private void Awake()
     {
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
-        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+        //collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+        setCollectiblesText();
         winText.text = "";
     }
 
@@ -50,26 +51,23 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.tag == "Checkpoint") 
         {   
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
-
             other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
         }
 
         if (other.gameObject.CompareTag("Collectible"))
         {
             other.gameObject.SetActive(false);
-            collectiblesCounter += 1;
-            collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
-
+            //collectiblesCounter += 1;
+            setCollectiblesCounter(collectiblesCounter+1);
+            setCollectiblesText();
+            //collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
         }
 
         if (other.gameObject.CompareTag("TargetPoint"))
         {
             winText.text = "LEVEL COMPLETE";
-
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
-
             other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
-
         }
     }
 
@@ -85,5 +83,13 @@ public class PlayerCollisions : MonoBehaviour
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
+    }
+
+    public void setCollectiblesCounter(int collectibles) {
+        collectiblesCounter = collectibles;
+    }
+
+    public void setCollectiblesText() {
+        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
     }
 }

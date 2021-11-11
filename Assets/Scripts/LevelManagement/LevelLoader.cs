@@ -4,10 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
-{
+{   
+    public PlayerDeath playerDeath;
+    public PlayerCollisions playerCollisions;
+
     public int levelToLoadInt;
     public string levelToLoadStr;
     public bool useIntToLoad = false;
+    private GameObject collectibles;
+
+    private void Awake() {
+        playerDeath = GameObject.Find("Player (0)").GetComponent<PlayerDeath>();
+        playerCollisions = GameObject.Find("Player (0)").GetComponent<PlayerCollisions>();
+        collectibles = GameObject.Find("Collectibles");   
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,10 +29,20 @@ public class LevelLoader : MonoBehaviour
 
     void LoadScene()
     {   
+        GameObject.Destroy(collectibles);
         LevelManager.levelStart = true;
+
+        //Reset deaths for new level
+        playerDeath.setDeathsCounter(0);
+        playerDeath.setDeathsText();
+
+        //Reset collectibles for new level
+        playerCollisions.setCollectiblesCounter(0);
+        playerCollisions.setCollectiblesText();
+
         if (useIntToLoad)
         {
-            SceneManager.LoadScene(levelToLoadInt);
+            SceneManager.LoadScene(levelToLoadInt);   
         }
         else
         {
