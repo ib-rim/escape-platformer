@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     public static Timer levelTimer; // to store a single instance
     public Text timerText; // for UI
 
-    private TimeSpan timePlaying; // from System, for formatting time info
+    private static TimeSpan timePlaying; // from System, for formatting time info
     private float elapsedTime;
     private bool isTimerActive;
 
