@@ -9,16 +9,6 @@ public class LevelLoader : MonoBehaviour
     public string levelToLoadStr;
     public bool useIntToLoad = false;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -28,7 +18,8 @@ public class LevelLoader : MonoBehaviour
     }
 
     void LoadScene()
-    {
+    {   
+        LevelManager.levelStart = true;
         if (useIntToLoad)
         {
             SceneManager.LoadScene(levelToLoadInt);
