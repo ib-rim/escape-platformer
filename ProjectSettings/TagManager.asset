@@ -15,6 +15,11 @@ TagManager:
   - Checkpoint
   - SlowFall
   - BouncyPlatform
+  - OneWayPlatform
+  - TwoWayPlatform
+  - MovingPlatform
+  - TargetPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
