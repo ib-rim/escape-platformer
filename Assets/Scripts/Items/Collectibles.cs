@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collectibles : MonoBehaviour
 {
+    //Keep same instance of Collectibles object even when scene reloads/player dies
     private static Collectibles instance;
 
     void Awake() {

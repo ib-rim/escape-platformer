@@ -21,7 +21,6 @@ public class PlayerCollisions : MonoBehaviour
     private void Awake()
     {
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
-        //collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
         setCollectiblesText();
         winText.text = "";
     }
@@ -57,10 +56,8 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("Collectible"))
         {
             other.gameObject.SetActive(false);
-            //collectiblesCounter += 1;
             setCollectiblesCounter(collectiblesCounter+1);
             setCollectiblesText();
-            //collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
         }
 
         if (other.gameObject.CompareTag("TargetPoint"))
@@ -75,10 +72,12 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("TwoWayPlatform"))
         {   
+            //Allow player to press down to move through platform
             if(PlayerController.moveValue.y < 0) {
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
 
+            //Allow player to land on platform when jumping up
             if(PlayerController.moveValue.y > 0) {
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
