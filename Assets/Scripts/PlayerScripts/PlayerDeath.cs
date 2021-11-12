@@ -35,9 +35,7 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void death() {
-        //deathsCounter += 1;
         setDeathsCounter(deathsCounter+1);
-        //deathsText.text = $"Deaths: {deathsCounter.ToString()}";
         setDeathsText();
         LevelManager.instance.Respawn();
     }

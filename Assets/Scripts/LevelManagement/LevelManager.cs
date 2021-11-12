@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
+
+    //Keep same instance of LevelManager object even when scene reloads/player dies
     public static LevelManager instance;
 
     public static Vector2 respawnPoint;
@@ -23,6 +25,7 @@ public class LevelManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        //Set respawn to start of level when level starts
         if(levelStart) {
             respawnPoint = playerPrefab.transform.position;
         }
@@ -30,6 +33,7 @@ public class LevelManager : MonoBehaviour {
         
    }
 
+    //Reload scene to respawn player
     public void Respawn() {
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);

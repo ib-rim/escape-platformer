@@ -29,8 +29,10 @@ public class LevelLoader : MonoBehaviour
 
     void LoadScene()
     {   
-        GameObject.Destroy(collectibles);
         LevelManager.levelStart = true;
+        
+        //Reset collectibles for new level
+        GameObject.Destroy(collectibles);
 
         //Reset deaths for new level
         playerDeath.setDeathsCounter(0);
