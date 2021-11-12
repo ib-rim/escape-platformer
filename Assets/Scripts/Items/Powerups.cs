@@ -148,7 +148,7 @@ public class Powerups : MonoBehaviour
         rend.material.color = slowFallColor;
 
         //Change powerup timer text as timer decreases 
-        GameObject powerupText = newPowerupText(speedColor);
+        GameObject powerupText = newPowerupText(slowFallColor);
         Text text = powerupText.GetComponent<Text>();
 
         for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
