@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public GameObject playerObject;
     public static Vector2 moveValue;
     public static bool isGrounded;
     public static bool isPulling;
@@ -34,37 +35,23 @@ public class PlayerController : MonoBehaviour
     }
 
     public void jump(InputAction.CallbackContext context) {
-        //Grounded jump
+
+        //Allow player to jump when grounded
         moveValue.y = 1;
         if(context.performed && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
 
-        //Uncomment for non-grounded jump
-        // IsGrounded();
-        // if(context.performed && numJumps == 1) {
-        //      rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        //      numJumps = 0;
-        // }
-
+        //Lower jump height if jump not held down fully
         if(context.canceled && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y*0.5f);
         }
     }
 
-    //Grounded jump
     private bool IsGrounded() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return isGrounded;
     }
-
-    //Uncomment for non-grounded jump
-    //public float numJumps = 1;
-    // private void IsGrounded() {
-    //     if(Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer)){
-    //         numJumps = 1;
-    //     }
-    // }
 
     void FixedUpdate() {
         rb.velocity = new Vector2(moveValue.x*moveSpeed, rb.velocity.y);

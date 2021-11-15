@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 7930724988268041978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1.9, z: 1}
   m_Children:
   - {fileID: 7930724988253694805}
   m_Father: {fileID: 0}
@@ -311,6 +311,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  playerObject: {fileID: 7930724988268041978}
   moveSpeed: 5
   jumpSpeed: 5
 --- !u!114 &137866425783899621
@@ -355,3 +356,4 @@ MonoBehaviour:
   collectiblesText: {fileID: 4700825594749594449, guid: 71057d208be6c0445a237dfcb43c412b, type: 3}
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5
+  winText: {fileID: 0}

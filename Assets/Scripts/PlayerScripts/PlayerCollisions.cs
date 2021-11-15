@@ -18,10 +18,13 @@ public class PlayerCollisions : MonoBehaviour
 
     public static bool isTouchingPushPull;
 
-    private void Start()
+    public Text winText;
+
+    private void Awake()
     {
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
-        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+        setCollectiblesText();
+        winText.text = "";
     }
 
 
@@ -51,16 +54,21 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.tag == "Checkpoint") 
         {   
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
-
             other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
         }
 
         if (other.gameObject.CompareTag("Collectible"))
         {
             other.gameObject.SetActive(false);
-            collectiblesCounter += 1;
-            collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+            setCollectiblesCounter(collectiblesCounter+1);
+            setCollectiblesText();
+        }
 
+        if (other.gameObject.CompareTag("TargetPoint"))
+        {
+            winText.text = "LEVEL COMPLETE";
+            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
+            other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
         }
     }
 
@@ -68,13 +76,23 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("TwoWayPlatform"))
         {   
+            //Allow player to press down to move through platform
             if(PlayerController.moveValue.y < 0) {
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
 
+            //Allow player to land on platform when jumping up
             if(PlayerController.moveValue.y > 0) {
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
+    }
+
+    public void setCollectiblesCounter(int collectibles) {
+        collectiblesCounter = collectibles;
+    }
+
+    public void setCollectiblesText() {
+        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
     }
 }
