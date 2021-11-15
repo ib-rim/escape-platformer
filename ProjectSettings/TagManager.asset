@@ -15,6 +15,13 @@ TagManager:
   - Checkpoint
   - SlowFall
   - BouncyPlatform
+  - TargetPoint
+  - MovingPlatform
+  - Enemy
+  - OneWayPlatform
+  - TriggerArrowsTrap
+  - ArrowsTrap
+  - Arrow
   layers:
   - Default
   - TransparentFX

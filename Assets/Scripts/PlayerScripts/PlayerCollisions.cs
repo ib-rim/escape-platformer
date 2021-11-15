@@ -17,6 +17,7 @@ public class PlayerCollisions : MonoBehaviour
     public float pitfallDelayTime = 1.5f; 
 
     public Text winText;
+    
 
     private void Awake()
     {
@@ -39,6 +40,13 @@ public class PlayerCollisions : MonoBehaviour
         {
             StartCoroutine(PitfallDelay(collision.gameObject));
         }
+
+        /*
+        if (collision.gameObject.CompareTag("TriggerArrowsTrap")) 
+        {
+            Debug.Log("Shooting arrows");
+            TrapTriggered.instance.shootArrows();
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -69,6 +77,8 @@ public class PlayerCollisions : MonoBehaviour
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
         }
+
+        
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -91,5 +101,9 @@ public class PlayerCollisions : MonoBehaviour
 
     public void setCollectiblesText() {
         collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+    }
+
+    public void triggerArrows() {
+
     }
 }
