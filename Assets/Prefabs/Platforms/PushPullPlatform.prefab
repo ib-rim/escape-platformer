@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5280463432636137467}
   - component: {fileID: 5280463432636137444}
   - component: {fileID: 2477871974007224018}
-  - component: {fileID: 4190051700871512416}
+  - component: {fileID: 1382388371879217124}
   m_Layer: 3
   m_Name: PushPullPlatform
-  m_TagString: PushPull
+  m_TagString: PushPullPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,9 +95,9 @@ BoxCollider2D:
   m_GameObject: {fileID: 5280463432636137445}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a81fb63a234160b4e8732943bbcac220, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -132,17 +132,23 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &4190051700871512416
-MonoBehaviour:
+  m_Constraints: 4
+--- !u!251 &1382388371879217124
+PlatformEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5280463432636137445}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6167e5e169e95384b9ad7064a5ba6e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectTransform: {fileID: 5280463432636137466}
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 360
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
