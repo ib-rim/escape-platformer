@@ -18,6 +18,18 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpSpeed;
 
+    //Wall slide variables
+    bool isTouchingFront;
+    public Transform frontCheck;
+    bool wallSliding;
+    public float wallSlidingSpeed;
+    
+    //wall jump variables
+    bool wallJumping;
+    public float xWallForce;
+    public float yWallForce;
+    public float wallJumpTime;
+
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
@@ -35,6 +47,19 @@ public class PlayerController : MonoBehaviour
         if(context.performed && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
+
+        if(context.performed && wallSliding==true)
+        {
+            wallJumping = true;
+            Invoke("setWallJumpingToFalse", wallJumpTime);
+        }
+
+        if (wallJumping ==true)
+        {
+            rb.velocity = new Vector2(xWallForce * moveSpeed, yWallForce);
+        }
+
+       
 
         //Uncomment for non-grounded jump
         // IsGrounded();
@@ -54,6 +79,11 @@ public class PlayerController : MonoBehaviour
         return isGrounded;
     }
 
+    private bool IsTouchingFront() {
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, 0.2f, groundLayer);
+        return isTouchingFront;
+    }
+
     //Uncomment for non-grounded jump
     //public float numJumps = 1;
     // private void IsGrounded() {
@@ -62,8 +92,33 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
+    private void Update()
+    {
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, 0.2f, groundLayer);
+
+        if(IsTouchingFront()==true && IsGrounded()==false) {
+            wallSliding = true;
+        }
+        else {
+            wallSliding = false;
+        }
+        if (wallSliding) 
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+    }
+
     void FixedUpdate() {
         rb.velocity = new Vector2(moveValue.x*moveSpeed, rb.velocity.y);
+
+        
     } 
+
+    void setWallJumpingToFalse()
+    {
+        wallJumping = false;
+    }
+
+    
 
 }
