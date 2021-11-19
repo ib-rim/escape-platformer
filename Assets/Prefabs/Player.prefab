@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 137866425783899621}
   - component: {fileID: 4226284380691887958}
   - component: {fileID: 9148726372160953904}
+  - component: {fileID: 4318344034959044104}
+  - component: {fileID: 2612635759074788409}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -289,7 +291,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 96c1bf84-5561-4189-be25-e7fdfc5965ce
     m_ActionName: Player/Pull[/Keyboard/shift]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -357,3 +359,38 @@ MonoBehaviour:
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5
   winText: {fileID: 0}
+--- !u!114 &4318344034959044104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930724988268041978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b108fd61c2c3e944b19578595f7f18a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 8
+  playerFixedJoint: {fileID: 0}
+--- !u!255 &2612635759074788409
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930724988268041978}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
