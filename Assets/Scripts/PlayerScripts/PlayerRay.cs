@@ -22,10 +22,14 @@ public class PlayerRay : MonoBehaviour
     void Update()
     {
         Physics2D.queriesStartInColliders = false;
+
+        // Raycast is used to allow the player to detect pushpull platforms
+        // within a set distance from the player
         RaycastHit2D hit = Physics2D.Raycast(
             transform.position, rayDirection(), 
             distance, platformMask);
 
+        // Fix the player to the platform by a join while the key is pressed
         if (hit.collider != null &&
             hit.collider.gameObject.CompareTag("PushPullPlatform") &&
             PlayerController.isPulling)
@@ -41,6 +45,7 @@ public class PlayerRay : MonoBehaviour
         }
     }
 
+    // Draw the raycast in the Scene Manager (not in-game)
     private void OnDrawGizmos()
     {
         Gizmos.color = PlayerController.isPulling ? Color.green : Color.red;
