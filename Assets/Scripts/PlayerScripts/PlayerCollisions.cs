@@ -41,7 +41,7 @@ public class PlayerCollisions : MonoBehaviour
             StartCoroutine(PitfallDelay(collision.gameObject));
         }
 
-        isTouchingPushPull = collision.gameObject.CompareTag("PushPull") ? true : false;
+        isTouchingPushPull = collision.gameObject.CompareTag("PushPullPlatform") ? true : false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
