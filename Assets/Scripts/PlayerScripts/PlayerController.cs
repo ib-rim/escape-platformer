@@ -28,9 +28,12 @@ public class PlayerController : MonoBehaviour
 
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();
-        if (moveValue.x != 0)
+        if (moveValue.x > 0)
             playerObject.transform.localScale = 
-                new Vector3 (moveValue.x, transform.localScale.y, 1);
+                new Vector3 (1, transform.localScale.y, 1);
+        if (moveValue.x < 0)
+            playerObject.transform.localScale = 
+                new Vector3 (-1, transform.localScale.y, 1);
     }
 
     public void pull(InputAction.CallbackContext context){
