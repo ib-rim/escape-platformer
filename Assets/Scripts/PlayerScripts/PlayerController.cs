@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
         //Allow player to jump when grounded
         moveValue.y = 1;
-        if(context.performed && IsGrounded()) {
+        if(context.performed && isGrounded) {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
 
@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return isGrounded;
+    }
+    private void Update()
+    {
+        IsGrounded();
+        print(isGrounded);
     }
 
     void FixedUpdate() {
