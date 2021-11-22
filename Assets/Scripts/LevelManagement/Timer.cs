@@ -5,37 +5,36 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
-{
-    public static Timer levelTimer; // to store a single instance
-    public Text timerText; // for UI
+{   
+    public Text timer;
+    private static String timerText = "Timer"; // for UI
 
     private static TimeSpan timePlaying; // from System, for formatting time info
-    private float elapsedTime;
+    private static float elapsedTime;
     private bool isTimerActive;
 
     private void Awake()
-    {
-        levelTimer = this;
-    }
-
-    private void Start()
-    {
-        timerText.text = "Time: 00:00.00";
-        elapsedTime = 0f;
-        isTimerActive = false;
+    {  
+        if(timerText == "Timer") {
+            timerText = "Time: 00:00.00";
+            elapsedTime = 0f;
+        }
         BeginTimer(); // can be moved to LevelManager.cs later
+        timer.text = timerText;
+
     }
 
     public void BeginTimer()
-    {
+    {   
         isTimerActive = true;
         StartCoroutine("UpdateTimer");
     }
 
     // Can later be used to end timer once target point reached
-    private void EndTimer()
-    {
+    public void EndTimer()
+    {   
         isTimerActive = false;
+        timerText = "Timer";
     }
 
     private IEnumerator UpdateTimer()
@@ -44,8 +43,8 @@ public class Timer : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            timerText.text = "Time: " + timePlaying.ToString("mm':'ss'.'ff"); 
-
+            timerText = "Time: " + timePlaying.ToString("mm':'ss'.'ff"); 
+            timer.text = timerText;
             yield return null;
         }
     }

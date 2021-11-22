@@ -7,6 +7,7 @@ public class LevelLoader : MonoBehaviour
 {   
     public PlayerDeath playerDeath;
     public PlayerCollisions playerCollisions;
+    public Timer timer;
 
     public int levelToLoadInt;
     public string levelToLoadStr;
@@ -16,6 +17,7 @@ public class LevelLoader : MonoBehaviour
     private void Awake() {
         playerDeath = GameObject.Find("Player (0)").GetComponent<PlayerDeath>();
         playerCollisions = GameObject.Find("Player (0)").GetComponent<PlayerCollisions>();
+        timer = GameObject.Find("TimerText").GetComponent<Timer>();
         collectibles = GameObject.Find("Collectibles");   
     }
 
@@ -41,6 +43,9 @@ public class LevelLoader : MonoBehaviour
         //Reset collectibles for new level
         playerCollisions.setCollectiblesCounter(0);
         playerCollisions.setCollectiblesText();
+
+        //Reset timer for new level
+        timer.EndTimer();
 
         if (useIntToLoad)
         {
