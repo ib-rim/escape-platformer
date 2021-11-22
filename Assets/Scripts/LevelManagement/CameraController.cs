@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     private Vector3 offset;
 
     void Start() {
-        offset = transform.position - player.transform.position;
+        offset = new Vector3(7, 1.85f, -14);
     }
 
     //Follow player at fixed distance
