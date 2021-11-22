@@ -157,6 +157,12 @@ public class Powerups : MonoBehaviour
             if (GetComponent<Rigidbody2D>().velocity.y < -0.1)
             {
                 GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity/5;
+                player.moveSpeed = PlayerController.defaultMoveSpeed/2;
+
+            }
+            else {
+                GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
+                player.moveSpeed = PlayerController.defaultMoveSpeed;
             }
 
             text.text = Mathf.CeilToInt(t).ToString();
@@ -166,6 +172,7 @@ public class Powerups : MonoBehaviour
         //Remove text, reset gravity and change player color
         GameObject.Destroy(powerupText);
         GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
+        player.moveSpeed = PlayerController.defaultMoveSpeed;
         changeColor();
     }
 
