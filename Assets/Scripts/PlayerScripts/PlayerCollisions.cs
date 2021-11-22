@@ -16,8 +16,6 @@ public class PlayerCollisions : MonoBehaviour
     
     public float pitfallDelayTime = 1.5f;
 
-    public static bool isTouchingPushPull;
-
     public Text winText;
 
     private void Awake()
@@ -40,8 +38,6 @@ public class PlayerCollisions : MonoBehaviour
         {
             StartCoroutine(PitfallDelay(collision.gameObject));
         }
-
-        isTouchingPushPull = collision.gameObject.CompareTag("PushPullPlatform") ? true : false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
