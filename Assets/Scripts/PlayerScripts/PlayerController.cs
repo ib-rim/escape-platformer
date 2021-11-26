@@ -30,11 +30,21 @@ public class PlayerController : MonoBehaviour
     public float yWallForce;
     public float wallJumpTime;
 
+    //crouch variables
+    public BoxCollider2D playerCollider;
+    bool isCrouched;
+    float crouchHeight = 0.25f;
+    float standHeight = 2f;
+    float crouchOffset = -0.5f;
+
+    
+
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
+        isCrouched = false;
     }
 
     public void move(InputAction.CallbackContext context) {
@@ -88,6 +98,31 @@ public class PlayerController : MonoBehaviour
         return isTouchingFront;
     }
 
+    void Crouch()
+    {
+        if(moveValue.y < 0 && !isCrouched)
+        {
+            Debug.Log("Crouched");
+            isCrouched = true;
+            playerCollider.size = new Vector2 (playerCollider.size.x, crouchHeight);
+            playerCollider.offset = new Vector2 (0, crouchOffset);
+        }
+    }
+
+    void StandUp()
+    {
+        if(moveValue.y >= 0 && isGrounded && isCrouched)
+        {
+            Debug.Log("Standing up");
+            isCrouched = false;
+            playerCollider.size = new Vector2 (playerCollider.size.x, standHeight);
+            playerCollider.offset = new Vector2 (0, 0);
+        }
+        
+    }
+
+    
+
     //Uncomment for non-grounded jump
     //public float numJumps = 1;
     // private void IsGrounded() {
@@ -98,6 +133,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Crouch();
+        StandUp();
+
+
         isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, 0.2f, groundLayer);
 
         if(IsTouchingFront()==true && IsGrounded()==false) {
