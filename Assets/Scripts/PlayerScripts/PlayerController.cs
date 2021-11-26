@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerObject;
     public static Vector2 moveValue;
     public static bool isGrounded;
+    public static bool isPressingPullKey;
     public float moveSpeed;
     public float jumpSpeed;
 
@@ -27,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();
+    }
+
+    public void pull(InputAction.CallbackContext context) {
+        isPressingPullKey = context.performed ? true : false;
     }
 
     public void jump(InputAction.CallbackContext context) {
