@@ -20,6 +20,7 @@ TagManager:
   - MovingPlatform
   - TargetPoint
   - Enemy
+  - PushPullPlatform
   layers:
   - Default
   - TransparentFX
