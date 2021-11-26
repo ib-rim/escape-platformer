@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 137866425783899621}
   - component: {fileID: 4226284380691887958}
   - component: {fileID: 9148726372160953904}
+  - component: {fileID: 849026172119703539}
+  - component: {fileID: 9146443133463818452}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -273,6 +275,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a969361b-e070-4894-ad53-0ee196b30d4f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7930724988268041977}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: pull
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9323a976-e4cf-438f-a589-902df8b08662
+    m_ActionName: Player/Pull[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -341,3 +359,34 @@ MonoBehaviour:
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5
   winText: {fileID: 0}
+--- !u!255 &849026172119703539
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930724988268041978}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!114 &9146443133463818452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930724988268041978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fad69f88905ac948a3be631399e74cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joint: {fileID: 849026172119703539}
