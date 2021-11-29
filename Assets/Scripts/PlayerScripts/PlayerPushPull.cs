@@ -17,7 +17,8 @@ public class PlayerPushPull : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PushPullPlatform") &&
-            PlayerController.isPressingPullKey)
+            PlayerController.isPressingPullKey &&
+            PlayerController.isGrounded)
         {
             isPulling = true;
             joint.enabled = true;
