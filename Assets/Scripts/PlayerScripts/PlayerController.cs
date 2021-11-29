@@ -31,28 +31,68 @@ public class PlayerController : MonoBehaviour
     public float wallJumpTime;
 
     //crouch variables
-    public BoxCollider2D playerCollider;
-    bool isCrouched;
-    float crouchHeight = 0.25f;
-    float standHeight = 2f;
-    float crouchOffset = -0.5f;
-
+    [Header("Crouch Info")]
+    //public BoxCollider2D playerCollider;
     
+    bool isCrouched = false;
+    bool standingUp;
+
+    public Transform crouchCheck;
+    
+    //float crouchHeight = 0.5f;
+    //float standHeight = 2f;
+
+    //float crouchOffset = -0.5f;
+
+    //player crouch sprites
+
+    /*
+    public SpriteRenderer playerSprite;
+    public Sprite standing;
+    public Sprite crouching;
+*/
+    
+
+
 
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
-        isCrouched = false;
+        //isCrouched = false;
     }
 
     public void move(InputAction.CallbackContext context) {
         moveValue = context.ReadValue<Vector2>();
 
-        if (moveValue.x != 0)
+         if (moveValue.x > 0)
             playerObject.transform.localScale = 
-            new Vector3 (moveValue.x, transform.localScale.y, 1);
+                new Vector3 (1, transform.localScale.y, 1);
+            if (moveValue.x < 0)
+                playerObject.transform.localScale = 
+                    new Vector3 (-1, transform.localScale.y, 1);
+
+        if (context.performed && moveValue.y < 0 && !isCrouched)
+        {
+            Debug.Log("Crouched");
+            isCrouched = true;
+            //playerCollider.size = new Vector2 (playerCollider.size.x, playerCollider.size.y * crouchHeight);
+            //playerCollider.offset = new Vector2 (0, playerCollider.size.y*crouchOffset);
+            playerObject.transform.localScale = new Vector3(1,1,0);
+
+        }
+        if(context.canceled && moveValue.y >= 0 && isCrouched) {
+            Debug.Log("Standing up");
+            if(canStandUp())
+            {
+                isCrouched = false;
+                playerObject.transform.localScale = new Vector3(1,1.9f,0);
+            }
+           //playerCollider.size = new Vector2 (playerCollider.size.x, playerCollider.size.y * standHeight);
+            //playerCollider.offset = new Vector2 (0, 0);
+            
+        }
     }
 
     public void jump(InputAction.CallbackContext context) {
@@ -98,17 +138,27 @@ public class PlayerController : MonoBehaviour
         return isTouchingFront;
     }
 
-    void Crouch()
+    private bool canStandUp() {
+        standingUp= !Physics2D.OverlapCircle(crouchCheck.position, 0.2f, groundLayer);
+        return standingUp;
+    }
+
+
+    public void crouch(InputAction.CallbackContext context)
     {
+        /*
         if(moveValue.y < 0 && !isCrouched)
         {
             Debug.Log("Crouched");
             isCrouched = true;
             playerCollider.size = new Vector2 (playerCollider.size.x, crouchHeight);
             playerCollider.offset = new Vector2 (0, crouchOffset);
-        }
+        }*/
+
+
     }
 
+/*
     void StandUp()
     {
         if(moveValue.y >= 0 && isGrounded && isCrouched)
@@ -119,7 +169,7 @@ public class PlayerController : MonoBehaviour
             playerCollider.offset = new Vector2 (0, 0);
         }
         
-    }
+    }*/
 
     
 
@@ -133,9 +183,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Crouch();
-        StandUp();
+        //Crouch();
+        //StandUp();
 
+        //crouching sprites
+        
+        /*
+        if(isCrouched) {
+            playerSprite.sprite = crouching;
+        }
+        if(!isCrouched) {
+            playerSprite.sprite = standing;
+        }*/
 
         isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, 0.2f, groundLayer);
 

@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 7930724988268041980}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1508183566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508183567}
+  m_Layer: 0
+  m_Name: CrouchCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508183567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508183566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7930724988268041980}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7930724988253694806
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +128,7 @@ Transform:
   m_Children:
   - {fileID: 7930724988253694805}
   - {fileID: 1396997937}
+  - {fileID: 1508183567}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -335,6 +366,7 @@ MonoBehaviour:
   xWallForce: 10
   yWallForce: 15
   wallJumpTime: 0.05
+  crouchCheck: {fileID: 1508183567}
 --- !u!114 &137866425783899621
 MonoBehaviour:
   m_ObjectHideFlags: 0
