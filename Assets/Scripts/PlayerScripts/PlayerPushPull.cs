@@ -20,6 +20,7 @@ public class PlayerPushPull : MonoBehaviour
             PlayerController.isPressingPullKey &&
             PlayerController.isGrounded)
         {
+            PlayerController.jumpEnabled = false;
             isPulling = true;
             joint.enabled = true;
             joint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
@@ -34,6 +35,7 @@ public class PlayerPushPull : MonoBehaviour
     {
         if (PlayerController.isPressingPullKey == false)
         {
+            PlayerController.jumpEnabled = true;
             isPulling = false;
         }
         if (isPulling == false)
