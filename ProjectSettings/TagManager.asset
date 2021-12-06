@@ -21,6 +21,7 @@ TagManager:
   - TargetPoint
   - Enemy
   - PushPullPlatform
+  - StaticPlatform
   layers:
   - Default
   - TransparentFX

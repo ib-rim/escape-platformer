@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerPushPull : MonoBehaviour
 {
     public FixedJoint2D joint;
-    private bool isPulling;
+    public Rigidbody2D boxRigidBody;
+    public static bool isPulling;
 
     private void Start()
     {
@@ -20,10 +21,11 @@ public class PlayerPushPull : MonoBehaviour
             PlayerController.isPressingPullKey &&
             PlayerController.isGrounded)
         {
+            boxRigidBody = collision.gameObject.GetComponent<Rigidbody2D>();
             PlayerController.jumpEnabled = false;
             isPulling = true;
             joint.enabled = true;
-            joint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
+            joint.connectedBody = boxRigidBody;
         }
         else
         {
