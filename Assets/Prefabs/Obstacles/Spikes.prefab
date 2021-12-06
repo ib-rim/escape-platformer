@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2482914954017706834}
   - component: {fileID: 9179368864518033142}
-  - component: {fileID: 1614575828088984141}
+  - component: {fileID: 1858570644}
   m_Layer: 3
   m_Name: Spikes
   m_TagString: Spikes
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2220295363581790682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,19 +73,19 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6320754, g: 0.1454966, b: 0.17029431, a: 1}
+  m_Sprite: {fileID: 21300216, guid: cf57b3e7835b02e4493371d9bc259b1b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 2
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1614575828088984141
-BoxCollider2D:
+--- !u!60 &1858570644
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,7 +93,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2220295363581790682}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 74e005bd7a4de80418c3d80a92fbc7ae, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -104,9 +104,24 @@ BoxCollider2D:
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_AutoTiling: 1
+  m_Points:
+    m_Paths:
+    - - {x: -0.32373017, y: -0.5}
+      - {x: -0.38607788, y: -0.2}
+      - {x: -0.4584, y: -0.5}
+      - {x: -0.016866684, y: -0.5}
+      - {x: 0.4585, y: -0.5}
+      - {x: 0.38529205, y: -0.2}
+      - {x: 0.32675362, y: -0.5}
+      - {x: 0.26175308, y: -0.27}
+      - {x: 0.19906235, y: -0.5}
+      - {x: 0.13534164, y: -0.2}
+      - {x: 0.050875664, y: -0.5}
+      - {x: -0.009745598, y: -0.27}
+      - {x: -0.07409477, y: -0.5}
+      - {x: -0.1385603, y: -0.2}
+      - {x: -0.1987, y: -0.5}
+      - {x: -0.26071516, y: -0.27}
