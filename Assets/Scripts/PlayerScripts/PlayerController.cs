@@ -67,13 +67,13 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.5f, groundLayer);
         return isGrounded;
     }
 
     private bool CanStand()
     {
-        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.2f, groundLayer);
+        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.5f, groundLayer);
         return canStand;
     }
 
