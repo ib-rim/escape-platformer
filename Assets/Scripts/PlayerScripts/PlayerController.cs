@@ -54,17 +54,14 @@ public class PlayerController : MonoBehaviour
 
     public void crouch(InputAction.CallbackContext context)
     {
-        if (IsGrounded())
+        if (context.performed)
         {
-            playerObject.transform.localScale = new Vector3(1, defaultCrouchHeight, 0);
+            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultCrouchHeight, playerObject.transform.localScale.z);
         }
-    }
 
-    public void standUp(InputAction.CallbackContext context)
-    {
-        if (IsGrounded() && CanStand())
+        if (context.canceled && CanStand())
         {
-            playerObject.transform.localScale = new Vector3(1, defaultPlayerHeight, 0);
+            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
         }
     }
 
