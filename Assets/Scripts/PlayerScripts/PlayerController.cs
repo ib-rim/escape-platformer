@@ -24,11 +24,33 @@ public class PlayerController : MonoBehaviour
 
     public Transform ceilingCheck;
 
+    public Animator player_animator;
+
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
+    }
+
+    private void Update()
+    {
+        print(moveValue);
+        if (moveValue == new Vector2(0f,0f) && IsGrounded())
+        {
+            player_animator.SetBool("jump", false);
+            player_animator.SetBool("run", false);
+        }
+        else if (moveValue.y == 1f && IsGrounded() == false)
+        {
+            player_animator.SetBool("jump", true);
+            player_animator.SetBool("run", false);
+        }
+        else if (moveValue.x != 0f && IsGrounded())
+        {
+            player_animator.SetBool("run", true);
+            player_animator.SetBool("jump", false);
+        }
     }
 
     public void move(InputAction.CallbackContext context)
