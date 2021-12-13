@@ -133,7 +133,7 @@ public class Powerups : MonoBehaviour
             yield return null;
         }
 
-        //Remove text, reset jumpSpeed and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
         changeColor();
 
@@ -160,7 +160,7 @@ public class Powerups : MonoBehaviour
             yield return null;
         }
 
-        //Remove text, reset moveSpeed and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
         changeColor();
 
@@ -186,34 +186,26 @@ public class Powerups : MonoBehaviour
             //Decrease gravity when falling
             if (GetComponent<Rigidbody2D>().velocity.y < -0.1)
             {
-                GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity / 5;
-                player.moveSpeed = PlayerController.defaultMoveSpeed / 2;
+                GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity / 10;
 
             }
             else
             {
                 GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
-                player.moveSpeed = PlayerController.defaultMoveSpeed;
             }
 
             text.text = Mathf.CeilToInt(t).ToString();
             yield return null;
         }
 
-        //Remove text, reset gravity and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
         changeColor();
 
-        //Only reset gravity if next powerup isn't slowFall or speed or slow 
+        //Only reset gravity if next powerup isn't slowFall
         if (mostRecentColor != slowFallColor)
         {
             GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
-
-            if (mostRecentColor != speedColor && mostRecentColor != slowColor)
-            {
-
-                player.moveSpeed = PlayerController.defaultMoveSpeed;
-            }
         }
 
     }
@@ -260,10 +252,9 @@ public class Powerups : MonoBehaviour
             yield return null;
         }
 
-        //Remove text, reset speed and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
         changeColor();
-
 
         //Only reset if next powerup isn't slow or jump or speed
         if (mostRecentColor != slowColor)
