@@ -348,6 +348,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpSpeed: 5
   ceilingCheck: {fileID: 6106311260728760772}
+  player_animator: {fileID: 324779552867936017}
 --- !u!114 &137866425783899621
 MonoBehaviour:
   m_ObjectHideFlags: 0
