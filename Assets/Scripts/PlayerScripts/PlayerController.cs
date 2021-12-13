@@ -39,10 +39,14 @@ public class PlayerController : MonoBehaviour
     public void jump(InputAction.CallbackContext context)
     {
         //Allow player to jump when grounded
-        moveValue.y = 1;
         if (context.performed && IsGrounded())
         {
+            moveValue.y = 1;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+        }
+        else
+        {
+            moveValue.y = 0;
         }
 
         //Lower jump height if jump not held down fully
