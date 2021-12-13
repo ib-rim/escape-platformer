@@ -40,6 +40,8 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void death() {
+        FindObjectOfType<AudioManager>().Play("Player Death");
+
         setDeathsCounter(deathsCounter+1);
         setDeathsText();
         LevelManager.instance.Respawn();
