@@ -18,6 +18,8 @@ public class PlayerCollisions : MonoBehaviour
 
     public Text winText;
 
+    public Sprite litTorch;
+
     private void Awake()
     {
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
@@ -50,7 +52,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.tag == "Checkpoint") 
         {   
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
-            other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
+            other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
         }
 
         if (other.gameObject.CompareTag("Collectible"))
