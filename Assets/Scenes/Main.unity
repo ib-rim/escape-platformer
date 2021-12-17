@@ -657,6 +657,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Jump
+    clip: {fileID: 8300000, guid: 7241e11479c0c7942b1b3a5206c0d081, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
 --- !u!4 &211658044
 Transform:
   m_ObjectHideFlags: 0

@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public void jump(InputAction.CallbackContext context)
     {
         //Allow player to jump when grounded
+        FindObjectOfType<AudioManager>().Play("Jump");
         moveValue.y = 1;
         if (context.performed && IsGrounded())
         {
