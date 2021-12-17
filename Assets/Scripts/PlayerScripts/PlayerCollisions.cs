@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class PlayerCollisions : MonoBehaviour
 {
     // Code for all of the Player's non-fatal collisions 
-    
+
     private static int collectiblesCounter = 0;
     private static int collectiblesTotal;
     public Text collectiblesText;
-    
+
     public Rigidbody2D rb;
     private static float bounceSpeed = 15.0f;
-    
-    public float pitfallDelayTime = 1.5f; 
+
+    public float pitfallDelayTime = 1.5f;
 
     public Text winText;
 
@@ -26,10 +26,11 @@ public class PlayerCollisions : MonoBehaviour
     }
 
 
-    IEnumerator PitfallDelay(GameObject pitfall) {
+    IEnumerator PitfallDelay(GameObject pitfall)
+    {
         yield return new WaitForSeconds(pitfallDelayTime);
         pitfall.SetActive(false);
-        
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -46,9 +47,9 @@ public class PlayerCollisions : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
         }
-        
-        if (other.gameObject.tag == "Checkpoint") 
-        {   
+
+        if (other.gameObject.tag == "Checkpoint")
+        {
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
         }
@@ -56,7 +57,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("Collectible"))
         {
             other.gameObject.SetActive(false);
-            setCollectiblesCounter(collectiblesCounter+1);
+            setCollectiblesCounter(collectiblesCounter + 1);
             setCollectiblesText();
         }
 
@@ -65,29 +66,38 @@ public class PlayerCollisions : MonoBehaviour
             winText.text = "LEVEL COMPLETE";
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
         }
+
+        if (other.gameObject.CompareTag("TwoWayPlatform"))
+        {
+            other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("TwoWayPlatform"))
-        {   
+        {
             //Allow player to press down to move through platform
-            if(PlayerController.moveValue.y < 0) {
+            if (PlayerController.moveValue.y < 0)
+            {
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
 
             //Allow player to land on platform when jumping up
-            if(PlayerController.moveValue.y > 0) {
+            if (PlayerController.moveValue.y > 0)
+            {
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }
 
-    public void setCollectiblesCounter(int collectibles) {
+    public void setCollectiblesCounter(int collectibles)
+    {
         collectiblesCounter = collectibles;
     }
 
-    public void setCollectiblesText() {
+    public void setCollectiblesText()
+    {
         collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
     }
 }
