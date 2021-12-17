@@ -8,15 +8,21 @@ public class Arrow : MonoBehaviour
     public int direction = -1;
     public Rigidbody2D rb;
 
+    public Sprite leftArrow;
+    public Sprite rightArrow;
+
     void Start()
     {
+        if (direction == 1)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = rightArrow;
+        }
+        else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = leftArrow;
+        }
         rb.velocity = direction * transform.right * speed;
         StartCoroutine(lifetime());
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(gameObject);
     }
 
     IEnumerator lifetime()
@@ -24,12 +30,13 @@ public class Arrow : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
-    
+
     void OnCollisionEnter2D(Collision2D collision)
-    {   
-        if(!collision.gameObject.CompareTag("Player")) {
-            Destroy(gameObject);   
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
         }
     }
-    
+
 }
