@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded())
         {
             playerObject.transform.localScale = new Vector3(1, defaultCrouchHeight, 0);
+            //play playerCrouch sound effect.
+            FindObjectOfType<AudioManager>().Play("");
         }
     }
 
