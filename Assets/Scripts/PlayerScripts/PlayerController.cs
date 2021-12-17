@@ -35,17 +35,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        print(moveValue);
+        // Conditions for triggering player character's animations
+
+        // Idle
         if (moveValue == new Vector2(0f,0f) && IsGrounded())
         {
             player_animator.SetBool("jump", false);
             player_animator.SetBool("run", false);
         }
+        // Jump
         else if (moveValue.y == 1f && IsGrounded() == false)
         {
             player_animator.SetBool("jump", true);
             player_animator.SetBool("run", false);
         }
+        // Move
         else if (moveValue.x != 0f && IsGrounded())
         {
             player_animator.SetBool("run", true);
@@ -55,7 +59,15 @@ public class PlayerController : MonoBehaviour
 
     public void move(InputAction.CallbackContext context)
     {
+        // When key pressed, set value to 1 or -1 (depending on direction), and 0 when released
         moveValue = context.ReadValue<Vector2>();
+        // Flip the player's sprite horizontally when moving left or right
+/*        if (moveValue.x > 0)
+            playerObject.transform.localScale =
+                new Vector3(1, transform.localScale.y, 1);
+        if (moveValue.x < 0)
+            playerObject.transform.localScale =
+                new Vector3(-1, transform.localScale.y, 1);*/
     }
 
     public void jump(InputAction.CallbackContext context)
@@ -76,6 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+
     }
 
     public void crouch(InputAction.CallbackContext context)
@@ -107,5 +120,4 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
     }
-
 }
