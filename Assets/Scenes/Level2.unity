@@ -3913,7 +3913,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.20434318, g: 0.27162692, b: 0.3773585, a: 0}
+  m_BackGroundColor: {r: 0.25882354, g: 0.29803923, b: 0.4901961, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5264,34 +5264,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[177].m_Data
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[178].m_Data
-      value: 
-      objectReference: {fileID: 21300248, guid: cf57b3e7835b02e4493371d9bc259b1b, type: 3}
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[179].m_Data
-      value: 
-      objectReference: {fileID: 21300244, guid: cf57b3e7835b02e4493371d9bc259b1b, type: 3}
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[177].m_RefCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[179].m_RefCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_Tiles.Array.data[0].second.m_TileSpriteIndex
-      value: 179
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698510784860458082, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
-      propertyPath: m_Tiles.Array.data[5].second.m_TileSpriteIndex
-      value: 178
-      objectReference: {fileID: 0}
     - target: {fileID: 4497729321079988548, guid: ce213c15bc8d8d143a5bec3225b97101, type: 3}
       propertyPath: m_Name
       value: Level2
