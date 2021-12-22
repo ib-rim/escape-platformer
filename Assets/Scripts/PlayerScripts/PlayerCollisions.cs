@@ -44,17 +44,23 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BouncyPlatform"))
         {
+            FindObjectOfType<AudioManager>().Play("BouncyPlatform");
             rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
         }
         
         if (other.gameObject.tag == "Checkpoint") 
         {   
+            
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.transform.Find("CheckpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;
+
+            FindObjectOfType<AudioManager>().Play("Checkpoint");
         }
 
         if (other.gameObject.CompareTag("Collectible"))
         {
+            FindObjectOfType<AudioManager>().Play("Collectible");
+
             other.gameObject.SetActive(false);
             setCollectiblesCounter(collectiblesCounter+1);
             setCollectiblesText();
@@ -62,6 +68,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (other.gameObject.CompareTag("TargetPoint"))
         {
+            FindObjectOfType<AudioManager>().Play("LevelComplete");
             winText.text = "LEVEL COMPLETE";
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.transform.Find("TargetpointMiddle").GetComponent<SpriteRenderer>().material.color = Color.cyan;

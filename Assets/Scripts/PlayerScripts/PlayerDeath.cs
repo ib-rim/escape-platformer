@@ -19,6 +19,7 @@ public class PlayerDeath : MonoBehaviour {
 
             if (other.gameObject.CompareTag("FallThreshold"))
             {
+                FindObjectOfType<AudioManager>().Play("LavaDeath");
                 death();
             }
             

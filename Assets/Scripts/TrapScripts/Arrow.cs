@@ -10,6 +10,8 @@ public class Arrow : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("Arrow");
+
         rb.velocity = direction * transform.right * speed;
         StartCoroutine(lifetime());
     }

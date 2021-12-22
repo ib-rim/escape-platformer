@@ -74,28 +74,35 @@ public class Powerups : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        
+
 
         if(other.gameObject.tag == "JumpBoost") {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             other.gameObject.SetActive(false);
             StartCoroutine(JumpBoost());
         }   
 
         if(other.gameObject.tag == "SpeedBoost") {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             other.gameObject.SetActive(false);
             StartCoroutine(SpeedBoost());
         } 
 
         if(other.gameObject.tag == "SlowFall") {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             other.gameObject.SetActive(false);
             StartCoroutine(slowFall());
         } 
 
         if(other.gameObject.tag == "Invincibility") {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             other.gameObject.SetActive(false);
             StartCoroutine(Invincibility());
         }
 
         if(other.gameObject.tag == "Slow") {
+            FindObjectOfType<AudioManager>().Play("PowerUp");
             other.gameObject.SetActive(false);
             StartCoroutine(Slow());
         } 
