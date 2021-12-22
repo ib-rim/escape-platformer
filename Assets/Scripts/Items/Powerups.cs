@@ -229,8 +229,14 @@ public class Powerups : MonoBehaviour
 
         //Remove text, remove invincibility and change player color
         GameObject.Destroy(powerupText);
-        GetComponent<PlayerDeath>().invincible = false;
         changeColor();
+
+        //Only turn off invincibility if next powerup isn't invincibility
+        if (mostRecentColor != invincibilityColor)
+        {
+            GetComponent<PlayerDeath>().invincible = false;
+        }
+        
     }
 
     IEnumerator Slow()
