@@ -2,17 +2,19 @@
 
 A 2D platformer game by Ibrahim, Timothy, and Atikah for the Multi-platform Game Development module. 
 
-WebGL Build: https://ib-rim.github.io/escape-platformer/build/index.html (Built from final-prototype-build branch)
+WebGL Build: https://ib-rim.github.io/escape-platformer/build/index.html
 
 Prototype Video: https://youtu.be/cBpEBhhDaus
 
-Made using Unity (2021.1.25f1). If running in Unity editor, please run the scene 'Main' first for the best experience.
+Made using Unity (2021.1.25f1). If running in Unity editor, please run the scene 'Level1' first for the best experience.
 
 ### Player Controls:
 
 Move - A and D keys, Left and Right arrow keys
 
 Jump - W key, Up arrow key, Spacebar
+
+Crouch - Hold S key or Down arrow key
 
 ### Information:
 
@@ -38,23 +40,23 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 
 **Platforms** (Horizontal Rectangle):
 
--	Black - Static Platform
+-	Static Platforms
 
--	Bright Pink - Bouncy Platform
+-	Bouncy Platforms
 
--	Dark Pink - Pitfall
+-	Pitfalls
 
--	Dark Purple - One-way Platform
+-	One-way Platforms
 
-- Lilac - Two-way platform
+- Two-way platforms
 
--	Blue - Moving Platform
+-	Moving Platforms
 
-**Obstacles** (Horizontal Rectangle):
+**Obstacles**:
 
--	Red - Spikes
+-	Spikes
 
--	Orange - Lava
+-	Lava
 
 **Collectibles** (Circles):
 

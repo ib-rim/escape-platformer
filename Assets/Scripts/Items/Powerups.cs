@@ -4,32 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Powerups : MonoBehaviour
-{   
-    PlayerController player; 
+{
+    PlayerController player;
     SpriteRenderer rend;
     GameObject powerupsText;
-    
+
     public Font font;
 
     Color playerColor = new Color32(255, 255, 255, 255);
-    Color jumpColor = new Color32(125, 212, 144, 255); 
-    Color speedColor = new Color32(236, 108, 0, 255); 
-    Color slowFallColor = new Color32(201, 181, 179, 255); 
+    Color jumpColor = new Color32(125, 212, 144, 255);
+    Color speedColor = new Color32(236, 108, 0, 255);
+    Color slowFallColor = new Color32(201, 181, 179, 255);
     Color invincibilityColor = new Color32(236, 225, 0, 255);
     Color slowColor = new Color32(215, 190, 137, 255);
 
     private float powerupTime = 3;
     private int powerupsCount = 0;
     private Color mostRecentColor;
-    
-    void Start() {
+
+    void Start()
+    {
         powerupsText = GameObject.Find("PowerupTimers");
         rend = GetComponent<SpriteRenderer>();
         player = GetComponent<PlayerController>();
     }
 
-    GameObject newPowerupText(Color powerupColor) {
-        
+    GameObject newPowerupText(Color powerupColor)
+    {
+
         //Create object for text and make a child of powerupsText
         GameObject powerupText = new GameObject("PowerupText");
         powerupText.transform.SetParent(powerupsText.transform);
@@ -43,11 +45,13 @@ public class Powerups : MonoBehaviour
         powerupsCount += 1;
 
         //Set position of text object according to how many powerups are in effect
-        if(powerupsCount == 1) {
+        if (powerupsCount == 1)
+        {
             powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(253, 160);
         }
-        else {
-            powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(253, 160 - (40*(powerupsCount-1)));
+        else
+        {
+            powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(253, 160 - (40 * (powerupsCount - 1)));
         }
 
         //Set size of text object
@@ -57,93 +61,118 @@ public class Powerups : MonoBehaviour
         return powerupText;
     }
 
-    public void changeColor() {
+    public void changeColor()
+    {
         powerupsCount -= 1;
         //Move all children of PowerupsText up by 40
         RectTransform[] rectTransforms = powerupsText.transform.GetComponentsInChildren<RectTransform>();
-        for (int i = 1; i < rectTransforms.Length; i++) {
-            rectTransforms[i].anchoredPosition = new Vector2(253, rectTransforms[i].anchoredPosition.y+40);
+        for (int i = 1; i < rectTransforms.Length; i++)
+        {
+            rectTransforms[i].anchoredPosition = new Vector2(253, rectTransforms[i].anchoredPosition.y + 40);
         }
 
-        if(powerupsCount > 0) {
+        if (powerupsCount > 0)
+        {
             rend.material.color = mostRecentColor;
         }
-        else {
+        else
+        {
             rend.material.color = playerColor;
+            mostRecentColor = playerColor;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
 
-        if(other.gameObject.tag == "JumpBoost") {
+        if (other.gameObject.tag == "JumpBoost")
+        {
             other.gameObject.SetActive(false);
             StartCoroutine(JumpBoost());
-        }   
+        }
 
-        if(other.gameObject.tag == "SpeedBoost") {
+        if (other.gameObject.tag == "SpeedBoost")
+        {
             other.gameObject.SetActive(false);
             StartCoroutine(SpeedBoost());
-        } 
+        }
 
-        if(other.gameObject.tag == "SlowFall") {
+        if (other.gameObject.tag == "SlowFall")
+        {
             other.gameObject.SetActive(false);
             StartCoroutine(slowFall());
-        } 
+        }
 
-        if(other.gameObject.tag == "Invincibility") {
+        if (other.gameObject.tag == "Invincibility")
+        {
             other.gameObject.SetActive(false);
             StartCoroutine(Invincibility());
         }
 
-        if(other.gameObject.tag == "Slow") {
+        if (other.gameObject.tag == "Slow")
+        {
             other.gameObject.SetActive(false);
             StartCoroutine(Slow());
-        } 
+        }
     }
 
-    IEnumerator JumpBoost() {
+    IEnumerator JumpBoost()
+    {
         //Increase jumpSpeed and player color
-        player.jumpSpeed = PlayerController.defaultJumpSpeed*1.5f;
+        player.jumpSpeed = PlayerController.defaultJumpSpeed * 1.5f;
         rend.material.color = jumpColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(jumpColor);
         Text text = powerupText.GetComponent<Text>();
 
-        for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
-            
+        for (float t = powerupTime; t > 0; t -= Time.deltaTime)
+        {
+
             text.text = Mathf.CeilToInt(t).ToString();
             yield return null;
         }
 
-        //Remove text, reset jumpSpeed and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
-        player.jumpSpeed = PlayerController.defaultJumpSpeed;
-        changeColor();  
+        changeColor();
+
+        //Only reset if next powerup isn't jump or slow 
+        if (mostRecentColor != jumpColor && mostRecentColor != slowColor)
+        {
+            player.jumpSpeed = PlayerController.defaultJumpSpeed;
+        }
     }
 
-    IEnumerator SpeedBoost() {
+    IEnumerator SpeedBoost()
+    {
         //Increase moveSpeed and change player color
-        player.moveSpeed = PlayerController.defaultMoveSpeed*2;
+        player.moveSpeed = PlayerController.defaultMoveSpeed * 2;
         rend.material.color = speedColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(speedColor);
         Text text = powerupText.GetComponent<Text>();
 
-        for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
-            
+        for (float t = powerupTime; t > 0; t -= Time.deltaTime)
+        {
             text.text = Mathf.CeilToInt(t).ToString();
             yield return null;
         }
 
-        //Remove text, reset moveSpeed and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
-        player.moveSpeed = PlayerController.defaultMoveSpeed;
         changeColor();
+
+        //Only reset if next powerup isn't speed or slow or slowFall
+        if (mostRecentColor != speedColor && mostRecentColor != slowColor && mostRecentColor != slowFallColor)
+        {
+            player.moveSpeed = PlayerController.defaultMoveSpeed;
+        }
     }
 
-    IEnumerator slowFall() {
+    IEnumerator slowFall()
+    {
         //Change player color
         rend.material.color = slowFallColor;
 
@@ -151,32 +180,38 @@ public class Powerups : MonoBehaviour
         GameObject powerupText = newPowerupText(slowFallColor);
         Text text = powerupText.GetComponent<Text>();
 
-        for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
+        for (float t = powerupTime; t > 0; t -= Time.deltaTime)
+        {
 
             //Decrease gravity when falling
             if (GetComponent<Rigidbody2D>().velocity.y < -0.1)
             {
-                GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity/5;
-                player.moveSpeed = PlayerController.defaultMoveSpeed/2;
+                GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity / 10;
 
             }
-            else {
+            else
+            {
                 GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
-                player.moveSpeed = PlayerController.defaultMoveSpeed;
             }
 
             text.text = Mathf.CeilToInt(t).ToString();
             yield return null;
         }
 
-        //Remove text, reset gravity and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
-        GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
-        player.moveSpeed = PlayerController.defaultMoveSpeed;
         changeColor();
+
+        //Only reset gravity if next powerup isn't slowFall
+        if (mostRecentColor != slowFallColor)
+        {
+            GetComponent<Rigidbody2D>().gravityScale = PlayerController.defaultGravity;
+        }
+
     }
 
-    IEnumerator Invincibility() {
+    IEnumerator Invincibility()
+    {
         //Make player invincible and change player color
         GetComponent<PlayerDeath>().invincible = true;
         rend.material.color = invincibilityColor;
@@ -185,39 +220,59 @@ public class Powerups : MonoBehaviour
         GameObject powerupText = newPowerupText(invincibilityColor);
         Text text = powerupText.GetComponent<Text>();
 
-        for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
-            
+        for (float t = powerupTime; t > 0; t -= Time.deltaTime)
+        {
+
             text.text = Mathf.CeilToInt(t).ToString();
             yield return null;
         }
 
         //Remove text, remove invincibility and change player color
         GameObject.Destroy(powerupText);
-        GetComponent<PlayerDeath>().invincible = false;
         changeColor();
+
+        //Only turn off invincibility if next powerup isn't invincibility
+        if (mostRecentColor != invincibilityColor)
+        {
+            GetComponent<PlayerDeath>().invincible = false;
+        }
+        
     }
 
-    IEnumerator Slow() {
+    IEnumerator Slow()
+    {
         //Make player slow and change player color
         player.moveSpeed = PlayerController.defaultMoveSpeed / 2;
         player.jumpSpeed = PlayerController.defaultJumpSpeed / 2;
         rend.material.color = slowColor;
 
-        
+
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(slowColor);
         Text text = powerupText.GetComponent<Text>();
 
-        for(float t = powerupTime; t > 0; t-=Time.deltaTime) {
-            
+        for (float t = powerupTime; t > 0; t -= Time.deltaTime)
+        {
+
             text.text = Mathf.CeilToInt(t).ToString();
             yield return null;
         }
 
-        //Remove text, reset speed and change player color
+        //Remove text and change player color
         GameObject.Destroy(powerupText);
-        player.moveSpeed = PlayerController.defaultMoveSpeed;
-        player.jumpSpeed = PlayerController.defaultJumpSpeed;
         changeColor();
+
+        //Only reset if next powerup isn't slow or jump or speed
+        if (mostRecentColor != slowColor)
+        {
+            if (mostRecentColor != jumpColor)
+            {
+                player.jumpSpeed = PlayerController.defaultJumpSpeed;
+            }
+            if (mostRecentColor != speedColor)
+            {
+                player.moveSpeed = PlayerController.defaultMoveSpeed;
+            }
+        }
     }
 }

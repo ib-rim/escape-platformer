@@ -304,6 +304,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a969361b-e070-4894-ad53-0ee196b30d4f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7930724988268041977}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: crouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c3d9f7a3-6c9b-409b-8425-5fa4a7442220
+    m_ActionName: Player/Crouch[/Keyboard/s,/Keyboard/downArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -329,6 +345,7 @@ MonoBehaviour:
   playerObject: {fileID: 7930724988268041978}
   moveSpeed: 5
   jumpSpeed: 5
+  ceilingCheck: {fileID: 6106311260728760772}
 --- !u!114 &137866425783899621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,3 +389,4 @@ MonoBehaviour:
   rb: {fileID: 7930724988268041982}
   pitfallDelayTime: 1.5
   winText: {fileID: 0}
+  litTorch: {fileID: 21300042, guid: ae3918a914038694d852d0bb81f62473, type: 3}
