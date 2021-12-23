@@ -9,9 +9,7 @@ public class LevelLoader : MonoBehaviour
     public PlayerCollisions playerCollisions;
     public Timer timer;
 
-    public int levelToLoadInt;
-    public string levelToLoadStr;
-    public bool useIntToLoad = false;
+    public int level;
     private GameObject collectibles;
 
     private void Awake() {
@@ -31,6 +29,14 @@ public class LevelLoader : MonoBehaviour
 
     void LoadScene()
     {   
+        int deathsCount = playerDeath.getDeathsCounter();
+        int collectiblesCount = playerCollisions.getCollectiblesCounter();
+
+        PlayerPrefs.SetInt($"Level{level}Deaths", PlayerPrefs.GetInt($"Level{level}Deaths") + deathsCount);
+        if(collectiblesCount > PlayerPrefs.GetInt($"Level{level}Collectibles")) {
+            PlayerPrefs.SetInt($"Level{level}Collectibles", collectiblesCount);
+        }
+
         LevelManager.levelStart = true;
         
         //Reset collectibles for new level
@@ -47,13 +53,9 @@ public class LevelLoader : MonoBehaviour
         //Reset timer for new level
         timer.EndTimer();
 
-        if (useIntToLoad)
-        {
-            SceneManager.LoadScene(levelToLoadInt);   
-        }
-        else
-        {
-            SceneManager.LoadScene(levelToLoadStr);
-        }
+        //Load Main Menu and mark level as complete for next level unlock
+        PlayerPrefs.SetString($"Level{level}", "complete");
+        PlayerPrefs.SetString("SkipToLevels", "true");
+        SceneManager.LoadScene("MainMenu");
     }
 }
