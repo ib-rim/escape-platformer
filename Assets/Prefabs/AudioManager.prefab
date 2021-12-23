@@ -98,3 +98,21 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Level1Music
+    clip: {fileID: 8300000, guid: 7adfee2191b858a4698778e226399873, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Level3Music
+    clip: {fileID: 8300000, guid: e567e59c706e52441badfc7a14d9cf90, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Level4Music
+    clip: {fileID: 8300000, guid: eaf58a2a24026204a97506391354f083, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
