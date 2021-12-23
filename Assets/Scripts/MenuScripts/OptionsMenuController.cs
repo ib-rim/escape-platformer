@@ -9,28 +9,37 @@ public class OptionsMenuController : MonoBehaviour
     public GameObject mainMenu;
     public AudioMixer audioMixer;
 
-    //method to set volume
+    //Set volume
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
     }
 
-    //method to set quality
+    //Set quality
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    //method to set to fullscreen
+    //Set to fullscreen
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
     }
 
+    //Clear save data by clearing playerprefs
+    public void clearSaveData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void back()
     {
+        //To main menu
         this.gameObject.SetActive(false);
         mainMenu.SetActive(true);
+
+        //Select first button on main menu for keyboard navigation
         mainMenu.GetComponentInChildren<Button>().Select();
     }
 }
