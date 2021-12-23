@@ -92,6 +92,10 @@ public class PlayerCollisions : MonoBehaviour
         }
     }
 
+    public int getCollectiblesCounter() {
+        return collectiblesCounter;
+    }
+
     public void setCollectiblesCounter(int collectibles)
     {
         collectiblesCounter = collectibles;
