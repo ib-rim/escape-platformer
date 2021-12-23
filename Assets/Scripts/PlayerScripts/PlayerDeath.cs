@@ -45,6 +45,10 @@ public class PlayerDeath : MonoBehaviour {
         LevelManager.instance.Respawn();
     }
 
+    public int getDeathsCounter() {
+        return deathsCounter;
+    }
+
     public void setDeathsCounter(int deaths) {
         deathsCounter = deaths;
     }
