@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
 
     public static bool canStand;
+    public static bool crouching;
 
     public Transform ceilingCheck;
 
@@ -96,28 +97,32 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultCrouchHeight, playerObject.transform.localScale.z);
+            crouching = true;
         }
 
-        if (context.canceled && CanStand())
+        if (context.canceled)
         {
-            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
+            crouching = false;
         }
     }
 
     private bool IsGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.5f, groundLayer);
         return isGrounded;
     }
 
     private bool CanStand()
     {
-        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.2f, groundLayer);
+        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.5f, groundLayer);
         return canStand;
     }
 
     void FixedUpdate()
     {
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
+        if(!crouching && CanStand()) {
+            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
+        }
     }
 }
