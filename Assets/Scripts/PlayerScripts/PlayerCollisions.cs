@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class PlayerCollisions : MonoBehaviour
         {
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
+            other.gameObject.GetComponent<Light2D>().enabled = true;
         }
 
         if (other.gameObject.CompareTag("Collectible"))
