@@ -54,6 +54,6 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     public void setDeathsText() {
-        deathsText.text = $"Deaths: {deathsCounter.ToString()}";
+        deathsText.text = $"x {deathsCounter.ToString()}";
     }
 }

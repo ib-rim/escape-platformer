@@ -39,9 +39,17 @@ public class Powerups : MonoBehaviour
         //Create Text component 
         Text text = powerupText.AddComponent<Text>();
         text.font = font;
+        text.fontStyle = FontStyle.Bold;
         text.fontSize = 40;
         text.color = powerupColor;
         mostRecentColor = text.color;
+
+        //Add text shadow for readability
+        Shadow textShadow = powerupText.AddComponent<Shadow>();
+        textShadow.effectColor = new Color32(0, 0, 0, 255);
+        textShadow.effectDistance = new Vector2(2, -1);
+        textShadow.useGraphicAlpha = true;
+
         powerupsCount += 1;
 
         //Set position of text object according to how many powerups are in effect

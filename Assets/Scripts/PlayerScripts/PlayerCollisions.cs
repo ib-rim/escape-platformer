@@ -103,6 +103,6 @@ public class PlayerCollisions : MonoBehaviour
 
     public void setCollectiblesText()
     {
-        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+        collectiblesText.text = $"x {collectiblesCounter.ToString()} / {collectiblesTotal}";
     }
 }
