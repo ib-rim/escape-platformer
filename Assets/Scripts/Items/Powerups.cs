@@ -81,11 +81,11 @@ public class Powerups : MonoBehaviour
 
         if (powerupsCount > 0)
         {
-            rend.material.color = mostRecentColor;
+            rend.color = mostRecentColor;
         }
         else
         {
-            rend.material.color = playerColor;
+            rend.color = playerColor;
             mostRecentColor = playerColor;
         }
     }
@@ -128,7 +128,7 @@ public class Powerups : MonoBehaviour
     {
         //Increase jumpSpeed and player color
         player.jumpSpeed = PlayerController.defaultJumpSpeed * 1.5f;
-        rend.material.color = jumpColor;
+        rend.color = jumpColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(jumpColor);
@@ -156,7 +156,7 @@ public class Powerups : MonoBehaviour
     {
         //Increase moveSpeed and change player color
         player.moveSpeed = PlayerController.defaultMoveSpeed * 2;
-        rend.material.color = speedColor;
+        rend.color = speedColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(speedColor);
@@ -182,7 +182,7 @@ public class Powerups : MonoBehaviour
     IEnumerator slowFall()
     {
         //Change player color
-        rend.material.color = slowFallColor;
+        rend.color = slowFallColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(slowFallColor);
@@ -222,7 +222,7 @@ public class Powerups : MonoBehaviour
     {
         //Make player invincible and change player color
         GetComponent<PlayerDeath>().invincible = true;
-        rend.material.color = invincibilityColor;
+        rend.color = invincibilityColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(invincibilityColor);
@@ -252,7 +252,7 @@ public class Powerups : MonoBehaviour
         //Make player slow and change player color
         player.moveSpeed = PlayerController.defaultMoveSpeed / 2;
         player.jumpSpeed = PlayerController.defaultJumpSpeed / 2;
-        rend.material.color = slowColor;
+        rend.color = slowColor;
 
 
         //Change powerup timer text as timer decreases 
