@@ -48,4 +48,8 @@ public class Timer : MonoBehaviour
             yield return null;
         }
     }
+
+    public TimeSpan getTimePlaying() {
+        return timePlaying;
+    }
 }
