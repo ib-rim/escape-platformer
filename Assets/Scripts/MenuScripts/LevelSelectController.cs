@@ -9,9 +9,24 @@ public class LevelSelectController : MonoBehaviour
     public GameObject mainMenu;
 
     public GameObject level1Button;
+    public GameObject level1CollectiblesText;
+    public GameObject level1DeathsText;
+    public GameObject level1TimeText;
+
     public GameObject level2Button;
+    public GameObject level2CollectiblesText;
+    public GameObject level2DeathsText;
+    public GameObject level2TimeText;
+
     public GameObject level3Button;
+    public GameObject level3CollectiblesText;
+    public GameObject level3DeathsText;
+    public GameObject level3TimeText;
+
     public GameObject level4Button;
+    public GameObject level4CollectiblesText;
+    public GameObject level4DeathsText;
+    public GameObject level4TimeText;
 
     void OnEnable()
     {
@@ -34,10 +49,22 @@ public class LevelSelectController : MonoBehaviour
         else {
             level4Button.GetComponent<Button>().interactable = false;
         }
-        level1Button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = $"Level 1:     Deaths: {PlayerPrefs.GetInt("Level1Deaths")}   Collectibles: {PlayerPrefs.GetInt("Level1Collectibles")}";
-        level2Button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = $"Level 2:     Deaths: {PlayerPrefs.GetInt("Level2Deaths")}   Collectibles: {PlayerPrefs.GetInt("Level2Collectibles")}";
-        level3Button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = $"Level 3:     Deaths: {PlayerPrefs.GetInt("Level3Deaths")}   Collectibles: {PlayerPrefs.GetInt("Level3Collectibles")}";
-        level4Button.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = $"Level 4:     Deaths: {PlayerPrefs.GetInt("Level4Deaths")}   Collectibles: {PlayerPrefs.GetInt("Level4Collectibles")}";
+        
+        level1CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level1Collectibles")} / 9";
+        level1DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level1Deaths")}";
+        level1TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level1Time");
+
+        level2CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level2Collectibles")} / 11";
+        level2DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level2Deaths")}";
+        level2TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level2Time");
+
+        level3CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level3Collectibles")} / 5";
+        level3DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level3Deaths")}";
+        level3TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level3Time");
+
+        level4CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level4Collectibles")} / 6";
+        level4DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level4Deaths")}";
+        level4TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level4Time");
     }
 
     //Loads selected level (specified in editor)
