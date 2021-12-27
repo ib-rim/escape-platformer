@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,11 +32,16 @@ public class LevelLoader : MonoBehaviour
     {   
         int deathsCount = playerDeath.getDeathsCounter();
         int collectiblesCount = playerCollisions.getCollectiblesCounter();
+        TimeSpan time = timer.getTimePlaying();
 
         PlayerPrefs.SetInt($"Level{level}Deaths", PlayerPrefs.GetInt($"Level{level}Deaths") + deathsCount);
         if(collectiblesCount > PlayerPrefs.GetInt($"Level{level}Collectibles")) {
             PlayerPrefs.SetInt($"Level{level}Collectibles", collectiblesCount);
         }
+        if(time < TimeSpan.Parse($"00:{PlayerPrefs.GetString($"Level{level}Time", "23:59:59")}")) {
+            PlayerPrefs.SetString($"Level{level}Time", time.ToString("mm':'ss'.'ff")); 
+        }
+        
 
         LevelManager.levelStart = true;
         
