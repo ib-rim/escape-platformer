@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour
             player_animator.SetBool("jump", false);
             player_animator.SetBool("fall", false);
             player_animator.SetBool("death", false);
+            player_animator.ResetTrigger("crouch");
+            player_animator.ResetTrigger("stand");
+            player_animator.SetBool("crouch_idle", false);
+            player_animator.SetBool("crouch_walk", false);
         }
         // Move
         else if (moveValue.x != 0f && IsGrounded())
@@ -57,14 +61,11 @@ public class PlayerController : MonoBehaviour
             player_animator.SetBool("jump", false);
             player_animator.SetBool("fall", false);
             player_animator.SetBool("death", false);
+            player_animator.ResetTrigger("crouch");
+            player_animator.ResetTrigger("stand");
+            player_animator.SetBool("crouch_idle", false);
+            player_animator.SetBool("crouch_walk", false);
         }
-        // Jump and Fall
-        /*else if (moveValue.y == 1f && IsGrounded() == false)
-        {
-            player_animator.SetBool("jump", true);
-            player_animator.SetBool("move", false);
-            player_animator.SetBool("death", false);
-        }*/
         // Jump
         else if (rb.velocity.y > 1f && !IsGrounded())
         {
@@ -73,6 +74,10 @@ public class PlayerController : MonoBehaviour
             player_animator.SetBool("move", false);
             player_animator.SetBool("fall", false);
             player_animator.SetBool("death", false);
+            player_animator.ResetTrigger("crouch");
+            player_animator.ResetTrigger("stand");
+            player_animator.SetBool("crouch_idle", false);
+            player_animator.SetBool("crouch_walk", false);
         }
         // Fall
         else if (rb.velocity.y < -1f && !IsGrounded())
@@ -82,15 +87,44 @@ public class PlayerController : MonoBehaviour
             player_animator.SetBool("move", false);
             player_animator.SetBool("jump", false);
             player_animator.SetBool("death", false);
+            player_animator.ResetTrigger("crouch");
+            player_animator.ResetTrigger("stand");
+            player_animator.SetBool("crouch_idle", false);
+            player_animator.SetBool("crouch_walk", false);
         }
         // Crouch
-        /*else if (crouching == true)
+        else
         {
-            player_animator.SetBool("crouch", true);
-            player_animator.SetBool("move", false);
-            player_animator.SetBool("jump", false);
-            player_animator.SetBool("death", false);
-        }*/
+            if (crouching == true)
+            {
+                player_animator.SetTrigger("crouch");
+                player_animator.ResetTrigger("stand");
+                player_animator.SetBool("idle", false);
+                player_animator.SetBool("move", false);
+                player_animator.SetBool("jump", false);
+                player_animator.SetBool("fall", false);
+                player_animator.SetBool("death", false);
+
+                if (moveValue == new Vector2(0f, 0f) && IsGrounded())
+                {
+                    player_animator.SetBool("crouch_idle", true);
+                }
+                else
+                {
+                    player_animator.SetBool("crouch_walk", true);
+                }
+            }
+            else
+            {
+                player_animator.SetTrigger("stand");
+                player_animator.ResetTrigger("crouch");
+                player_animator.SetBool("idle", false);
+                player_animator.SetBool("move", false);
+                player_animator.SetBool("jump", false);
+                player_animator.SetBool("fall", false);
+                player_animator.SetBool("death", false);
+            }
+        }
     }
 
     public void move(InputAction.CallbackContext context)
