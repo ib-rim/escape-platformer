@@ -43,6 +43,7 @@ public class PlayerDeath : MonoBehaviour {
         setDeathsCounter(deathsCounter+1);
         setDeathsText();
         LevelManager.instance.Respawn();
+        AudioManager.instance.PlaySFX("Death");
     }
 
     public int getDeathsCounter() {
