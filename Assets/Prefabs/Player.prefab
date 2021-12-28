@@ -392,6 +392,7 @@ MonoBehaviour:
   pitfallDelayTime: 1.5
   winText: {fileID: 0}
   litTorch: {fileID: 21300042, guid: ae3918a914038694d852d0bb81f62473, type: 3}
+  emptyChest: {fileID: -7789451123414745086, guid: ae3918a914038694d852d0bb81f62473, type: 3}
 --- !u!114 &1878086571
 MonoBehaviour:
   m_ObjectHideFlags: 0
