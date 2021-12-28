@@ -91,6 +91,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             AudioManager.instance.PlaySFX("Jump");
         }
+        else
+        {
+            moveValue.y = 0;
+        }
 
         //Lower jump height if jump not held down fully
         if (context.canceled && rb.velocity.y > 0f)
