@@ -8,11 +8,38 @@ public class OptionsMenuController : MonoBehaviour
 {
     public GameObject mainMenu;
     public AudioMixer audioMixer;
+    public GameObject musicSlider;
+    public GameObject SFXSlider;
 
-    //Set volume
-    public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
+    private void Start() {
+        setMusicSliderValue();
+        setSFXSliderValue();
+    }
+
+    //Set music volume
+    public void SetMusicVolume(float value)
+    {   
+        float volume = Mathf.Log10(value) * 20; 
+        AudioManager.instance.SetMusicVolume(volume);
+    }
+
+    public void setMusicSliderValue() {
+        bool result = audioMixer.GetFloat("MusicVol", out float volume);
+        float value = Mathf.Pow(10, volume / 20);
+        musicSlider.GetComponent<Slider>().value = value;
+    }
+
+    //Set SFX volume
+    public void SetSFXVolume(float value)
+    {   
+        float volume = Mathf.Log10(value) * 20; 
+        AudioManager.instance.SetSFXVolume(volume);
+    }
+
+    public void setSFXSliderValue() {
+        bool result = audioMixer.GetFloat("SFXVol", out float volume);
+        float value = Mathf.Pow(10, volume / 20);
+        SFXSlider.GetComponent<Slider>().value = value;
     }
 
     //Set quality
