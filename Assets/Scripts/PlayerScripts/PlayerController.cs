@@ -25,12 +25,49 @@ public class PlayerController : MonoBehaviour
 
     public Transform ceilingCheck;
 
+    public Animator player_animator;
+
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
         AudioManager.instance.PlaySFX("Footsteps");
+    }
+
+    private void Update()
+    {
+        // Conditions for triggering player character's animations
+
+        // Idle
+        if (moveValue == new Vector2(0f, 0f) && IsGrounded())
+        {
+            player_animator.SetBool("jump", false);
+            player_animator.SetBool("move", false);
+            player_animator.SetBool("death", false);
+        }
+        // Jump
+        else if (moveValue.y == 1f && IsGrounded() == false)
+        {
+            player_animator.SetBool("jump", true);
+            player_animator.SetBool("move", false);
+            player_animator.SetBool("death", false);
+        }
+        // Move
+        else if (moveValue.x != 0f && IsGrounded())
+        {
+            player_animator.SetBool("move", true);
+            player_animator.SetBool("jump", false);
+            player_animator.SetBool("death", false);
+        }
+        // Crouch
+        /*else if (crouching == true)
+        {
+            player_animator.SetBool("crouch", true);
+            player_animator.SetBool("move", false);
+            player_animator.SetBool("jump", false);
+            player_animator.SetBool("death", false);
+        }*/
     }
 
     public void move(InputAction.CallbackContext context)
