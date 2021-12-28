@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public const float defaultCrouchHeight = 0.95f;
 
     public Rigidbody2D rb;
+    public BoxCollider2D standingCollider;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public GameObject playerObject;
@@ -129,15 +130,21 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultCrouchHeight, playerObject.transform.localScale.z);
+            standingCollider.enabled = false;
             crouching = true;
             AudioManager.instance.PlaySFX("Crouch");
         }
-
-        if (context.canceled)
+        else
         {
+            standingCollider.enabled = true;
             crouching = false;
         }
+
+        /*if (context.canceled)
+        {
+            standingCollider.enabled = true;
+            crouching = false;
+        }*/
     }
 
     private bool IsGrounded()
@@ -162,7 +169,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.StopFootsteps();
         }
         if(!crouching && CanStand()) {
-            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
+            standingCollider.enabled = true;
         }
     }
 
