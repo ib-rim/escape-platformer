@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
     private void Awake()
     {  
         if(timerText == "Timer") {
-            timerText = "Time: 00:00.00";
+            timerText = "00:00.00";
             elapsedTime = 0f;
         }
         BeginTimer(); // can be moved to LevelManager.cs later
@@ -43,9 +43,13 @@ public class Timer : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            timerText = "Time: " + timePlaying.ToString("mm':'ss'.'ff"); 
+            timerText = timePlaying.ToString("mm':'ss'.'ff"); 
             timer.text = timerText;
             yield return null;
         }
+    }
+
+    public TimeSpan getTimePlaying() {
+        return timePlaying;
     }
 }

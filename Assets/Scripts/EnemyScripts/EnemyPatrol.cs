@@ -29,6 +29,14 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Flip();
+        }
+    }
+
     //Move enemy in opposite direction
     void Flip()
     {

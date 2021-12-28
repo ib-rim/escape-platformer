@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3134775805420921484}
   - component: {fileID: 7341867481876633782}
   - component: {fileID: 4700825594749594449}
+  - component: {fileID: -8628542529053101403}
   m_Layer: 5
   m_Name: CollectiblesText
   m_TagString: Untagged
@@ -79,3 +80,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Collectibles
+--- !u!114 &-8628542529053101403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243622904840486340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: -1}
+  m_UseGraphicAlpha: 1

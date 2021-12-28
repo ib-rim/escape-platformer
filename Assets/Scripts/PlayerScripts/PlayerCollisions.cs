@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -32,10 +33,10 @@ public class PlayerCollisions : MonoBehaviour
     {
         yield return new WaitForSeconds(pitfallDelayTime);
         pitfall.SetActive(false);
-
+        AudioManager.instance.PlaySFX("Pitfall");
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pitfall"))
         {
@@ -48,12 +49,15 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("BouncyPlatform"))
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
+            AudioManager.instance.PlaySFX("BouncyJump");
         }
 
         if (other.gameObject.tag == "Checkpoint")
         {
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
+            other.gameObject.GetComponent<Light2D>().enabled = true;
+            AudioManager.instance.PlaySFX("Checkpoint");
         }
 
         if (other.gameObject.CompareTag("Collectible"))
@@ -61,6 +65,7 @@ public class PlayerCollisions : MonoBehaviour
             other.gameObject.SetActive(false);
             setCollectiblesCounter(collectiblesCounter + 1);
             setCollectiblesText();
+            AudioManager.instance.PlaySFX("Collectible");
         }
 
         if (other.gameObject.CompareTag("TargetPoint"))
@@ -92,6 +97,10 @@ public class PlayerCollisions : MonoBehaviour
         }
     }
 
+    public int getCollectiblesCounter() {
+        return collectiblesCounter;
+    }
+
     public void setCollectiblesCounter(int collectibles)
     {
         collectiblesCounter = collectibles;
@@ -99,6 +108,6 @@ public class PlayerCollisions : MonoBehaviour
 
     public void setCollectiblesText()
     {
-        collectiblesText.text = $"Collectibles: {collectiblesCounter.ToString()} / {collectiblesTotal}";
+        collectiblesText.text = $"x {collectiblesCounter.ToString()} / {collectiblesTotal}";
     }
 }

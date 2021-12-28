@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
+        AudioManager.instance.PlaySFX("Footsteps");
     }
 
     private void Update()
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         {
             moveValue.y = 1;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            AudioManager.instance.PlaySFX("Jump");
         }
         else
         {
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultCrouchHeight, playerObject.transform.localScale.z);
             crouching = true;
+            AudioManager.instance.PlaySFX("Crouch");
         }
 
         if (context.canceled)
@@ -121,6 +124,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
+        if(moveValue.x != 0 && IsGrounded()) {
+            AudioManager.instance.PlayFootsteps();
+        }
+        else {
+            AudioManager.instance.StopFootsteps();
+        }
         if(!crouching && CanStand()) {
             playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
         }

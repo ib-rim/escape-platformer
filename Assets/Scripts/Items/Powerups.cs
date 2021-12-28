@@ -39,9 +39,17 @@ public class Powerups : MonoBehaviour
         //Create Text component 
         Text text = powerupText.AddComponent<Text>();
         text.font = font;
+        text.fontStyle = FontStyle.Bold;
         text.fontSize = 40;
         text.color = powerupColor;
         mostRecentColor = text.color;
+
+        //Add text shadow for readability
+        Shadow textShadow = powerupText.AddComponent<Shadow>();
+        textShadow.effectColor = new Color32(0, 0, 0, 255);
+        textShadow.effectDistance = new Vector2(2, -1);
+        textShadow.useGraphicAlpha = true;
+
         powerupsCount += 1;
 
         //Set position of text object according to how many powerups are in effect
@@ -73,11 +81,11 @@ public class Powerups : MonoBehaviour
 
         if (powerupsCount > 0)
         {
-            rend.material.color = mostRecentColor;
+            rend.color = mostRecentColor;
         }
         else
         {
-            rend.material.color = playerColor;
+            rend.color = playerColor;
             mostRecentColor = playerColor;
         }
     }
@@ -89,30 +97,35 @@ public class Powerups : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             StartCoroutine(JumpBoost());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "SpeedBoost")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(SpeedBoost());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "SlowFall")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(slowFall());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "Invincibility")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(Invincibility());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "Slow")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(Slow());
+            AudioManager.instance.PlaySFX("Slow");
         }
     }
 
@@ -120,7 +133,7 @@ public class Powerups : MonoBehaviour
     {
         //Increase jumpSpeed and player color
         player.jumpSpeed = PlayerController.defaultJumpSpeed * 1.5f;
-        rend.material.color = jumpColor;
+        rend.color = jumpColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(jumpColor);
@@ -148,7 +161,7 @@ public class Powerups : MonoBehaviour
     {
         //Increase moveSpeed and change player color
         player.moveSpeed = PlayerController.defaultMoveSpeed * 2;
-        rend.material.color = speedColor;
+        rend.color = speedColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(speedColor);
@@ -174,7 +187,7 @@ public class Powerups : MonoBehaviour
     IEnumerator slowFall()
     {
         //Change player color
-        rend.material.color = slowFallColor;
+        rend.color = slowFallColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(slowFallColor);
@@ -214,7 +227,7 @@ public class Powerups : MonoBehaviour
     {
         //Make player invincible and change player color
         GetComponent<PlayerDeath>().invincible = true;
-        rend.material.color = invincibilityColor;
+        rend.color = invincibilityColor;
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(invincibilityColor);
@@ -229,8 +242,14 @@ public class Powerups : MonoBehaviour
 
         //Remove text, remove invincibility and change player color
         GameObject.Destroy(powerupText);
-        GetComponent<PlayerDeath>().invincible = false;
         changeColor();
+
+        //Only turn off invincibility if next powerup isn't invincibility
+        if (mostRecentColor != invincibilityColor)
+        {
+            GetComponent<PlayerDeath>().invincible = false;
+        }
+        
     }
 
     IEnumerator Slow()
@@ -238,7 +257,7 @@ public class Powerups : MonoBehaviour
         //Make player slow and change player color
         player.moveSpeed = PlayerController.defaultMoveSpeed / 2;
         player.jumpSpeed = PlayerController.defaultJumpSpeed / 2;
-        rend.material.color = slowColor;
+        rend.color = slowColor;
 
 
         //Change powerup timer text as timer decreases 
