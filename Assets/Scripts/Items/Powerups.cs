@@ -97,30 +97,35 @@ public class Powerups : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             StartCoroutine(JumpBoost());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "SpeedBoost")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(SpeedBoost());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "SlowFall")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(slowFall());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "Invincibility")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(Invincibility());
+            AudioManager.instance.PlaySFX("Powerup");
         }
 
         if (other.gameObject.tag == "Slow")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(Slow());
+            AudioManager.instance.PlaySFX("Slow");
         }
     }
 
