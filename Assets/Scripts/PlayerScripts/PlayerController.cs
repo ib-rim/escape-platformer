@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
+        AudioManager.instance.PlaySFX("Footsteps");
     }
 
     public void move(InputAction.CallbackContext context)
@@ -42,8 +43,9 @@ public class PlayerController : MonoBehaviour
         //Allow player to jump when grounded
         moveValue.y = 1;
         if (context.performed && IsGrounded())
-        {
+        {   
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            AudioManager.instance.PlaySFX("Jump");
         }
 
         //Lower jump height if jump not held down fully
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultCrouchHeight, playerObject.transform.localScale.z);
             crouching = true;
+            AudioManager.instance.PlaySFX("Crouch");
         }
 
         if (context.canceled)
@@ -82,6 +85,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
+        if(moveValue.x != 0 && IsGrounded()) {
+            AudioManager.instance.PlayFootsteps();
+        }
+        else {
+            AudioManager.instance.StopFootsteps();
+        }
         if(!crouching && CanStand()) {
             playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
         }

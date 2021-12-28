@@ -18,6 +18,7 @@ public class Trigger : MonoBehaviour
             else {
                 ShootRight();
             }
+            AudioManager.instance.PlaySFX("ArrowTrap");
         }
     }
 

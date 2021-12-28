@@ -33,10 +33,10 @@ public class PlayerCollisions : MonoBehaviour
     {
         yield return new WaitForSeconds(pitfallDelayTime);
         pitfall.SetActive(false);
-
+        AudioManager.instance.PlaySFX("Pitfall");
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pitfall"))
         {
@@ -49,6 +49,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("BouncyPlatform"))
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceSpeed);
+            AudioManager.instance.PlaySFX("BouncyJump");
         }
 
         if (other.gameObject.tag == "Checkpoint")
@@ -56,6 +57,7 @@ public class PlayerCollisions : MonoBehaviour
             LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
             other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
             other.gameObject.GetComponent<Light2D>().enabled = true;
+            AudioManager.instance.PlaySFX("Checkpoint");
         }
 
         if (other.gameObject.CompareTag("Collectible"))
@@ -63,6 +65,7 @@ public class PlayerCollisions : MonoBehaviour
             other.gameObject.SetActive(false);
             setCollectiblesCounter(collectiblesCounter + 1);
             setCollectiblesText();
+            AudioManager.instance.PlaySFX("Collectible");
         }
 
         if (other.gameObject.CompareTag("TargetPoint"))
