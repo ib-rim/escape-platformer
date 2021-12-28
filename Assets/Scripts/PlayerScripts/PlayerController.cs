@@ -73,6 +73,13 @@ public class PlayerController : MonoBehaviour
     public void move(InputAction.CallbackContext context)
     {
         moveValue = context.ReadValue<Vector2>();
+
+        if (moveValue.x > 0)
+            playerObject.transform.localScale =
+                new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
+        if (moveValue.x < 0)
+            playerObject.transform.localScale =
+                new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, 1);
     }
 
     public void jump(InputAction.CallbackContext context)
