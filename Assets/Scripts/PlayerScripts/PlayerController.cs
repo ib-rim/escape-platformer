@@ -42,21 +42,43 @@ public class PlayerController : MonoBehaviour
         // Idle
         if (moveValue == new Vector2(0f, 0f) && IsGrounded())
         {
+            player_animator.SetBool("idle", true);
+            player_animator.SetBool("move", false);
             player_animator.SetBool("jump", false);
-            player_animator.SetBool("move", false);
-            player_animator.SetBool("death", false);
-        }
-        // Jump
-        else if (moveValue.y == 1f && IsGrounded() == false)
-        {
-            player_animator.SetBool("jump", true);
-            player_animator.SetBool("move", false);
+            player_animator.SetBool("fall", false);
             player_animator.SetBool("death", false);
         }
         // Move
         else if (moveValue.x != 0f && IsGrounded())
         {
             player_animator.SetBool("move", true);
+            player_animator.SetBool("idle", false);
+            player_animator.SetBool("jump", false);
+            player_animator.SetBool("fall", false);
+            player_animator.SetBool("death", false);
+        }
+        // Jump and Fall
+        /*else if (moveValue.y == 1f && IsGrounded() == false)
+        {
+            player_animator.SetBool("jump", true);
+            player_animator.SetBool("move", false);
+            player_animator.SetBool("death", false);
+        }*/
+        // Jump
+        else if (rb.velocity.y > 1f && !IsGrounded())
+        {
+            player_animator.SetBool("jump", true);
+            player_animator.SetBool("idle", false);
+            player_animator.SetBool("move", false);
+            player_animator.SetBool("fall", false);
+            player_animator.SetBool("death", false);
+        }
+        // Fall
+        else if (rb.velocity.y < -1f && !IsGrounded())
+        {
+            player_animator.SetBool("fall", true);
+            player_animator.SetBool("idle", false);
+            player_animator.SetBool("move", false);
             player_animator.SetBool("jump", false);
             player_animator.SetBool("death", false);
         }
