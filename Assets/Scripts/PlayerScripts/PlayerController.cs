@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public const float defaultCrouchHeight = 0.95f;
 
     public Rigidbody2D rb;
-    public BoxCollider2D standingCollider;
+
+    public BoxCollider2D boxCollider;
+
     public Transform groundCheck;
     public LayerMask groundLayer;
     public GameObject playerObject;
@@ -41,90 +43,48 @@ public class PlayerController : MonoBehaviour
         // Conditions for triggering player character's animations
 
         // Idle
-        if (moveValue == new Vector2(0f, 0f) && IsGrounded())
+        if (moveValue.x == 0f && IsGrounded())
         {
+            resetAnimatorParameters();
             player_animator.SetBool("idle", true);
-            player_animator.SetBool("move", false);
-            player_animator.SetBool("jump", false);
-            player_animator.SetBool("fall", false);
-            player_animator.SetBool("death", false);
-            player_animator.ResetTrigger("crouch");
-            player_animator.ResetTrigger("stand");
-            player_animator.SetBool("crouch_idle", false);
-            player_animator.SetBool("crouch_walk", false);
         }
         // Move
         else if (moveValue.x != 0f && IsGrounded())
         {
+            resetAnimatorParameters();
             player_animator.SetBool("move", true);
-            player_animator.SetBool("idle", false);
-            player_animator.SetBool("jump", false);
-            player_animator.SetBool("fall", false);
-            player_animator.SetBool("death", false);
-            player_animator.ResetTrigger("crouch");
-            player_animator.ResetTrigger("stand");
-            player_animator.SetBool("crouch_idle", false);
-            player_animator.SetBool("crouch_walk", false);
         }
         // Jump
         else if (rb.velocity.y > 1f && !IsGrounded())
         {
+            resetAnimatorParameters();
             player_animator.SetBool("jump", true);
-            player_animator.SetBool("idle", false);
-            player_animator.SetBool("move", false);
-            player_animator.SetBool("fall", false);
-            player_animator.SetBool("death", false);
-            player_animator.ResetTrigger("crouch");
-            player_animator.ResetTrigger("stand");
-            player_animator.SetBool("crouch_idle", false);
-            player_animator.SetBool("crouch_walk", false);
         }
         // Fall
         else if (rb.velocity.y < -1f && !IsGrounded())
         {
+            resetAnimatorParameters();
             player_animator.SetBool("fall", true);
-            player_animator.SetBool("idle", false);
-            player_animator.SetBool("move", false);
-            player_animator.SetBool("jump", false);
-            player_animator.SetBool("death", false);
-            player_animator.ResetTrigger("crouch");
-            player_animator.ResetTrigger("stand");
-            player_animator.SetBool("crouch_idle", false);
-            player_animator.SetBool("crouch_walk", false);
-        }
-        // Crouch
-        else
-        {
-            if (crouching == true)
-            {
-                player_animator.SetTrigger("crouch");
-                player_animator.ResetTrigger("stand");
-                player_animator.SetBool("idle", false);
-                player_animator.SetBool("move", false);
-                player_animator.SetBool("jump", false);
-                player_animator.SetBool("fall", false);
-                player_animator.SetBool("death", false);
+        }        
 
-                if (moveValue == new Vector2(0f, 0f) && IsGrounded())
-                {
-                    player_animator.SetBool("crouch_idle", true);
-                }
-                else
-                {
-                    player_animator.SetBool("crouch_walk", true);
-                }
-            }
-            else
-            {
-                player_animator.SetTrigger("stand");
-                player_animator.ResetTrigger("crouch");
-                player_animator.SetBool("idle", false);
-                player_animator.SetBool("move", false);
-                player_animator.SetBool("jump", false);
-                player_animator.SetBool("fall", false);
-                player_animator.SetBool("death", false);
-            }
+        //Standing
+        if(!crouching && CanStand()) {
+            player_animator.SetBool("crouch", false);
+            player_animator.SetBool("stand", true);
+            boxCollider.offset = new Vector2(0f, 0.02f);
+            boxCollider.size = new Vector2(0.5f, 0.98f);
         }
+        else {
+            player_animator.SetBool("stand", false);
+        }
+    }
+
+    public void resetAnimatorParameters() {
+        player_animator.SetBool("idle", false);
+        player_animator.SetBool("move", false);
+        player_animator.SetBool("jump", false);
+        player_animator.SetBool("fall", false);
+        player_animator.SetBool("death", false);
     }
 
     public void move(InputAction.CallbackContext context)
@@ -148,10 +108,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             AudioManager.instance.PlaySFX("Jump");
         }
-        else
-        {
-            moveValue.y = 0;
-        }
 
         //Lower jump height if jump not held down fully
         if (context.canceled && rb.velocity.y > 0f)
@@ -161,40 +117,36 @@ public class PlayerController : MonoBehaviour
     }
 
     public void crouch(InputAction.CallbackContext context)
-    {
+    {   
         if (context.performed)
         {
-            standingCollider.enabled = false;
+            boxCollider.offset = new Vector2(0f, -0.23f);
+            boxCollider.size = new Vector2(0.5f, 0.48f);
             crouching = true;
+            player_animator.SetBool("crouch", true);
             AudioManager.instance.PlaySFX("Crouch");
         }
-        else
+
+        if (context.canceled)
         {
-            standingCollider.enabled = true;
             crouching = false;
         }
-
-        /*if (context.canceled)
-        {
-            standingCollider.enabled = true;
-            crouching = false;
-        }*/
     }
 
     private bool IsGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.5f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.35f, groundLayer);
         return isGrounded;
     }
 
     private bool CanStand()
     {
-        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.5f, groundLayer);
+        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.1f, groundLayer);
         return canStand;
     }
 
     void FixedUpdate()
-    {
+    {   
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
         if(moveValue.x != 0 && IsGrounded()) {
             AudioManager.instance.PlayFootsteps();
@@ -202,9 +154,5 @@ public class PlayerController : MonoBehaviour
         else {
             AudioManager.instance.StopFootsteps();
         }
-        if(!crouching && CanStand()) {
-            standingCollider.enabled = true;
-        }
     }
-
 }
