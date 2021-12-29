@@ -20,6 +20,7 @@ public class PlayerCollisions : MonoBehaviour
     public Text winText;
 
     public Sprite litTorch;
+    public Sprite emptyChest;
 
     private void Awake()
     {
@@ -53,19 +54,24 @@ public class PlayerCollisions : MonoBehaviour
         }
 
         if (other.gameObject.tag == "Checkpoint")
-        {
-            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
-            other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
-            other.gameObject.GetComponent<Light2D>().enabled = true;
-            AudioManager.instance.PlaySFX("Checkpoint");
+        {   
+            if(other.gameObject.GetComponent<SpriteRenderer>().sprite != litTorch) {
+                LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
+                other.gameObject.GetComponent<Light2D>().enabled = true;
+                AudioManager.instance.PlaySFX("Checkpoint");
+            }
         }
 
         if (other.gameObject.CompareTag("Collectible"))
         {
-            other.gameObject.SetActive(false);
-            setCollectiblesCounter(collectiblesCounter + 1);
-            setCollectiblesText();
-            AudioManager.instance.PlaySFX("Collectible");
+            if(other.gameObject.GetComponent<SpriteRenderer>().sprite != emptyChest) {
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = emptyChest;
+                other.gameObject.GetComponent<Light2D>().enabled = false;
+                setCollectiblesCounter(collectiblesCounter + 1);
+                setCollectiblesText();
+                AudioManager.instance.PlaySFX("Collectible");
+            }
         }
 
         if (other.gameObject.CompareTag("TargetPoint"))
