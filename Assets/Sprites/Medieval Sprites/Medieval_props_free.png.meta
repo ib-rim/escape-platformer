@@ -913,12 +913,12 @@ TextureImporter:
       name: Medieval_props_free_30
       rect:
         serializedVersion: 2
-        x: 382
+        x: 380
         y: 13
-        width: 29
-        height: 30
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -934,12 +934,12 @@ TextureImporter:
       name: Medieval_props_free_31
       rect:
         serializedVersion: 2
-        x: 423
+        x: 421
         y: 13
-        width: 29
-        height: 30
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -955,12 +955,12 @@ TextureImporter:
       name: Medieval_props_free_32
       rect:
         serializedVersion: 2
-        x: 332
-        y: 142
-        width: 23
-        height: 20
+        x: 462
+        y: 13
+        width: 33
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -976,12 +976,12 @@ TextureImporter:
       name: Medieval_props_free_33
       rect:
         serializedVersion: 2
-        x: 464
-        y: 13
-        width: 29
-        height: 30
+        x: 332
+        y: 142
+        width: 23
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

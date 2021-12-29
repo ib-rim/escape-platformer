@@ -20,6 +20,7 @@ public class PlayerCollisions : MonoBehaviour
     public Text winText;
 
     public Sprite litTorch;
+    public Sprite emptyChest;
 
     private void Awake()
     {
@@ -64,10 +65,13 @@ public class PlayerCollisions : MonoBehaviour
 
         if (other.gameObject.CompareTag("Collectible"))
         {
-            other.gameObject.SetActive(false);
-            setCollectiblesCounter(collectiblesCounter + 1);
-            setCollectiblesText();
-            AudioManager.instance.PlaySFX("Collectible");
+            if(other.gameObject.GetComponent<SpriteRenderer>().sprite != emptyChest) {
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = emptyChest;
+                other.gameObject.GetComponent<Light2D>().enabled = false;
+                setCollectiblesCounter(collectiblesCounter + 1);
+                setCollectiblesText();
+                AudioManager.instance.PlaySFX("Collectible");
+            }
         }
 
         if (other.gameObject.CompareTag("TargetPoint"))
