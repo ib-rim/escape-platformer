@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: CeilingCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047536647368833140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7930724988268041980}
@@ -42,7 +42,7 @@ GameObject:
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7930724988253694806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7930724988268041980}
@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 9148726372160953904}
   - component: {fileID: 1878086571}
   - component: {fileID: 1878086581}
+  - component: {fileID: 213350306665015551}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -95,7 +96,7 @@ Transform:
   m_GameObject: {fileID: 7930724988268041978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.9, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.9, z: 1}
   m_Children:
   - {fileID: 7930724988253694805}
   - {fileID: 6106311260728760772}
@@ -143,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 8793639957104055765, guid: 96c1a6fca2181f04395aec40e7dd45c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,18 +189,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.98}
   m_EdgeRadius: 0
 --- !u!114 &7930724988268041976
 MonoBehaviour:
@@ -340,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7930724988268041982}
+  boxCollider: {fileID: 7930724988268041983}
   groundCheck: {fileID: 7930724988253694805}
   groundLayer:
     serializedVersion: 2
@@ -348,6 +350,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpSpeed: 5
   ceilingCheck: {fileID: 6106311260728760772}
+  player_animator: {fileID: 213350306665015551}
 --- !u!114 &137866425783899621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathsText: {fileID: 0}
   invincible: 0
+  player_animator: {fileID: 213350306665015551}
+  playerController: {fileID: 0}
 --- !u!114 &4226284380691887958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef740b0657d1e741950df8241e82cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLight: {fileID: 1878086581}
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &9148726372160953904
 MonoBehaviour:
@@ -452,7 +458,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 0.9811321, g: 0.92004275, b: 0.92004275, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -514,3 +520,22 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &213350306665015551
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930724988268041978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41b869bd092816247b938adf7ed5ae88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

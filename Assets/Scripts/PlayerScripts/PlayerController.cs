@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public const float defaultCrouchHeight = 0.95f;
 
     public Rigidbody2D rb;
+
+    public BoxCollider2D boxCollider;
+
     public Transform groundCheck;
     public LayerMask groundLayer;
     public GameObject playerObject;
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform ceilingCheck;
 
+    public Animator player_animator;
+
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
@@ -33,9 +38,65 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.PlaySFX("Footsteps");
     }
 
+    private void Update()
+    {
+        // Conditions for triggering player character's animations
+
+        // Idle
+        if (moveValue.x == 0f && IsGrounded())
+        {
+            resetAnimatorParameters();
+            player_animator.SetBool("idle", true);
+        }
+        // Move
+        else if (moveValue.x != 0f && IsGrounded())
+        {
+            resetAnimatorParameters();
+            player_animator.SetBool("move", true);
+        }
+        // Jump
+        else if (rb.velocity.y > 1f && !IsGrounded())
+        {
+            resetAnimatorParameters();
+            player_animator.SetBool("jump", true);
+        }
+        // Fall
+        else if (rb.velocity.y < -1f && !IsGrounded())
+        {
+            resetAnimatorParameters();
+            player_animator.SetBool("fall", true);
+        }        
+
+        //Standing
+        if(!crouching && CanStand()) {
+            player_animator.SetBool("crouch", false);
+            player_animator.SetBool("stand", true);
+            boxCollider.offset = new Vector2(0f, 0.02f);
+            boxCollider.size = new Vector2(0.5f, 0.98f);
+        }
+        else {
+            player_animator.SetBool("stand", false);
+        }
+    }
+
+    public void resetAnimatorParameters() {
+        player_animator.SetBool("idle", false);
+        player_animator.SetBool("move", false);
+        player_animator.SetBool("jump", false);
+        player_animator.SetBool("fall", false);
+        player_animator.SetBool("death", false);
+    }
+
     public void move(InputAction.CallbackContext context)
     {
         moveValue = context.ReadValue<Vector2>();
+
+        if (moveValue.x > 0)
+            playerObject.transform.localScale =
+                new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
+        if (moveValue.x < 0)
+            playerObject.transform.localScale =
+                new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, 1);
     }
 
     public void jump(InputAction.CallbackContext context)
@@ -56,11 +117,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void crouch(InputAction.CallbackContext context)
-    {
+    {   
         if (context.performed)
         {
-            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultCrouchHeight, playerObject.transform.localScale.z);
+            boxCollider.offset = new Vector2(0f, -0.23f);
+            boxCollider.size = new Vector2(0.5f, 0.48f);
             crouching = true;
+            player_animator.SetBool("crouch", true);
             AudioManager.instance.PlaySFX("Crouch");
         }
 
@@ -72,18 +135,18 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.5f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.35f, groundLayer);
         return isGrounded;
     }
 
     private bool CanStand()
     {
-        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.5f, groundLayer);
+        canStand = !Physics2D.OverlapCircle(ceilingCheck.position, 0.1f, groundLayer);
         return canStand;
     }
 
     void FixedUpdate()
-    {
+    {   
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
         if(moveValue.x != 0 && IsGrounded()) {
             AudioManager.instance.PlayFootsteps();
@@ -91,9 +154,5 @@ public class PlayerController : MonoBehaviour
         else {
             AudioManager.instance.StopFootsteps();
         }
-        if(!crouching && CanStand()) {
-            playerObject.transform.localScale = new Vector3(playerObject.transform.localScale.x, defaultPlayerHeight, playerObject.transform.localScale.z);
-        }
     }
-
 }
