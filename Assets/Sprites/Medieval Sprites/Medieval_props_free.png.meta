@@ -176,6 +176,9 @@ TextureImporter:
   - first:
       213: -8521159015528556745
     second: Medieval_props_free_33
+  - first:
+      213: -2215817855815752275
+    second: Medieval_props_free_34
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -957,7 +960,7 @@ TextureImporter:
         width: 33
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -978,7 +981,7 @@ TextureImporter:
         width: 23
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -986,6 +989,27 @@ TextureImporter:
       bones: []
       spriteID: 7379dccb503ceb980800000000000000
       internalID: -8521159015528556745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medieval_props_free_34
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 103
+        width: 35
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da562296665df31e0800000000000000
+      internalID: -2215817855815752275
       vertices: []
       indices: 
       edges: []
