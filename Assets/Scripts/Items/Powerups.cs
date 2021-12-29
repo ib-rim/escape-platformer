@@ -15,7 +15,7 @@ public class Powerups : MonoBehaviour
     Color jumpColor = new Color32(0, 255, 56, 255);
     Color speedColor = new Color32(255, 117, 0, 255);
     Color slowFallColor = new Color32(0, 227, 255, 255);
-    Color invincibilityColor = new Color32(255, 244, 0, 255);
+    Color invincibilityColor = new Color32(255, 255, 0, 255);
     Color slowColor = new Color32(255, 0, 182, 255);
 
     private float powerupTime = 3;
