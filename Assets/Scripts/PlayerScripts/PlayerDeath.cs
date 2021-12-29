@@ -9,11 +9,16 @@ public class PlayerDeath : MonoBehaviour {
     public Text deathsText;
     public bool invincible;
 
+    public Animator player_animator;
+
+    public PlayerController playerController;
+
     private void Awake() {
         setDeathsText();
+        playerController = GetComponent<PlayerController>();
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
+    private void OnCollisionEnter2D(Collision2D other) {
 
         if(!invincible) {
 
@@ -40,10 +45,18 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void death() {
+        playerController.enabled = false;
+        player_animator.SetBool("death", true);
+        AudioManager.instance.PlaySFX("Death");
         setDeathsCounter(deathsCounter+1);
         setDeathsText();
+        StartCoroutine("respawn");
+    }
+
+    IEnumerator respawn()
+    {
+        yield return new WaitForSeconds(0.3f);
         LevelManager.instance.Respawn();
-        AudioManager.instance.PlaySFX("Death");
     }
 
     public int getDeathsCounter() {
