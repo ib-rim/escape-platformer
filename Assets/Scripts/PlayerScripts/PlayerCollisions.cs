@@ -54,11 +54,13 @@ public class PlayerCollisions : MonoBehaviour
         }
 
         if (other.gameObject.tag == "Checkpoint")
-        {
-            LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
-            other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
-            other.gameObject.GetComponent<Light2D>().enabled = true;
-            AudioManager.instance.PlaySFX("Checkpoint");
+        {   
+            if(other.gameObject.GetComponent<SpriteRenderer>().sprite != litTorch) {
+                LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
+                other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
+                other.gameObject.GetComponent<Light2D>().enabled = true;
+                AudioManager.instance.PlaySFX("Checkpoint");
+            }
         }
 
         if (other.gameObject.CompareTag("Collectible"))
