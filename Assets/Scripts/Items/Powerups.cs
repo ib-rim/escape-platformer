@@ -8,8 +8,17 @@ public class Powerups : MonoBehaviour
     PlayerController player;
     SpriteRenderer rend;
     GameObject powerupsText;
+    ParticleSystem playerParticles;
+    ParticleSystem.MainModule particlesMain;
+    ParticleSystem.ShapeModule particlesShape;
+    ParticleSystemRenderer particlesRenderer;
 
     public Font font;
+    public Material upArrow; 
+    public Material downArrow; 
+    public Material rightArrow; 
+    public Material cloud; 
+    public Material shield; 
 
     Color playerColor = new Color32(255, 255, 255, 255);
     Color jumpColor = new Color32(0, 255, 56, 255);
@@ -27,6 +36,10 @@ public class Powerups : MonoBehaviour
         powerupsText = GameObject.Find("PowerupTimers");
         rend = GetComponent<SpriteRenderer>();
         player = GetComponent<PlayerController>();
+        playerParticles = GetComponent<ParticleSystem>();
+        particlesMain = playerParticles.main;
+        particlesShape = playerParticles.shape;
+        particlesRenderer = GetComponent<ParticleSystemRenderer>();
     }
 
     GameObject newPowerupText(Color powerupColor)
@@ -80,13 +93,15 @@ public class Powerups : MonoBehaviour
         }
 
         if (powerupsCount > 0)
-        {
+        {   
             rend.color = mostRecentColor;
         }
         else
-        {
+        {   
             rend.color = playerColor;
             mostRecentColor = playerColor;
+            playerParticles.Clear();
+            playerParticles.Stop();
         }
     }
 
@@ -134,6 +149,19 @@ public class Powerups : MonoBehaviour
         //Increase jumpSpeed and player color
         player.jumpSpeed = PlayerController.defaultJumpSpeed * 1.5f;
         rend.color = jumpColor;
+        
+        //Particle effects
+        //Change colour
+        particlesMain.startColor = jumpColor;
+        //Change material (shape)
+        particlesRenderer.material = upArrow;
+        //Change direction (change shape z rotation)
+        particlesShape.position = new Vector3(0f, 0f, 1f);
+        particlesShape.rotation = new Vector3(0f, 0f, 0f);
+
+        playerParticles.Clear();
+        playerParticles.Play();
+
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(jumpColor);
@@ -163,6 +191,18 @@ public class Powerups : MonoBehaviour
         player.moveSpeed = PlayerController.defaultMoveSpeed * 2;
         rend.color = speedColor;
 
+        //Particle effects
+        //Change colour
+        particlesMain.startColor = speedColor;
+        //Change material (shape)
+        particlesRenderer.material = rightArrow;
+        //Change direction (change shape z rotation)
+        particlesShape.position = new Vector3(-0.5f, 0f, 1f);
+        particlesShape.rotation = new Vector3(0f, 0f, 270f);
+
+        playerParticles.Clear();
+        playerParticles.Play();
+
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(speedColor);
         Text text = powerupText.GetComponent<Text>();
@@ -188,6 +228,18 @@ public class Powerups : MonoBehaviour
     {
         //Change player color
         rend.color = slowFallColor;
+
+        //Particle effects
+        //Change colour
+        particlesMain.startColor = slowFallColor;
+        //Change material (shape)
+        particlesRenderer.material = cloud;
+        //Change direction (change shape z rotation)
+        particlesShape.position = new Vector3(0f, 0f, 1f);
+        particlesShape.rotation = new Vector3(0f, 0f, 0f);
+
+        playerParticles.Clear();
+        playerParticles.Play();
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(slowFallColor);
@@ -229,6 +281,18 @@ public class Powerups : MonoBehaviour
         GetComponent<PlayerDeath>().invincible = true;
         rend.color = invincibilityColor;
 
+        //Particle effects
+        //Change colour
+        particlesMain.startColor = invincibilityColor;
+        //Change material (shape)
+        particlesRenderer.material = shield;
+        //Change direction (change shape z rotation)
+        particlesShape.position = new Vector3(0f, 0f, 1f);
+        particlesShape.rotation = new Vector3(0f, 0f, 0f);
+
+        playerParticles.Clear();
+        playerParticles.Play();
+
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(invincibilityColor);
         Text text = powerupText.GetComponent<Text>();
@@ -259,7 +323,18 @@ public class Powerups : MonoBehaviour
         player.jumpSpeed = PlayerController.defaultJumpSpeed / 2;
         rend.color = slowColor;
 
+        //Particle effects
+        //Change colour
+        particlesMain.startColor = slowColor;
+        //Change material (shape)
+        particlesRenderer.material = downArrow;
+        //Change direction (change shape z rotation)
+        particlesShape.position = new Vector3(0f, 0.5f, 1f);
+        particlesShape.rotation = new Vector3(0f, 0f, 180f);
 
+        playerParticles.Clear();
+        playerParticles.Play();
+        
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(slowColor);
         Text text = powerupText.GetComponent<Text>();
