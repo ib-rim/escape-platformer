@@ -48,12 +48,6 @@ public class OptionsMenuController : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    //Set to fullscreen
-    public void SetFullScreen(bool isFullScreen)
-    {
-        Screen.fullScreen = isFullScreen;
-    }
-
     //Clear save data by clearing playerprefs
     public void clearSaveData()
     {

@@ -33,7 +33,7 @@ public class MainMenuController : MonoBehaviour
         optionsMenu.SetActive(true);
 
         //Select first button on options screen for keyboard navigation
-        optionsMenu.GetComponentInChildren<Toggle>().Select();
+        optionsMenu.GetComponentInChildren<Slider>().Select();
     }
 
     //Quit game
