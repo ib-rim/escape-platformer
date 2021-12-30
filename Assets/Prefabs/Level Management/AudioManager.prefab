@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9170659590553904109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9170659590553904107}
+  - component: {fileID: 9170659590553904108}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9170659590553904107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170659590553904109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5336369, y: 3.4114752, z: -17.677763}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9170659590553904108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170659590553904109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0458603b2250c124a9d46497de11f9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music:
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: 4232d3cc13bcb3e4e9992eabfbe60406, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Level1Music
+    clip: {fileID: 8300000, guid: b9e4bb781800c52498d56194973e3177, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Level1MusicLoop
+    clip: {fileID: 8300000, guid: ef06c08a5938fec47aa0962da45e7a22, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Level2Music
+    clip: {fileID: 8300000, guid: 2e857e39d56861a4badaef94108e7332, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Level3Music
+    clip: {fileID: 8300000, guid: ae57efbf15567834180a169ae4902ebe, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Level3MusicLoop
+    clip: {fileID: 8300000, guid: 5c11a9a95089973438808e3110157489, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Level4Music
+    clip: {fileID: 8300000, guid: d5f7d6eb9d104184fa1b90336f660814, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  SFX:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 483e5ff70ade3ed4e8697e764f9a0d34, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Crouch
+    clip: {fileID: 8300000, guid: 0e44597ac6e53da4c87ab5b6a1f161ed, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: 3a7d04ff7a8f213438f686654d0411fe, type: 3}
+    volume: 1
+    pitch: 0.8
+    source: {fileID: 0}
+    loop: 1
+  - name: BouncyJump
+    clip: {fileID: 8300000, guid: f40fdad82d9887b4ea689c364d9d5c48, type: 3}
+    volume: 1
+    pitch: 0.4
+    source: {fileID: 0}
+    loop: 0
+  - name: Death
+    clip: {fileID: 8300000, guid: dfb2d1c983c413f4896494776ff1902e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Collectible
+    clip: {fileID: 8300000, guid: e84ea95a8120bd243b4ba81317a69efb, type: 3}
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Pitfall
+    clip: {fileID: 8300000, guid: 3958f17ea4ec9cb4e818e94663206e7b, type: 3}
+    volume: 1
+    pitch: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Powerup
+    clip: {fileID: 8300000, guid: c75969fb06faccf4fb5d9cfb178ebf1a, type: 3}
+    volume: 1
+    pitch: 0.9
+    source: {fileID: 0}
+    loop: 0
+  - name: Slow
+    clip: {fileID: 8300000, guid: f2bac9d7929ed9443b24f905b7cff1ec, type: 3}
+    volume: 1
+    pitch: 0.35
+    source: {fileID: 0}
+    loop: 0
+  - name: ArrowTrap
+    clip: {fileID: 8300000, guid: 4ff3986982a3f62449a14758c1b33e4f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Checkpoint
+    clip: {fileID: 8300000, guid: 6758feb6f5e4e0a4fa0e8e9f6a9ac80c, type: 3}
+    volume: 1
+    pitch: 0.5
+    source: {fileID: 0}
+    loop: 0
+  musicMixer: {fileID: -462028106905977571, guid: dce7cae07ba832f42b723896b32f7073, type: 2}
+  SFXMixer: {fileID: -5007719446433315683, guid: dce7cae07ba832f42b723896b32f7073, type: 2}
+  audioMixer: {fileID: 24100000, guid: dce7cae07ba832f42b723896b32f7073, type: 2}
