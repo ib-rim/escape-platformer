@@ -73,7 +73,10 @@ public class LevelManager : MonoBehaviour
         Debug.Log(collectiblesCount);
         Debug.Log(time);
 
-        PlayerPrefs.SetInt($"{level}Deaths", PlayerPrefs.GetInt($"{level}Deaths") + deathsCount);
+        if (deathsCount < PlayerPrefs.GetInt($"{level}Deaths"))
+        {
+            PlayerPrefs.SetInt($"{level}Deaths", deathsCount);
+        }
         if (collectiblesCount > PlayerPrefs.GetInt($"{level}Collectibles"))
         {
             PlayerPrefs.SetInt($"{level}Collectibles", collectiblesCount);
