@@ -22,6 +22,8 @@ public class PlayerCollisions : MonoBehaviour
     public Sprite litTorch;
     public Sprite emptyChest;
 
+    //public static PlayerCollisions instance;
+
     private void Awake()
     {
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;

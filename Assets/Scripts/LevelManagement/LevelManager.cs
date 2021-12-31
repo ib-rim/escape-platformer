@@ -9,9 +9,11 @@ public class LevelManager : MonoBehaviour {
     public static LevelManager instance;
 
     public static Vector2 respawnPoint;
+    //public static Vector2 startingPoint;
     private GameObject playerPrefab;
     
     public static bool levelStart = true; 
+
 
     private void Awake() {
 
