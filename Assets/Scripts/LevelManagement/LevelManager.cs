@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
         {
             respawnPoint = playerPrefab.transform.position;
         }
-        playerPrefab.GetComponent<Rigidbody2D>().position = respawnPoint;
+        playerPrefab.transform.position = respawnPoint;
     }
 
     //Reload scene to respawn player
@@ -68,10 +68,6 @@ public class LevelManager : MonoBehaviour
         TimeSpan time = timer.getTimePlaying();
 
         String level = SceneManager.GetActiveScene().name;
-
-        Debug.Log(deathsCount);
-        Debug.Log(collectiblesCount);
-        Debug.Log(time);
 
         if (deathsCount < PlayerPrefs.GetInt($"{level}Deaths"))
         {
