@@ -5,88 +5,87 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-
-
 public class PauseMenuController : MonoBehaviour
 {
-
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenu;
-    public GameObject optionsMenu; 
+    public GameObject optionsMenu;
     public GameObject pausePanel;
 
     public PlayerDeath playerDeath;
     public PlayerCollisions playerCollisions;
     public Timer timer;
 
+    public PlayerInput playerInput;
+    public InputActionAsset actions;
+
     private GameObject collectibles;
 
-
-
-    private void Awake() {
+    private void Awake()
+    {
         playerDeath = GameObject.Find("Player (0)").GetComponent<PlayerDeath>();
         playerCollisions = GameObject.Find("Player (0)").GetComponent<PlayerCollisions>();
+        playerInput = GameObject.Find("Player (0)").GetComponent<PlayerInput>();
         timer = GameObject.Find("TimerText").GetComponent<Timer>();
-        collectibles = GameObject.Find("Collectibles");   
-
+        collectibles = GameObject.Find("Collectibles");
+        actions = playerInput.actions;
     }
-
-
 
     //resume game
     public void resume()
     {
-       pauseMenu.SetActive(false);
-       pausePanel.SetActive(false);
-       Time.timeScale = 1f;
-       GameIsPaused = false;
-    }
-    public void pause(InputAction.CallbackContext context)
-    {
-
-        if (context.performed) 
-        {
-            //pause game and display pause menu
-            Debug.Log("Pause Game");
-            
-            pausePanel.SetActive(true);
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            GameIsPaused = true;
-        }
-        
-    }
-
-
-
-    //restart game 
-    public void restart()
-    {
-        //reload current scene
-        LevelManager.levelStart = true;
-        
-        //Reset collectibles for new level
-        GameObject.Destroy(collectibles);
-
-        //Reset deaths for new level
-        playerDeath.setDeathsCounter(0);
-        playerDeath.setDeathsText();
-
-        //Reset collectibles for new level
-        playerCollisions.setCollectiblesCounter(0);
-        playerCollisions.setCollectiblesText();
-
-        //Reset timer for new level
-        timer.EndTimer();
-
         pauseMenu.SetActive(false);
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        actions.FindActionMap("Player").FindAction("Move").Enable();
+        actions.FindActionMap("Player").FindAction("Jump").Enable();
+        actions.FindActionMap("Player").FindAction("Crouch").Enable();
         GameIsPaused = false;
+    }
 
-        Scene scene = SceneManager.GetActiveScene(); 
-        SceneManager.LoadScene(scene.name);
+    //Player Input to activate pause menu (ESC)
+    public void pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (!GameIsPaused)
+            {
+                //pause game and display pause menu
+                pausePanel.SetActive(true);
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0f;
+                actions.FindActionMap("Player").FindAction("Move").Disable();
+                actions.FindActionMap("Player").FindAction("Jump").Disable();
+                actions.FindActionMap("Player").FindAction("Crouch").Disable();
+                GameIsPaused = true;
+
+                //Select first button on options screen for keyboard navigation
+                pauseMenu.GetComponentInChildren<Button>().Select();
+            }
+            else if (pauseMenu.activeInHierarchy)
+            {
+                resume();
+            }
+            else if (optionsMenu.activeInHierarchy)
+            {
+                optionsMenu.SetActive(false);
+                pauseMenu.SetActive(true);
+
+                //Select first button on pause menu for keyboard navigation
+                pauseMenu.GetComponentInChildren<Button>().Select();
+            }
+        }
+    }
+
+    //restart game
+    public void restart()
+    {
+        LevelManager.instance.reset();
+        LevelManager.instance.Respawn();
+        resume();
+
+        AudioManager.instance.changeMusic();
     }
 
     //change options
@@ -103,28 +102,9 @@ public class PauseMenuController : MonoBehaviour
     //Quit game
     public void returnMainMenu()
     {
+        LevelManager.instance.reset();
 
-         //reload current scene
-        LevelManager.levelStart = true;
-        
-        //Reset collectibles for new level
-        GameObject.Destroy(collectibles);
-
-        //Reset deaths for new level
-        playerDeath.setDeathsCounter(0);
-        playerDeath.setDeathsText();
-
-        //Reset collectibles for new level
-        playerCollisions.setCollectiblesCounter(0);
-        playerCollisions.setCollectiblesText();
-
-        //Reset timer for new level
-        timer.EndTimer();
-
-        pauseMenu.SetActive(false);
-        pausePanel.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        resume();
 
         PlayerPrefs.SetString("SkipToLevels", "true");
         SceneManager.LoadScene("MainMenu");
