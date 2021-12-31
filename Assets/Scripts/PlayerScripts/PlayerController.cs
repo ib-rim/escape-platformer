@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed) 
         {
             //pause game and display pause menu
+            Debug.Log("Pause Game");
             pauseMenu.pause();
         }
     }
