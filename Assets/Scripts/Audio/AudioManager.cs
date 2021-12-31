@@ -153,7 +153,7 @@ public class AudioManager : MonoBehaviour
             changeMusic();
         }
 
-        if(sceneName == "MainMenu" && footsteps.source.enabled) {
+        if(sceneName == "MainMenu" && footsteps.source.enabled || Time.timeScale == 0f) {
             StopFootsteps();
         }
 
