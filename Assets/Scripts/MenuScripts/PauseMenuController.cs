@@ -109,6 +109,11 @@ public class PauseMenuController : MonoBehaviour
         //Reset timer for new level
         timer.EndTimer();
 
+        pauseMenu.SetActive(false);
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
         PlayerPrefs.SetString("SkipToLevels", "true");
         SceneManager.LoadScene("MainMenu");
     }
