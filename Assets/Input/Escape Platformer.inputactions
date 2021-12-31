@@ -360,7 +360,7 @@
             "actions": [
                 {
                     "name": "Navigate",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "ec471945-1faf-4ff2-aa05-917439678851",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -368,7 +368,7 @@
                 },
                 {
                     "name": "Submit",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "f889f989-83e4-40f4-988a-3d358b06df88",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -376,7 +376,7 @@
                 },
                 {
                     "name": "Cancel",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "406cfda1-bf27-47d6-a499-f1c25e446a46",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -708,6 +708,28 @@
                     "name": "",
                     "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
                     "path": "*/{Submit}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68c2dc8e-a601-41f4-ace7-feb57d05d661",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b5970d2-c412-477e-9741-4ec27392c088",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
