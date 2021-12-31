@@ -30,12 +30,14 @@ public class PlayerController : MonoBehaviour
 
     public Animator player_animator;
 
+
     void Start()
     {
         moveSpeed = defaultMoveSpeed;
         jumpSpeed = defaultJumpSpeed;
         rb.gravityScale = defaultGravity;
         AudioManager.instance.PlaySFX("Footsteps");
+
     }
 
     private void Update()
@@ -77,6 +79,8 @@ public class PlayerController : MonoBehaviour
         else {
             player_animator.SetBool("stand", false);
         }
+
+    
     }
 
     public void resetAnimatorParameters() {
@@ -132,6 +136,7 @@ public class PlayerController : MonoBehaviour
             crouching = false;
         }
     }
+
 
     private bool IsGrounded()
     {

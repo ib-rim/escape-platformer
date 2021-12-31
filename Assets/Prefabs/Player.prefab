@@ -325,6 +325,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c3d9f7a3-6c9b-409b-8425-5fa4a7442220
     m_ActionName: Player/Crouch[/Keyboard/s,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
+        m_MethodName: pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 82eed035-1599-43fe-adad-29cde6bb554c
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -367,6 +383,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathsText: {fileID: 0}
   invincible: 0
+  dead: 0
+  shouldDie: 0
   player_animator: {fileID: 213350306665015551}
   playerController: {fileID: 0}
 --- !u!114 &4226284380691887958
