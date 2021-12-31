@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     public Animator player_animator;
 
-    public PauseMenuController pauseMenu;
 
     void Start()
     {
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = defaultGravity;
         AudioManager.instance.PlaySFX("Footsteps");
 
-        pauseMenu = GameObject.Find("PauseMenu").GetComponent<PauseMenuController>();
     }
 
     private void Update()
@@ -139,17 +137,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    //pause the game
-    public void pause(InputAction.CallbackContext context)
-    {
-        if (context.performed) 
-        {
-            //pause game and display pause menu
-            Debug.Log("Pause Game");
-            pauseMenu.pause();
-        }
-    }
 
     private bool IsGrounded()
     {

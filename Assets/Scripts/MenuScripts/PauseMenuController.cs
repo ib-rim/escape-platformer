@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 
 
 public class PauseMenuController : MonoBehaviour
@@ -40,13 +42,23 @@ public class PauseMenuController : MonoBehaviour
        Time.timeScale = 1f;
        GameIsPaused = false;
     }
-    public void pause()
+    public void pause(InputAction.CallbackContext context)
     {
-        pausePanel.SetActive(true);
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+
+        if (context.performed) 
+        {
+            //pause game and display pause menu
+            Debug.Log("Pause Game");
+            
+            pausePanel.SetActive(true);
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            GameIsPaused = true;
+        }
+        
     }
+
+
 
     //restart game 
     public void restart()

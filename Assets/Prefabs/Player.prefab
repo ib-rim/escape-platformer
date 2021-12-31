@@ -327,8 +327,8 @@ MonoBehaviour:
     m_ActionName: Player/Crouch[/Keyboard/s,/Keyboard/downArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7930724988268041977}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
         m_MethodName: pause
         m_Mode: 0
         m_Arguments:
@@ -369,7 +369,6 @@ MonoBehaviour:
   jumpSpeed: 5
   ceilingCheck: {fileID: 6106311260728760772}
   player_animator: {fileID: 213350306665015551}
-  pauseMenu: {fileID: 0}
 --- !u!114 &137866425783899621
 MonoBehaviour:
   m_ObjectHideFlags: 0
