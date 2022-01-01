@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class LevelSelectController : MonoBehaviour
 {
@@ -28,8 +29,16 @@ public class LevelSelectController : MonoBehaviour
     public GameObject level4DeathsText;
     public GameObject level4TimeText;
 
+    public InputAction backAction;
+
+    private void Start() {
+        backAction.performed += _ => back();
+    }
+
     void OnEnable()
-    {
+    {   
+        backAction.Enable();
+
         //Check which levels are unlocked
         if(PlayerPrefs.GetString("Level1") == "complete") {
             level2Button.GetComponent<Button>().interactable = true;
@@ -65,6 +74,10 @@ public class LevelSelectController : MonoBehaviour
         level4CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level4Collectibles")} / 6";
         level4DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level4Deaths")}";
         level4TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level4Time");
+    }
+
+    private void OnDisable() {
+        backAction.Disable();
     }
 
     //Loads selected level (specified in editor)
