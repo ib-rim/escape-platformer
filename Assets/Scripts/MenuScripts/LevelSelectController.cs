@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,26 +12,20 @@ public class LevelSelectController : MonoBehaviour
     public GameObject mainMenu;
 
     public GameObject level1Button;
-    public GameObject level1CollectiblesText;
-    public GameObject level1DeathsText;
-    public GameObject level1TimeText;
-
     public GameObject level2Button;
-    public GameObject level2CollectiblesText;
-    public GameObject level2DeathsText;
-    public GameObject level2TimeText;
-
     public GameObject level3Button;
-    public GameObject level3CollectiblesText;
-    public GameObject level3DeathsText;
-    public GameObject level3TimeText;
-
     public GameObject level4Button;
-    public GameObject level4CollectiblesText;
-    public GameObject level4DeathsText;
-    public GameObject level4TimeText;
+
+    public GameObject playButton;
+    public GameObject playButtonText;
+
+    public GameObject collectiblesText;
+    public GameObject deathsText;
+    public GameObject timeText;
 
     public InputAction backAction;
+
+    public String selectedLevel;
 
     private void Start() {
         backAction.performed += _ => back();
@@ -59,31 +55,38 @@ public class LevelSelectController : MonoBehaviour
             level4Button.GetComponent<Button>().interactable = false;
         }
         
-        level1CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level1Collectibles")} / 9";
-        level1DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level1Deaths")}";
-        level1TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level1Time");
+        showLevel("Level1");
+    }
 
-        level2CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level2Collectibles")} / 11";
-        level2DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level2Deaths")}";
-        level2TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level2Time");
-
-        level3CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level3Collectibles")} / 5";
-        level3DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level3Deaths")}";
-        level3TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level3Time");
-
-        level4CollectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level4Collectibles")} / 6";
-        level4DeathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("Level4Deaths")}";
-        level4TimeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString("Level4Time");
+    //Shows stats and readies play function for selected level (specified in editor)
+    public void showLevel(String level) {
+        int total = 0;
+        selectedLevel = level;
+        if(level == "Level1") {
+            total = 9;
+        }
+        else if(level == "Level2") {
+            total = 11;
+        }
+        else if(level == "Level3") {
+            total = 5;
+        }
+        else if(level == "Level4") {
+            total = 6;
+        }
+        playButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = $"PLAY  LEVEL {Regex.Match(level, @"\d+").Value}";
+        collectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("{level}Collectibles")} / {total}";
+        deathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("{level}Deaths")}";
+        timeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString($"{level}Time");
     }
 
     private void OnDisable() {
         backAction.Disable();
     }
 
-    //Loads selected level (specified in editor)
-    public void loadLevel(string level)
+    public void playLevel()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(selectedLevel);
     }
 
     public void back()
