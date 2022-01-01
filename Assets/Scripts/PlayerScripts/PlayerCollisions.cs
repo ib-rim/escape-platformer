@@ -22,7 +22,7 @@ public class PlayerCollisions : MonoBehaviour
     public Sprite litTorch;
     public Sprite emptyChest;
 
-    //public static PlayerCollisions instance;
+    ParticleSystem pitfallParticles;
 
     private void Awake()
     {
@@ -35,6 +35,8 @@ public class PlayerCollisions : MonoBehaviour
     IEnumerator PitfallDelay(GameObject pitfall)
     {
         yield return new WaitForSeconds(pitfallDelayTime);
+        pitfallParticles.Clear();
+        pitfallParticles.Stop();
         pitfall.SetActive(false);
         AudioManager.instance.PlaySFX("Pitfall");
     }
@@ -42,7 +44,9 @@ public class PlayerCollisions : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Pitfall"))
-        {
+        {   
+            pitfallParticles = collision.gameObject.GetComponent<ParticleSystem>();
+            pitfallParticles.Play();
             StartCoroutine(PitfallDelay(collision.gameObject));
         }
     }
