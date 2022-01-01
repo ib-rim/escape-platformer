@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class OptionsMenuController : MonoBehaviour
 {
@@ -11,19 +12,33 @@ public class OptionsMenuController : MonoBehaviour
     public GameObject musicSlider;
     public GameObject SFXSlider;
 
-    private void Start() {
+    public InputAction backAction;
+
+    private void Start()
+    {
         setMusicSliderValue();
         setSFXSliderValue();
+
+        backAction.performed += _ => back();
+    }
+
+    private void OnEnable() {
+        backAction.Enable();
+    }
+
+    private void OnDisable() {
+        backAction.Disable();
     }
 
     //Set music volume
     public void SetMusicVolume(float value)
-    {   
-        float volume = Mathf.Log10(value) * 20; 
+    {
+        float volume = Mathf.Log10(value) * 20;
         AudioManager.instance.SetMusicVolume(volume);
     }
 
-    public void setMusicSliderValue() {
+    public void setMusicSliderValue()
+    {
         bool result = audioMixer.GetFloat("MusicVol", out float volume);
         float value = Mathf.Pow(10, volume / 20);
         musicSlider.GetComponent<Slider>().value = value;
@@ -31,12 +46,13 @@ public class OptionsMenuController : MonoBehaviour
 
     //Set SFX volume
     public void SetSFXVolume(float value)
-    {   
-        float volume = Mathf.Log10(value) * 20; 
+    {
+        float volume = Mathf.Log10(value) * 20;
         AudioManager.instance.SetSFXVolume(volume);
     }
 
-    public void setSFXSliderValue() {
+    public void setSFXSliderValue()
+    {
         bool result = audioMixer.GetFloat("SFXVol", out float volume);
         float value = Mathf.Pow(10, volume / 20);
         SFXSlider.GetComponent<Slider>().value = value;
