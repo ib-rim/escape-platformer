@@ -69,7 +69,7 @@ public class LevelManager : MonoBehaviour
 
         String level = SceneManager.GetActiveScene().name;
 
-        if (deathsCount < PlayerPrefs.GetInt($"{level}Deaths"))
+        if (!PlayerPrefs.HasKey($"{level}Deaths") || deathsCount < PlayerPrefs.GetInt($"{level}Deaths"))
         {
             PlayerPrefs.SetInt($"{level}Deaths", deathsCount);
         }
