@@ -68,15 +68,15 @@ public class Powerups : MonoBehaviour
         //Set position of text object according to how many powerups are in effect
         if (powerupsCount == 1)
         {
-            powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(253, 160);
+            powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 160);
         }
         else
         {
-            powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(253, 160 - (40 * (powerupsCount - 1)));
+            powerupText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 160 - (60 * (powerupsCount - 1)));
         }
 
         //Set size of text object
-        powerupText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 20);
+        powerupText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 55);
         powerupText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 55);
 
         return powerupText;
@@ -89,7 +89,7 @@ public class Powerups : MonoBehaviour
         RectTransform[] rectTransforms = powerupsText.transform.GetComponentsInChildren<RectTransform>();
         for (int i = 1; i < rectTransforms.Length; i++)
         {
-            rectTransforms[i].anchoredPosition = new Vector2(253, rectTransforms[i].anchoredPosition.y + 40);
+            rectTransforms[i].anchoredPosition = new Vector2(0, rectTransforms[i].anchoredPosition.y + 60);
         }
 
         if (powerupsCount > 0)
