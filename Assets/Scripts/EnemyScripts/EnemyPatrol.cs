@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class EnemyPatrol : MonoBehaviour
     public LayerMask groundLayer;
 
     void Start() 
-    {
+    {   
+        if(SceneManager.GetActiveScene().name.Contains("Easy")) {
+            movementSpeed /= 2;
+        }
         patrolling = true;
     }
 

@@ -23,7 +23,7 @@ public class MainMenuController : MonoBehaviour
         levelMenu.SetActive(true);
 
         //Select first button on level select screen for keyboard navigation
-        levelMenu.GetComponentInChildren<Button>().Select();
+        levelMenu.GetComponentInChildren<Toggle>().Select();
     }
 
     public void options()

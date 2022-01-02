@@ -16,9 +16,6 @@ public class LevelSelectController : MonoBehaviour
     public GameObject level3Button;
     public GameObject level4Button;
 
-    public GameObject playButton;
-    public GameObject playButtonText;
-
     public GameObject collectiblesText;
     public GameObject deathsText;
     public GameObject timeText;
@@ -37,22 +34,22 @@ public class LevelSelectController : MonoBehaviour
 
         //Check which levels are unlocked
         if(PlayerPrefs.GetString("Level1") == "complete") {
-            level2Button.GetComponent<Button>().interactable = true;
+            level2Button.GetComponent<Toggle>().interactable = true;
         }
         else {
-            level2Button.GetComponent<Button>().interactable = false;
+            level2Button.GetComponent<Toggle>().interactable = false;
         }
         if(PlayerPrefs.GetString("Level2") == "complete") {
-            level3Button.GetComponent<Button>().interactable = true;
+            level3Button.GetComponent<Toggle>().interactable = true;
         }
         else {
-            level3Button.GetComponent<Button>().interactable = false;
+            level3Button.GetComponent<Toggle>().interactable = false;
         }
         if(PlayerPrefs.GetString("Level3") == "complete") {
-            level4Button.GetComponent<Button>().interactable = true;
+            level4Button.GetComponent<Toggle>().interactable = true;
         }
         else {
-            level4Button.GetComponent<Button>().interactable = false;
+            level4Button.GetComponent<Toggle>().interactable = false;
         }
         
         showLevel("Level1");
@@ -74,7 +71,6 @@ public class LevelSelectController : MonoBehaviour
         else if(level == "Level4") {
             total = 6;
         }
-        playButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = $"PLAY  LEVEL {Regex.Match(level, @"\d+").Value}";
         collectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt($"{level}Collectibles")} / {total}";
         deathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt($"{level}Deaths")}";
         timeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString($"{level}Time");
@@ -84,9 +80,11 @@ public class LevelSelectController : MonoBehaviour
         backAction.Disable();
     }
 
-    public void playLevel()
-    {
-        SceneManager.LoadScene(selectedLevel);
+    public void playLevel(String difficulty)
+    {   
+        String sceneName = selectedLevel;
+        sceneName += difficulty;
+        SceneManager.LoadScene(sceneName);
     }
 
     public void back()

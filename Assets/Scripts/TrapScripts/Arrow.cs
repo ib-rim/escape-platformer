@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Arrow : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class Arrow : MonoBehaviour
     public Sprite rightArrow;
 
     void Start()
-    {
+    {   
+        if(SceneManager.GetActiveScene().name.Contains("Easy")) {
+            speed /= 2;
+        }
         if (direction == 1)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = rightArrow;

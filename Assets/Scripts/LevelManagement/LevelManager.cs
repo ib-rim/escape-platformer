@@ -51,8 +51,11 @@ public class LevelManager : MonoBehaviour
     //Reload scene to respawn player
     public void Respawn()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        String sceneName = SceneManager.GetActiveScene().name;
+        if(sceneName.Contains("Hard")) {
+            reset();
+        }
+        SceneManager.LoadScene(sceneName);
     }
 
     public void setRespawnPoint(Vector2 newRespawnPoint)
@@ -67,7 +70,7 @@ public class LevelManager : MonoBehaviour
         int collectiblesCount = playerCollisions.getCollectiblesCounter();
         TimeSpan time = timer.getTimePlaying();
 
-        String level = SceneManager.GetActiveScene().name;
+        String level = SceneManager.GetActiveScene().name.Substring(0, 6);
 
         if (!PlayerPrefs.HasKey($"{level}Deaths") || deathsCount < PlayerPrefs.GetInt($"{level}Deaths"))
         {

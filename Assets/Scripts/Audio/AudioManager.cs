@@ -129,16 +129,16 @@ public class AudioManager : MonoBehaviour
         if (sceneName == "MainMenu") {
             PlayMusic("MenuMusic");
         }
-        else if(sceneName == "Level1") {
+        else if(sceneName.Contains("Level1")) {
             PlayMusic("Level1Music");
         }
-        else if(sceneName == "Level2") {
+        else if(sceneName.Contains("Level2")) {
             PlayMusic("Level2Music");
         }
-        else if(sceneName == "Level3") {
+        else if(sceneName.Contains("Level3")) {
             PlayMusic("Level3Music");
         }
-        else if(sceneName == "Level4") {
+        else if(sceneName.Contains("Level4")) {
             PlayMusic("Level4Music");
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Powerups : MonoBehaviour
 {
@@ -32,7 +33,10 @@ public class Powerups : MonoBehaviour
     private Color mostRecentColor;
 
     void Start()
-    {
+    {   
+        if(SceneManager.GetActiveScene().name.Contains("Easy")) {
+            powerupTime = 5;
+        }
         powerupsText = GameObject.Find("PowerupTimers");
         rend = GetComponent<SpriteRenderer>();
         player = GetComponent<PlayerController>();
