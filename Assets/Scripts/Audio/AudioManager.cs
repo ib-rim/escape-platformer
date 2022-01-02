@@ -158,12 +158,12 @@ public class AudioManager : MonoBehaviour
         }
 
         //Switch to looping version of music for level 1
-        if(sceneName == "Level1" && !isPlaying("Level1Music") && !isPlaying("Level1MusicLoop")) {
+        if(sceneName.Contains("Level1") && !isPlaying("Level1Music") && !isPlaying("Level1MusicLoop")) {
             PlayMusic("Level1MusicLoop");
         }
 
         //Switch to looping version of music for level 3
-        if(sceneName == "Level3" && !isPlaying("Level3Music") && !isPlaying("Level3MusicLoop")) {
+        if(sceneName.Contains("Level3") && !isPlaying("Level3Music") && !isPlaying("Level3MusicLoop")) {
             PlayMusic("Level3MusicLoop");
         }
     }
