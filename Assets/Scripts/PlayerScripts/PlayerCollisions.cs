@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -25,7 +26,10 @@ public class PlayerCollisions : MonoBehaviour
     ParticleSystem pitfallParticles;
 
     private void Awake()
-    {
+    {   
+        if(SceneManager.GetActiveScene().name.Contains("Easy")) {
+            pitfallDelayTime *= 2;
+        }
         collectiblesTotal = GameObject.Find("Collectibles").transform.childCount;
         setCollectiblesText();
         winText.text = "";
@@ -33,7 +37,7 @@ public class PlayerCollisions : MonoBehaviour
 
 
     IEnumerator PitfallDelay(GameObject pitfall)
-    {
+    {   
         yield return new WaitForSeconds(pitfallDelayTime);
         pitfallParticles.Clear();
         pitfallParticles.Stop();
