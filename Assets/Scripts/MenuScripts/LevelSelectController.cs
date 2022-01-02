@@ -84,9 +84,11 @@ public class LevelSelectController : MonoBehaviour
         backAction.Disable();
     }
 
-    public void playLevel()
-    {
-        SceneManager.LoadScene(selectedLevel);
+    public void playLevel(String difficulty)
+    {   
+        String sceneName = selectedLevel;
+        sceneName += difficulty;
+        SceneManager.LoadScene(sceneName);
     }
 
     public void back()
