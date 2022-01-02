@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef740b0657d1e741950df8241e82cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  font: {fileID: 12800000, guid: 41b51598a45f6fa42b7968987bab157b, type: 3}
   upArrow: {fileID: 2100000, guid: 2204de46a29a3a5418acc1e758d17755, type: 2}
   downArrow: {fileID: 2100000, guid: 1414b5011b8d83544b583ade08efa2d9, type: 2}
   rightArrow: {fileID: 2100000, guid: e30ba21888e70524daad773b263d2689, type: 2}
