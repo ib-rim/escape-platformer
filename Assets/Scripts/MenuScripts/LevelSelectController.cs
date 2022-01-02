@@ -75,8 +75,8 @@ public class LevelSelectController : MonoBehaviour
             total = 6;
         }
         playButtonText.GetComponent<TMPro.TextMeshProUGUI>().text = $"PLAY  LEVEL {Regex.Match(level, @"\d+").Value}";
-        collectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("{level}Collectibles")} / {total}";
-        deathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt("{level}Deaths")}";
+        collectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt($"{level}Collectibles")} / {total}";
+        deathsText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt($"{level}Deaths")}";
         timeText.GetComponent<TMPro.TextMeshProUGUI>().text  = PlayerPrefs.GetString($"{level}Time");
     }
 
