@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7369515793561201982}
   - component: {fileID: 7369515793561201977}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: SharedCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
