@@ -41,6 +41,7 @@ public class PauseMenuController : MonoBehaviour
         actions.FindActionMap("Player").FindAction("Move").Enable();
         actions.FindActionMap("Player").FindAction("Jump").Enable();
         actions.FindActionMap("Player").FindAction("Crouch").Enable();
+                actions.FindActionMap("Player").FindAction("Talk").Enable();
         GameIsPaused = false;
     }
 
@@ -58,6 +59,7 @@ public class PauseMenuController : MonoBehaviour
                 actions.FindActionMap("Player").FindAction("Move").Disable();
                 actions.FindActionMap("Player").FindAction("Jump").Disable();
                 actions.FindActionMap("Player").FindAction("Crouch").Disable();
+                actions.FindActionMap("Player").FindAction("Talk").Disable();
                 GameIsPaused = true;
 
                 //Select first button on options screen for keyboard navigation

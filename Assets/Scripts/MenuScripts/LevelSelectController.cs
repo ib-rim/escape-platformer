@@ -16,6 +16,7 @@ public class LevelSelectController : MonoBehaviour
     public GameObject level3Button;
     public GameObject level4Button;
 
+    public GameObject levelText;
     public GameObject collectiblesText;
     public GameObject deathsText;
     public GameObject timeText;
@@ -60,15 +61,19 @@ public class LevelSelectController : MonoBehaviour
         int total = 0;
         selectedLevel = level;
         if(level == "Level1") {
+            levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "THROUGH THE DUNGEON";
             total = 9;
         }
         else if(level == "Level2") {
+            levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "UP THE TOWER";
             total = 11;
         }
         else if(level == "Level3") {
+            levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "ACROSS THE LAVA";
             total = 5;
         }
         else if(level == "Level4") {
+            levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "PAST YOURSELF";
             total = 6;
         }
         collectiblesText.GetComponent<TMPro.TextMeshProUGUI>().text  = $"x {PlayerPrefs.GetInt($"{level}Collectibles")} / {total}";
