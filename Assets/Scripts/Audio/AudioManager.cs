@@ -141,6 +141,9 @@ public class AudioManager : MonoBehaviour
         else if(sceneName.Contains("Level4")) {
             PlayMusic("Level4Music");
         }
+        else if(sceneName == "Ending" ) {
+            PlayMusic("EndingMusic");
+        }
     }
 
     private void Update() {
