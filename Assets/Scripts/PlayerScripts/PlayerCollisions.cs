@@ -87,6 +87,7 @@ public class PlayerCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("TargetPoint"))
         {
             winText.text = "LEVEL COMPLETE";
+            LevelManager.instance.EndLevel();
         }
 
         if (other.gameObject.CompareTag("TwoWayPlatform"))
