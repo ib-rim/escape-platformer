@@ -86,6 +86,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: EndingMusic
+    clip: {fileID: 8300000, guid: 0c1bd09c27a78a3429f7305137fcedd6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   SFX:
   - name: Jump
     clip: {fileID: 8300000, guid: 483e5ff70ade3ed4e8697e764f9a0d34, type: 3}
