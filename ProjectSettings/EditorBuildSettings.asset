@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4/Level4Hard.unity
     guid: 3e78a726b415aa9449027a7f9cf41ee7
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 60e0e9c734c5e9c48bc7db0b41069669
   m_configObjects: {}

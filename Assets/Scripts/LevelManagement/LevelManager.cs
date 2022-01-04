@@ -89,8 +89,14 @@ public class LevelManager : MonoBehaviour
 
         //Load Main Menu and mark level as complete for next level unlock
         PlayerPrefs.SetString($"{level}", "complete");
-        PlayerPrefs.SetString("SkipToLevels", "true");
-        SceneManager.LoadScene("MainMenu");
+
+        if(SceneManager.GetActiveScene().name.Contains("Level4")) {
+            SceneManager.LoadScene("Ending"); 
+        }
+        else {
+            PlayerPrefs.SetString("SkipToLevels", "true");
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void reset()
