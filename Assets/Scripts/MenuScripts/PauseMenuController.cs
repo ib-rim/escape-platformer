@@ -11,6 +11,7 @@ public class PauseMenuController : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject optionsMenu;
+    public GameObject controlsMenu;
     public GameObject pausePanel;
 
     public PlayerDeath playerDeath;
@@ -41,7 +42,7 @@ public class PauseMenuController : MonoBehaviour
         actions.FindActionMap("Player").FindAction("Move").Enable();
         actions.FindActionMap("Player").FindAction("Jump").Enable();
         actions.FindActionMap("Player").FindAction("Crouch").Enable();
-                actions.FindActionMap("Player").FindAction("Talk").Enable();
+        actions.FindActionMap("Player").FindAction("Talk").Enable();
         GameIsPaused = false;
     }
 
@@ -62,7 +63,7 @@ public class PauseMenuController : MonoBehaviour
                 actions.FindActionMap("Player").FindAction("Talk").Disable();
                 GameIsPaused = true;
 
-                //Select first button on options screen for keyboard navigation
+                //Select first button on pause screen for keyboard navigation
                 pauseMenu.GetComponentInChildren<Button>().Select();
             }
             else if (pauseMenu.activeInHierarchy)
@@ -72,6 +73,14 @@ public class PauseMenuController : MonoBehaviour
             else if (optionsMenu.activeInHierarchy)
             {
                 optionsMenu.SetActive(false);
+                pauseMenu.SetActive(true);
+
+                //Select first button on pause menu for keyboard navigation
+                pauseMenu.GetComponentInChildren<Button>().Select();
+            }
+            else if (controlsMenu.activeInHierarchy)
+            {
+                controlsMenu.SetActive(false);
                 pauseMenu.SetActive(true);
 
                 //Select first button on pause menu for keyboard navigation
@@ -97,8 +106,19 @@ public class PauseMenuController : MonoBehaviour
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
 
-        //Select first button on options screen for keyboard navigation
+        //Select first Slider on options screen for keyboard navigation
         optionsMenu.GetComponentInChildren<Slider>().Select();
+    }
+
+    //View controls
+    public void controls()
+    {
+        //To controls screen
+        pauseMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+
+        //Select first button on controls screen for keyboard navigation
+        controlsMenu.GetComponentInChildren<Button>().Select();
     }
 
     //Quit game
