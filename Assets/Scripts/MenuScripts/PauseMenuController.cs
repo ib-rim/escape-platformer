@@ -78,6 +78,14 @@ public class PauseMenuController : MonoBehaviour
                 //Select first button on pause menu for keyboard navigation
                 pauseMenu.GetComponentInChildren<Button>().Select();
             }
+            else if (controlsMenu.activeInHierarchy)
+            {
+                controlsMenu.SetActive(false);
+                pauseMenu.SetActive(true);
+
+                //Select first button on pause menu for keyboard navigation
+                pauseMenu.GetComponentInChildren<Button>().Select();
+            }
         }
     }
 
