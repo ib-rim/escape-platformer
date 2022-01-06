@@ -219,7 +219,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Words
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eddd988d13ef997448f78d12abcee3ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1e61c7e513d91834faeb4c520c56b99c, type: 2}
   m_sharedMaterial: {fileID: 3919848781485792126, guid: eddd988d13ef997448f78d12abcee3ac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8994581196508033768
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 8994581196997241054}
   - component: {fileID: 8994581196997241053}
   m_Layer: 5
-  m_Name: LevelCanvas
+  m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
