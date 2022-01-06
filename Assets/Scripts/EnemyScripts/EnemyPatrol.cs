@@ -33,6 +33,7 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    //Flip enemy on collision with other enemies
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))

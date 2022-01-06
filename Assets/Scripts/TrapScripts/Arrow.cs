@@ -17,6 +17,8 @@ public class Arrow : MonoBehaviour
         if(SceneManager.GetActiveScene().name.Contains("Easy")) {
             speed /= 2;
         }
+
+        //Change sprite depending on direction
         if (direction == 1)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = rightArrow;
@@ -29,12 +31,14 @@ public class Arrow : MonoBehaviour
         StartCoroutine(lifetime());
     }
 
+    //Destroy after travelling for some time
     IEnumerator lifetime()
     {
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 
+    //Destroy on collision with anything
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);

@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             player_animator.SetBool("fall", true);
         }        
 
-        //Standing
+        //Stand player up if not crouching and not in confined area
         if(!crouching && CanStand()) {
             player_animator.SetBool("crouch", false);
             player_animator.SetBool("stand", true);
@@ -79,10 +79,9 @@ public class PlayerController : MonoBehaviour
         else {
             player_animator.SetBool("stand", false);
         }
-
-    
     }
 
+    //Reset animation parameters to avoid conflicts
     public void resetAnimatorParameters() {
         player_animator.SetBool("idle", false);
         player_animator.SetBool("move", false);
@@ -95,6 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         moveValue = context.ReadValue<Vector2>();
 
+        //Flip player according to direction of movement
         if (moveValue.x > 0)
             playerObject.transform.localScale =
                 new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
@@ -123,7 +123,8 @@ public class PlayerController : MonoBehaviour
     public void crouch(InputAction.CallbackContext context)
     {   
         if (context.performed)
-        {
+        {   
+            //Crouch by changing size and position of collider
             boxCollider.offset = new Vector2(0f, -0.23f);
             boxCollider.size = new Vector2(0.5f, 0.48f);
             crouching = true;
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {   
         rb.velocity = new Vector2(moveValue.x * moveSpeed, rb.velocity.y);
+        //Play footsteps when moving on ground
         if(moveValue.x != 0 && IsGrounded()) {
             AudioManager.instance.PlayFootsteps();
         }

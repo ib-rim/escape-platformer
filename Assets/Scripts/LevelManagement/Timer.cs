@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
             timerText = "00:00.00";
             elapsedTime = 0f;
         }
-        BeginTimer(); // can be moved to LevelManager.cs later
+        BeginTimer();
         timer.text = timerText;
 
     }
@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
         StartCoroutine("UpdateTimer");
     }
 
-    // Can later be used to end timer once target point reached
+    //Used to end timer once target point reached
     public void EndTimer()
     {   
         isTimerActive = false;

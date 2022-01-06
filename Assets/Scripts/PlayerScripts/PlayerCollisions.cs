@@ -65,6 +65,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (other.gameObject.tag == "Checkpoint")
         {   
+            //Only if checkpoint has not been activated already
             if(other.gameObject.GetComponent<SpriteRenderer>().sprite != litTorch) {
                 LevelManager.instance.setRespawnPoint(other.gameObject.transform.position);
                 other.gameObject.GetComponent<SpriteRenderer>().sprite = litTorch;
@@ -75,6 +76,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (other.gameObject.CompareTag("Collectible"))
         {
+            //Only if collectible has not been collected already
             if(other.gameObject.GetComponent<SpriteRenderer>().sprite != emptyChest) {
                 other.gameObject.GetComponent<SpriteRenderer>().sprite = emptyChest;
                 other.gameObject.GetComponent<Light2D>().enabled = false;
@@ -90,6 +92,7 @@ public class PlayerCollisions : MonoBehaviour
             LevelManager.instance.EndLevel();
         }
 
+        //Allow player to walk on two way platforms after passing down through and not jumping back up again
         if (other.gameObject.CompareTag("TwoWayPlatform"))
         {
             other.gameObject.GetComponent<BoxCollider2D>().enabled = true;

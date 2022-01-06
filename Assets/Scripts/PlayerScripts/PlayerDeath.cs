@@ -21,6 +21,7 @@ public class PlayerDeath : MonoBehaviour {
         playerController = GetComponent<PlayerController>();
     }
 
+    //Keep track of whether player has collided with an obstacle
     private void OnCollisionEnter2D(Collision2D other) {
 
         if (other.gameObject.CompareTag("FallThreshold"))
@@ -44,6 +45,7 @@ public class PlayerDeath : MonoBehaviour {
         }
     }
 
+    //Keep track of whether player has left an obstacle
     private void OnCollisionExit2D(Collision2D other) {
 
         if (other.gameObject.CompareTag("FallThreshold"))
@@ -68,12 +70,14 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        //If player is currently colliding with an obstacle and not invincible
         if(shouldDie && !invincible) {
             death();
         }
     }
 
     private void death() {
+        //Only activate once
         if(!dead) {
             dead = true;
             playerController.enabled = false;

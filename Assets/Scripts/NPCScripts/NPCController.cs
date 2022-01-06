@@ -24,6 +24,7 @@ public class NPCController : MonoBehaviour
         actions = playerInput.actions;
     }
 
+    //Can only talk to NPC when in range
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -33,6 +34,7 @@ public class NPCController : MonoBehaviour
         }
     }
 
+    //Can not talk to NPC when not in range
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -46,6 +48,7 @@ public class NPCController : MonoBehaviour
     {   
         if(context.started && canTalk) {
             
+            //On first input
             if(!talking) {
                 Time.timeScale = 0f;
                 actions.FindActionMap("Player").FindAction("Move").Disable();
@@ -57,7 +60,9 @@ public class NPCController : MonoBehaviour
                 talking = true;
             }
 
-            if (talking) {
+            //On second input onwards
+            if (talking) {  
+                //End dialogue if no more lines remaining
                 if(index >= dialogue.Length) {
                     dialoguePanel.SetActive(false);
                     actions.FindActionMap("Player").FindAction("Move").Enable();
@@ -69,20 +74,12 @@ public class NPCController : MonoBehaviour
                     talking = false;
                     index = 0;
                 }
-                else {
+                else { //Continue dialogue
                     character.GetComponent<Image>().sprite = dialogue[index].character;
                     text.GetComponent<TMPro.TextMeshProUGUI>().text = dialogue[index].text;
                     index++;
                 }
             }
         }
-    }
-
-    private void Update() {
-        
-        //Show interact key if in range of NPC
-        // if(canTalk) {
-            
-        // }
     }
 }
