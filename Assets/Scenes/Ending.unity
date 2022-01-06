@@ -278,8 +278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &128201394
 Animator:
@@ -1000,8 +1000,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Mohammod Ibrahim Bashir
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3b017ab4c68d7dd4897cc3f770c27616, type: 2}
-  m_sharedMaterial: {fileID: -3025297349425849616, guid: 3b017ab4c68d7dd4897cc3f770c27616, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 59bd6524e4ba35c4ab5292f6e068d4c9, type: 2}
+  m_sharedMaterial: {fileID: -4055585510256760352, guid: 59bd6524e4ba35c4ab5292f6e068d4c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &876264485
@@ -1461,8 +1461,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CREDITS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e702173bf08ba1d4eab136865543b485, type: 2}
-  m_sharedMaterial: {fileID: 4930217018282307980, guid: e702173bf08ba1d4eab136865543b485, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df87ca40024aa9a479d9b8caafa0815d, type: 2}
+  m_sharedMaterial: {fileID: 3892194403655423003, guid: df87ca40024aa9a479d9b8caafa0815d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &945910800
@@ -1729,7 +1729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119707030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.0000002, y: -0.13000023, z: -10}
+  m_LocalPosition: {x: -3.0000005, y: -0.13000023, z: -10}
   m_LocalScale: {x: 1, y: 1.0005, z: 1}
   m_Children: []
   m_Father: {fileID: 1167214022}
@@ -2018,8 +2018,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Timothy Luckcock
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3b017ab4c68d7dd4897cc3f770c27616, type: 2}
-  m_sharedMaterial: {fileID: -3025297349425849616, guid: 3b017ab4c68d7dd4897cc3f770c27616, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 59bd6524e4ba35c4ab5292f6e068d4c9, type: 2}
+  m_sharedMaterial: {fileID: -4055585510256760352, guid: 59bd6524e4ba35c4ab5292f6e068d4c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2082,7 +2082,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1303723397
@@ -2130,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194148524886061563, guid: cf428558e7136424f87353d583528e56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0000002
+      value: -3.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 2194148524886061563, guid: cf428558e7136424f87353d583528e56, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2296,8 +2296,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Atikah Hussain
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3b017ab4c68d7dd4897cc3f770c27616, type: 2}
-  m_sharedMaterial: {fileID: -3025297349425849616, guid: 3b017ab4c68d7dd4897cc3f770c27616, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 59bd6524e4ba35c4ab5292f6e068d4c9, type: 2}
+  m_sharedMaterial: {fileID: -4055585510256760352, guid: 59bd6524e4ba35c4ab5292f6e068d4c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1451698392
