@@ -30,6 +30,7 @@ public class EndingCutscene : MonoBehaviour
 
     void Start()
     {   
+        //Change dialogue depending on how many collectibles collected
         collectiblesTotal = PlayerPrefs.GetInt("Level1Collectibles") + PlayerPrefs.GetInt("Level2Collectibles") + PlayerPrefs.GetInt("Level3Collectibles") + PlayerPrefs.GetInt("Level4Collectibles");
         dialogue[5].text = $"{collectiblesTotal} chests worth of gold.";
         if(collectiblesTotal >= 20) {
@@ -55,11 +56,13 @@ public class EndingCutscene : MonoBehaviour
 
     public void anyInput(InputAction.CallbackContext context) {
         if(context.started && dialoguePanel.activeInHierarchy) {
+            //End dialogue if no more lines
             if(index >= dialogue.Length) {
                 dialoguePanel.SetActive(false);
                 StartCoroutine("EndCutscene");
             }
             else {
+                //Continue dialogue
                 character.GetComponent<Image>().sprite = dialogue[index].character;
                 text.GetComponent<TMPro.TextMeshProUGUI>().text = dialogue[index].text;
                 index++;
@@ -73,12 +76,14 @@ public class EndingCutscene : MonoBehaviour
     }
 
     IEnumerator StartCutscene()
-    {
+    {   
+        //Move player forwards into position
         player_animator.Play("move");
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
 
         yield return new WaitForSeconds(2);
 
+        //Stop player and start dialogue
         rb.velocity = new Vector2(0 * moveSpeed, rb.velocity.y);
         player_animator.enabled = false;
         GetComponent<SpriteRenderer>().sprite = defaultSprite;
@@ -86,19 +91,24 @@ public class EndingCutscene : MonoBehaviour
     }
 
     IEnumerator EndCutscene()
-    {
+    {   
+        //Move player forwards off screen
         player_animator.enabled = true;
         player_animator.Play("move");
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+
+        //Start fade to black
         fadeImage.GetComponent<Animator>().Play("FadeIn");
 
         yield return new WaitForSeconds(4);
         
+        //Stop player and fade animation
         fadeImage.GetComponent<Animator>().enabled = false;
         rb.velocity = new Vector2(0 * moveSpeed, rb.velocity.y);
         player_animator.enabled = false;
         GetComponent<SpriteRenderer>().sprite = defaultSprite;
 
+        //Roll credits
         credits.SetActive(true);
         credits_animator.Play("PlayCredits");
     }

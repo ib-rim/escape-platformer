@@ -95,7 +95,8 @@ public class Powerups : MonoBehaviour
         {
             rectTransforms[i].anchoredPosition = new Vector2(0, rectTransforms[i].anchoredPosition.y + 60);
         }
-
+        
+        //Don't reset colour if another powerup is still active
         if (powerupsCount > 0)
         {   
             rend.color = mostRecentColor;
@@ -154,18 +155,16 @@ public class Powerups : MonoBehaviour
         player.jumpSpeed = PlayerController.defaultJumpSpeed * 1.5f;
         rend.color = jumpColor;
         
-        //Particle effects
-        //Change colour
+        //Change particle colour
         particlesMain.startColor = jumpColor;
-        //Change material (shape)
+        //Change particle material
         particlesRenderer.material = upArrow;
-        //Change direction (change shape z rotation)
+        //Change particle direction
         particlesShape.position = new Vector3(0f, 0f, 1f);
         particlesShape.rotation = new Vector3(0f, 0f, 0f);
 
         playerParticles.Clear();
         playerParticles.Play();
-
 
         //Change powerup timer text as timer decreases 
         GameObject powerupText = newPowerupText(jumpColor);
@@ -195,12 +194,11 @@ public class Powerups : MonoBehaviour
         player.moveSpeed = PlayerController.defaultMoveSpeed * 2;
         rend.color = speedColor;
 
-        //Particle effects
-        //Change colour
+        //Change particle colour
         particlesMain.startColor = speedColor;
-        //Change material (shape)
+        //Change particle material
         particlesRenderer.material = rightArrow;
-        //Change direction (change shape z rotation)
+        //Change particle direction
         particlesShape.position = new Vector3(-0.5f, 0f, 1f);
         particlesShape.rotation = new Vector3(0f, 0f, 270f);
 
@@ -233,12 +231,11 @@ public class Powerups : MonoBehaviour
         //Change player color
         rend.color = slowFallColor;
 
-        //Particle effects
-        //Change colour
+        //Change particle colour
         particlesMain.startColor = slowFallColor;
-        //Change material (shape)
+        //Change particle material
         particlesRenderer.material = cloud;
-        //Change direction (change shape z rotation)
+        //Change particle direction
         particlesShape.position = new Vector3(0f, 0f, 1f);
         particlesShape.rotation = new Vector3(0f, 0f, 0f);
 
@@ -285,12 +282,11 @@ public class Powerups : MonoBehaviour
         GetComponent<PlayerDeath>().invincible = true;
         rend.color = invincibilityColor;
 
-        //Particle effects
-        //Change colour
+        //Change particle colour
         particlesMain.startColor = invincibilityColor;
-        //Change material (shape)
+        //Change particle material
         particlesRenderer.material = shield;
-        //Change direction (change shape z rotation)
+        //Change particle direction
         particlesShape.position = new Vector3(0f, 0f, 1f);
         particlesShape.rotation = new Vector3(0f, 0f, 0f);
 
@@ -327,12 +323,11 @@ public class Powerups : MonoBehaviour
         player.jumpSpeed = PlayerController.defaultJumpSpeed / 2;
         rend.color = slowColor;
 
-        //Particle effects
-        //Change colour
+        //Change particle colour
         particlesMain.startColor = slowColor;
-        //Change material (shape)
+        //Change particle material
         particlesRenderer.material = downArrow;
-        //Change direction (change shape z rotation)
+        //Change particle direction
         particlesShape.position = new Vector3(0f, 0.5f, 1f);
         particlesShape.rotation = new Vector3(0f, 0f, 180f);
 

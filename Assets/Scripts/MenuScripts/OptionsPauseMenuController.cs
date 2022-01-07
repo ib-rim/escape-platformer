@@ -24,6 +24,7 @@ public class OptionsPauseMenuController : MonoBehaviour
         AudioManager.instance.SetMusicVolume(volume);
     }
 
+    //Set slider from saved data
     public void setMusicSliderValue() {
         bool result = audioMixer.GetFloat("MusicVol", out float volume);
         float value = Mathf.Pow(10, volume / 20);
@@ -37,6 +38,7 @@ public class OptionsPauseMenuController : MonoBehaviour
         AudioManager.instance.SetSFXVolume(volume);
     }
 
+    //Set slider from saved data
     public void setSFXSliderValue() {
         bool result = audioMixer.GetFloat("SFXVol", out float volume);
         float value = Mathf.Pow(10, volume / 20);

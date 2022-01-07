@@ -11,7 +11,8 @@ public class ControlsMenuController : MonoBehaviour
     public InputAction backAction;
 
     private void Start()
-    {
+    {   
+        //Allow back to be performed with input selected in editor
         backAction.performed += _ => back();
     }
 

@@ -12,6 +12,7 @@ public class Trigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {   
+            //Shoot in direction specified in editor
             if(shootLeft) {
                 ShootLeft();
             }

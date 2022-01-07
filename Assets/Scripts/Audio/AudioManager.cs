@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
             instance = this;   
             instanceGameObject = gameObject;
 
+            //Create audio sources for all music added in editor
             foreach(Sound m in music) 
             {
                 m.source = gameObject.AddComponent<AudioSource>();
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
                 m.source.loop = m.loop;
             }
 
+            //Create audio sources for all sfx added in editor
             foreach(Sound s in SFX) 
             {
                 s.source = gameObject.AddComponent<AudioSource>();
@@ -111,6 +113,7 @@ public class AudioManager : MonoBehaviour
         return m.source.isPlaying;
     }
 
+    //Stop all music tracks from playing
     public void StopAllMusic ()
     {
         foreach(Sound m in music) 

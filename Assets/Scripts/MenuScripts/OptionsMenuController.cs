@@ -19,6 +19,7 @@ public class OptionsMenuController : MonoBehaviour
         setMusicSliderValue();
         setSFXSliderValue();
 
+        //Allow back to be performed with input selected in editor
         backAction.performed += _ => back();
     }
 
@@ -37,6 +38,7 @@ public class OptionsMenuController : MonoBehaviour
         AudioManager.instance.SetMusicVolume(volume);
     }
 
+    //Set slider from saved data
     public void setMusicSliderValue()
     {
         bool result = audioMixer.GetFloat("MusicVol", out float volume);
@@ -51,6 +53,7 @@ public class OptionsMenuController : MonoBehaviour
         AudioManager.instance.SetSFXVolume(volume);
     }
 
+    //Set slider from saved data
     public void setSFXSliderValue()
     {
         bool result = audioMixer.GetFloat("SFXVol", out float volume);

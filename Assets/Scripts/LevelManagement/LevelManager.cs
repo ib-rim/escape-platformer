@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //Do fade transition only when level is loaded (not on respawn)
         if(shouldFade) {
             fadeImageAnimator.SetBool("startFade", true);
             shouldFade = false;
@@ -74,12 +75,14 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    //Set new player respawn point
     public void setRespawnPoint(Vector2 newRespawnPoint)
     {
         respawnPoint = newRespawnPoint;
         levelStart = false;
     }
 
+    //Actions that happen at the end of every level
     public void EndLevel()
     {   
         //Disable player input
@@ -95,6 +98,7 @@ public class LevelManager : MonoBehaviour
 
         String level = SceneManager.GetActiveScene().name.Substring(0, 6);
 
+        //Save player statistics
         if (!PlayerPrefs.HasKey($"{level}Deaths") || deathsCount < PlayerPrefs.GetInt($"{level}Deaths"))
         {
             PlayerPrefs.SetInt($"{level}Deaths", deathsCount);
@@ -114,7 +118,6 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetString($"{level}", "complete");
 
         StartCoroutine("fadeToNextScene");
-        
     }
 
     //Fade to black and then load appropriate scene

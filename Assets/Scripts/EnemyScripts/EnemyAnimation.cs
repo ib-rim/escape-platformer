@@ -8,6 +8,7 @@ public class EnemyAnimation : MonoBehaviour
     public Sprite secondSprite;
     public Sprite thirddSprite;
 
+    //Randomly change static enemy sprite to give 'glitchy' appearance
     private void Update() {
         int num = Random.Range(1,400);
 
@@ -21,6 +22,7 @@ public class EnemyAnimation : MonoBehaviour
         }
     }
 
+    //Go back to default sprite 
     IEnumerator switchToFirst()
     {
         yield return new WaitForSeconds(0.1f);
