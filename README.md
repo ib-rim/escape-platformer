@@ -6,7 +6,7 @@ WebGL Build: https://ib-rim.github.io/escape-platformer/build/index.html
 
 Prototype Video: https://youtu.be/cBpEBhhDaus
 
-Final Game Video: 
+Final Game Video: https://youtu.be/CJhXra6DMTM
 
 Made using Unity (2021.1.25f1). If running in Unity editor, please run the scene 'MainMenu' first for the best experience. 
 
@@ -77,7 +77,7 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 ## Assets
 
 ### Music: 
-- TheHerosPath (https://assetstore.unity.com/packages/audio/music/the-hero-s-path-free-16bit-adventure-game-music-204232)
+- https://assetstore.unity.com/packages/audio/music/the-hero-s-path-free-16bit-adventure-game-music-204232
 
 ### SFX:
 - Jump  (https://opengameart.org/content/3-melee-sounds)
