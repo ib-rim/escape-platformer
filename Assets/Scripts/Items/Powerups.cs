@@ -160,7 +160,7 @@ public class Powerups : MonoBehaviour
         //Change particle material
         particlesRenderer.material = upArrow;
         //Change particle direction
-        particlesShape.position = new Vector3(0f, 0f, 1f);
+        particlesShape.position = new Vector3(0f, 0f, 0.25f);
         particlesShape.rotation = new Vector3(0f, 0f, 0f);
 
         playerParticles.Clear();
@@ -199,7 +199,7 @@ public class Powerups : MonoBehaviour
         //Change particle material
         particlesRenderer.material = rightArrow;
         //Change particle direction
-        particlesShape.position = new Vector3(-0.5f, 0f, 1f);
+        particlesShape.position = new Vector3(-0.5f, 0f, 0.25f);
         particlesShape.rotation = new Vector3(0f, 0f, 270f);
 
         playerParticles.Clear();
@@ -236,7 +236,7 @@ public class Powerups : MonoBehaviour
         //Change particle material
         particlesRenderer.material = cloud;
         //Change particle direction
-        particlesShape.position = new Vector3(0f, 0f, 1f);
+        particlesShape.position = new Vector3(0f, 0f, 0.25f);
         particlesShape.rotation = new Vector3(0f, 0f, 0f);
 
         playerParticles.Clear();
@@ -287,7 +287,7 @@ public class Powerups : MonoBehaviour
         //Change particle material
         particlesRenderer.material = shield;
         //Change particle direction
-        particlesShape.position = new Vector3(0f, 0f, 1f);
+        particlesShape.position = new Vector3(0f, 0f, 0.25f);
         particlesShape.rotation = new Vector3(0f, 0f, 0f);
 
         playerParticles.Clear();
@@ -328,7 +328,7 @@ public class Powerups : MonoBehaviour
         //Change particle material
         particlesRenderer.material = downArrow;
         //Change particle direction
-        particlesShape.position = new Vector3(0f, 0.5f, 1f);
+        particlesShape.position = new Vector3(0f, 0.5f, 0.25f);
         particlesShape.rotation = new Vector3(0f, 0f, 180f);
 
         playerParticles.Clear();
