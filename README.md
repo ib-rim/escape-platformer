@@ -1,42 +1,48 @@
 # The Four Trials
 
-A 2D platformer game by Ibrahim, Timothy, and Atikah for the Multi-Platform Game Development module. 
+A 2D platform game in which the player is challenged to overcome a series of obstacles - spikes, lava, traps, and enemies -  to escape a mysterious dungeon. They must use power-ups to their advantage and collect chests of gold along the way. 
 
-WebGL Build: https://ib-rim.github.io/escape-platformer/build/index.html
+Designed and developed by Ibrahim, Timothy, and Atikah for the Multi-Platform Game Development module. Made using Unity (2021.1.25f1).
 
-Prototype Video: https://youtu.be/cBpEBhhDaus
+> Play the full game on our WebGL build -> https://ib-rim.github.io/escape-platformer/build/index.html
+>
+> Prototype Video -> https://youtu.be/cBpEBhhDaus
+>
+> Final Game Video -> https://youtu.be/CJhXra6DMTM
 
-Final Game Video: https://youtu.be/CJhXra6DMTM
+**Notes**: If running in Unity editor, please run the scene 'MainMenu' first for the best experience. Use the 'Clear Save Data' button in the 'Options' menu, if you have playtested our game at any point, for a fresh start.
 
-Made using Unity (2021.1.25f1). If running in Unity editor, please run the scene 'MainMenu' first for the best experience. 
+## Controls
 
-We recommend using the 'Clear Save Data' button in the Options menu, if you playtested our game at any point, for a fresh experience.
+_Move_ - Hold `A` and `D` keys, or Left `←` and Right `→` arrow keys
 
-## Player Controls:
+_Jump_ - Press or hold `W` key, Up `↑` arrow key, or `Space` key
 
-Move - A and D keys, Left and Right arrow keys
+_Crouch_ - Hold `S` key or Down `↓` arrow key
 
-Jump - W key, Up arrow key, Spacebar
+_Drop through platform_ - Press `S` key or Down `↓` arrow key
 
-Crouch - Hold S key or Down arrow key
+_Talk to NPCs_ - Press `C` key
 
-## Information:
+_Pause game_ - Press `Esc` key or `P` key 
 
-Jump across platforms until you reach the end of the level, avoiding the lava beneath you, and the enemies. Collect chests along the way. Use power-ups and special platforms to overcome traps and obstacles. 
+_Navigate menus_ - Left click with mouse, or use arrows keys, `Space` key and `Esc` key
+
+## Features
 
 **Power-ups**:
 
--	Yellow - Invulnerability
+-	Yellow gem - Invulnerability
 
--	Green - Jump Boost
+-	Green gem - Jump Boost
 
--	Orange - Speed Boost
+-	Orange gem - Speed Boost
 
--	Blue - Slow Fall
+-	Blue gem - Slow Fall
 
 **Debuffs**:
 
--	Pink - Slow Movement
+-	Pink gem - Slow Movement
 
 **Platforms**:
 
@@ -44,7 +50,7 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 
 -	Bouncy Platforms
 
--	Pitfalls
+-	Temporary Platforms
 
 -	One-way Platforms
 
@@ -62,11 +68,9 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 
 -	Enemies
 
-**Collectibles**:
-
--	Chests
-
 **Other**:
+
+-	Chests - Collectible items
 
 -	Torches - Checkpoints
 
@@ -76,10 +80,10 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 
 ## Assets
 
-### Music: 
+### Music
 - https://assetstore.unity.com/packages/audio/music/the-hero-s-path-free-16bit-adventure-game-music-204232
 
-### SFX:
+### SFX
 - Jump  (https://opengameart.org/content/3-melee-sounds)
 - Crouch (https://opengameart.org/content/jump-sound-effect-yo-frankie)
 - Footsteps (https://opengameart.org/content/footsteps-on-different-surfaces)
@@ -92,7 +96,7 @@ Jump across platforms until you reach the end of the level, avoiding the lava be
 - Arrow trap (https://opengameart.org/content/superpowers-assets-sound-effects)
 - Checkpoint (https://opengameart.org/content/superpowers-assets-sound-effects)
 
-### Sprites:
+### Sprites
 - Level tiles, platforms and props (https://assetstore.unity.com/packages/2d/environments/medieval-pixel-art-asset-free-130131)
 - Character sprite/animations (https://legnops.itch.io/red-hood-character)
 - Skeleton NPC (https://sanctumpixel.itch.io/sword-skeleton-pixel-art-character)
