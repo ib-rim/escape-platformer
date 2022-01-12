@@ -26,7 +26,7 @@ _Talk to NPCs_ - Press `C` key
 
 _Pause game_ - Press `Esc` key or `P` key 
 
-_Navigate menus_ - Right click with mouse, or use arrows keys and `Esc` key
+_Navigate menus_ - Left click with mouse, or use arrows keys, `Space` key and `Esc` key
 
 ## Features
 
